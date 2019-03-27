@@ -23,7 +23,7 @@ export class AddAdminComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.required, Validators.email])],
+      username: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required]
@@ -47,7 +47,7 @@ export class AddAdminComponent implements OnInit {
       error => {
         console.log(error);
         if (error.status === 400) {
-          this.toastCtrl.error('Registration Failure');
+          this.toastCtrl.error('Registration Failure.\n' + error.error.message);
         } else {
           this.toastCtrl.error('Server Error');
         }
