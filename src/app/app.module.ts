@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,7 +29,8 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
     DashboardRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    PasswordStrengthMeterModule
+    PasswordStrengthMeterModule,
+    ShowHidePasswordModule
   ],
   providers: [
     AuthService,

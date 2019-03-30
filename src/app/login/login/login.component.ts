@@ -13,6 +13,9 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
+  value = 'password';
+  showPwd = 'octicon octicon-eye';
+  showPass = false;
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -67,4 +70,7 @@ export class LoginComponent implements OnInit {
 
   get f() { return this.loginForm.controls; }
 
+  butClick() {
+    this.showPass ? this.showPwd = 'octicon octicon-eye-closed' : this.showPwd = 'octicon octicon-eye';
+  }
 }

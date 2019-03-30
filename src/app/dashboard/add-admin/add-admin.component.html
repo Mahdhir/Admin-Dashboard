@@ -14,29 +14,56 @@
               <label for="inputFName" class="sr-only cs">FirstName</label>
               <input type="text" id="inputFName" class="form-control cs" formControlName="firstName"
                 placeholder="First Name" autofocus>
+                <div *ngIf="!registerForm.controls['firstName'].valid && registerForm.controls['firstName'].touched">
+                    <label color="danger">First Name required</label>
+                </div>
             </div>
 
             <div class="form-group">
               <label for="inputLName" class="sr-only cs">LastName</label>
               <input type="text" id="inputLName" class="form-control cs" formControlName="lastName"
                 placeholder="Last Name">
+                <div *ngIf="!registerForm.controls['lastName'].valid && registerForm.controls['lastName'].touched">
+                    <label color="danger">Last Name required</label>
+                </div>
             </div>
 
             <div class="form-group">
               <label for="inputEmail" class="sr-only cs">Email address</label>
               <input type="email" id="inputEmail" class="form-control cs" formControlName="username"
                 placeholder="Email address">
+                <div *ngIf="!registerForm.controls['username'].valid && registerForm.controls['username'].touched">
+                    <label color="danger">Email required</label>
+                </div>
             </div>
 
             <div class="form-group">
+              <show-hide-password size="sm">
               <label for="inputPassword" class="sr-only cs">Password</label>
               <input type="password" id="inputPassword" class="form-control cs" formControlName="password"
                 placeholder="Password">
+              </show-hide-password>
+              <div *ngIf="!registerForm.controls['password'].valid && registerForm.controls['password'].touched">
+                  <label color="danger">Enter valid password of minimum 8 characters</label>
+              </div>
             </div>
+
+            
             <div class="form-group">
                 <password-strength-meter [password]="registerForm.value.password" [enableFeedback]=true></password-strength-meter>
             </div>
             
+            <div class="form-group">
+                <show-hide-password size="sm">
+                <label for="inputPassword" class="sr-only cs">Password</label>
+                <input type="password" id="inputConfirmPassword" class="form-control cs" formControlName="confirmPassword"
+                  placeholder="Password">
+                </show-hide-password>
+                <div *ngIf="!registerForm.controls['confirmPassword'].valid && registerForm.controls['confirmPassword'].touched && registerForm.hasError('mismatchedPasswords')">
+                    <label color="danger">Password Mismatch</label>
+                </div>
+              </div>
+
             <button class="btn btn-primary " [disabled]="!registerForm.valid" type="submit">Register</button>
           </form>
         </body>

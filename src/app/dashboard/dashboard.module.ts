@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from '../helpers/jwt.interceptor';
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 @NgModule({
   declarations: [DashboardComponent, OrdersComponent, NavbarComponent, SidebarComponent, AdminInfoComponent, AddAdminComponent],
@@ -21,6 +22,7 @@ import { JwtInterceptor } from '../helpers/jwt.interceptor';
     DashboardRoutingModule,
     ReactiveFormsModule,
     PasswordStrengthMeterModule,
+    ShowHidePasswordModule
   ],
   providers: [
     AuthGuard,

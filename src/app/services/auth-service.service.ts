@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router} from '@angular/router';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 
@@ -24,7 +25,9 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    if (localStorage.getItem('token')) {
+    const helper = new JwtHelperService();
+    const token = localStorage.getItem('token');
+    if (token && !helper.isTokenExpired(token)) {
       return true;
     } else {
       return false;
@@ -32,11 +35,11 @@ export class AuthService {
   }
 
   getDetails() {
-    // tslint:disable-next-line:prefer-const
-    let data = localStorage.getItem('currentUser');
+    const data = localStorage.getItem('currentUser');
     console.log(data);
     return JSON.parse(data);
   }
+
   login(username: string, password: string) {
     console.log('Login');
     // tslint:disable-next-line:object-literal-shorthand
@@ -59,30 +62,11 @@ export class AuthService {
   }
 
   register(user) {
-    // tslint:disable-next-line:prefer-const
-    // let headers = new HttpHeaders();
-    // // tslint:disable-next-line:prefer-const
-    // let token = localStorage.getItem('token');
-    // console.log(token);
-    // console.log(user);
-    // const ht = headers.append('Authorization', 'Bearer ' + token);
-    // console.log(ht);
-    // // tslint:disable-next-line:prefer-const
-    // let result = this.http.post(`http://localhost:4009/admin/register`, { ht }, user);
-    // console.log(result);
-    // return result;
     return this.http.post(`http://localhost:4009/admin/register`, user);
   }
 
   get() {
-    // tslint:disable-next-line:prefer-const
-    let headers = new HttpHeaders();
-    // tslint:disable-next-line:prefer-const
-    let token = localStorage.getItem('token');
-    console.log(token);
-    headers.append('Authorization', 'Bearer ' + token);
-    console.log(headers);
-    const result = this.http.get(`http://localhost:4009/admin/register`, { headers});
+    const result = this.http.get(`http://localhost:4009/admin`);
     console.log(result);
     return result;
   }
