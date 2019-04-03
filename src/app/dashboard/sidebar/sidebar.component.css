@@ -1,1 +1,16 @@
 @import '../../../assets/dashboard.css';
+/* .sidebar-sticky{
+     background-color: rgb(17, 73, 158);
+} */
+.nav-item:hover{
+    background-color:Blue;
+}
+.nav-item:hover{
+    background-color:rgb(122, 175, 255);
+}
+.nav-item::selection{
+    background-color:black;
+}
+/* #a{
+    color:white;
+} */
