@@ -28,7 +28,7 @@ export class AddAdminComponent implements OnInit {
       // tslint:disable-next-line:object-literal-key-quotes
       'password': ['', Validators.compose([Validators.required, Validators.minLength(8)])],
       // tslint:disable-next-line:object-literal-key-quotes
-      'confirmPassword': ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+      'confirmPassword': ['', Validators.required],
       // tslint:disable-next-line:object-literal-key-quotes
       'firstName': ['', Validators.required],
       // tslint:disable-next-line:object-literal-key-quotes

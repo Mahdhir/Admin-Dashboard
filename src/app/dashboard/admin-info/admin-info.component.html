@@ -8,8 +8,17 @@
           <div>
             <h3 class="h3">Welcome {{adminDetails.firstName}} {{adminDetails.lastName}}</h3>
             <br>
+            <h3 class="h3">Email {{adminDetails.username}}</h3>
+            <br>
             <button class="btn btn-primary" (click)="addAdmin()">Add New Administrator</button>
+            <br>
+            <br>
+            <button class="btn btn-primary" (click)="changePassword()">Change Password</button>
+            <br>
+            <br>
+            <button class="btn btn-primary" (click)="editDetails()">Edit Admin Details</button>
           </div>
         </main>
   </div>
 </div>
+

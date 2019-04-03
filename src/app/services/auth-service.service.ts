@@ -70,4 +70,9 @@ export class AuthService {
     console.log(result);
     return result;
   }
+
+  updateDetails(user) {
+    // tslint:disable-next-line:object-literal-shorthand
+    return this.http.put(`http://localhost:4009/admin`, user);
+  }
 }

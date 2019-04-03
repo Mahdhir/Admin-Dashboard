@@ -5,6 +5,8 @@ import { OrdersComponent } from './orders/orders.component';
 import { AdminInfoComponent } from './admin-info/admin-info.component';
 import { AuthGuard } from '../services/auth-guard.service';
 import { AddAdminComponent } from './add-admin/add-admin.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ChangeDetailsComponent } from './change-details/change-details.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,14 @@ const routes: Routes = [
       {
         path: 'addAdmin',
         component: AddAdminComponent
+      },
+      {
+        path: 'changePassword',
+        component: ChangePasswordComponent
+      },
+      {
+        path: 'changeDetails',
+        component: ChangeDetailsComponent
       }
     ],
     canActivate: [AuthGuard]

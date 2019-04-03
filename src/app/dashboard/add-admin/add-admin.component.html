@@ -59,7 +59,7 @@
                 <input type="password" id="inputConfirmPassword" class="form-control cs" formControlName="confirmPassword"
                   placeholder="Password">
                 </show-hide-password>
-                <div *ngIf="!registerForm.controls['confirmPassword'].valid && registerForm.controls['confirmPassword'].touched && registerForm.hasError('mismatchedPasswords')">
+                <div *ngIf="registerForm.controls['confirmPassword'].touched && registerForm.hasError('mismatchedPasswords')">
                     <label color="danger">Password Mismatch</label>
                 </div>
               </div>

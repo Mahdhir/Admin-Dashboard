@@ -29,4 +29,12 @@ adminDetails: AdminData;
     this.router.navigate(['dashboard/addAdmin']);
   }
 
+  changePassword() {
+    this.router.navigate(['dashboard/changePassword']);
+  }
+
+  editDetails() {
+    this.router.navigate(['dashboard/changeDetails']);
+  }
+
 }

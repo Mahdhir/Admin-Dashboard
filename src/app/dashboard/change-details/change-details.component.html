@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="row">
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Update Your Details</h1>
+  
+        </div>
+        <div>
+  
+          <body class="text-center">
+            <form class="" [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="inputFName" class="sr-only cs">FirstName</label>
+                <input type="text" id="inputFName" class="form-control cs" formControlName="firstName"
+                  placeholder="First Name" autofocus>
+                  <div *ngIf="!updateForm.controls['firstName'].valid && updateForm.controls['firstName'].touched">
+                      <label color="danger">First Name required</label>
+                  </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="inputLName" class="sr-only cs">LastName</label>
+                <input type="text" id="inputLName" class="form-control cs" formControlName="lastName"
+                  placeholder="Last Name">
+                  <div *ngIf="!updateForm.controls['lastName'].valid && updateForm.controls['lastName'].touched">
+                      <label color="danger">Last Name required</label>
+                  </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="inputEmail" class="sr-only cs">Email address</label>
+                <input type="email" id="inputEmail" class="form-control cs" formControlName="username"
+                  placeholder="Email address">
+                  <div *ngIf="!updateForm.controls['username'].valid && updateForm.controls['username'].touched">
+                      <label color="danger">Email required</label>
+                  </div>
+              </div>   
+              <button class="btn btn-primary " [disabled]="!updateForm.valid" type="submit">Update</button>
+            </form>
+          </body>
+        </div>
+      </main>
+    </div>
+  </div>

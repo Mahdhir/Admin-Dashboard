@@ -14,9 +14,20 @@ import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from '../helpers/jwt.interceptor';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ChangeDetailsComponent } from './change-details/change-details.component';
 
 @NgModule({
-  declarations: [DashboardComponent, OrdersComponent, NavbarComponent, SidebarComponent, AdminInfoComponent, AddAdminComponent],
+  declarations: [
+    DashboardComponent,
+    OrdersComponent,
+    NavbarComponent,
+    SidebarComponent,
+    AdminInfoComponent,
+    AddAdminComponent,
+    ChangePasswordComponent,
+    ChangeDetailsComponent
+  ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
