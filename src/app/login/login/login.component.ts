@@ -53,13 +53,21 @@ export class LoginComponent implements OnInit {
     .subscribe(
       data => {
         console.log(data);
-        this.router.navigate(['dashboard/info']);
+        // tslint:disable-next-line:triple-equals
+        if (data.firstLogin == false) {
+          this.router.navigate(['dashboard/info']);
+        } else {
+          this.router.navigate(['dashboard/changePassword']);
+          this.toastCtrl.warning('Please change your first time login password', 'WARNING' );
+        }
       },
       error => {
         console.log(error);
         if (error.status === 400) {
           console.log('Invalid Login');
           this.toastCtrl.error('Invalid Login', 'Login Failed');
+        } else if (error.status === 401) {
+          this.toastCtrl.error('Please Check Your Email For Email Verification', 'Invalid Login');
         } else {
           console.log('Server Error');
           this.toastCtrl.error('Server Error', 'Login Failed');

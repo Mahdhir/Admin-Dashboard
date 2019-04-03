@@ -65,14 +65,20 @@ export class AuthService {
     return this.http.post(`http://localhost:4009/admin/register`, user);
   }
 
-  get() {
-    const result = this.http.get(`http://localhost:4009/admin`);
-    console.log(result);
-    return result;
+  submitEmailVerification(id, code) {
+    return this.http.get(`http://localhost:4009/admin?userId=${id}&code=${code}`);
   }
 
   updateDetails(user) {
     // tslint:disable-next-line:object-literal-shorthand
     return this.http.put(`http://localhost:4009/admin`, user);
+  }
+
+  submitEmailForgetPassword(email) {
+    return this.http.post(`http://localhost:4009/admin/ForgetPassword`, {email});
+  }
+
+  resetPassword(user) {
+    return this.http.post(`http://localhost:4009/admin/ResetPassword`, user);
   }
 }
