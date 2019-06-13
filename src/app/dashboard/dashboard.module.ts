@@ -16,6 +16,8 @@ import { JwtInterceptor } from '../helpers/jwt.interceptor';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ChangeDetailsComponent } from './change-details/change-details.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
+import { CategoryInfoComponent } from './category-info/category-info.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ChangeDetailsComponent } from './change-details/change-details.componen
     AdminInfoComponent,
     AddAdminComponent,
     ChangePasswordComponent,
-    ChangeDetailsComponent
+    ChangeDetailsComponent,
+    AddCategoryComponent,
+    CategoryInfoComponent
   ],
   imports: [
     CommonModule,

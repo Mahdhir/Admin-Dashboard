@@ -7,6 +7,8 @@ import { AuthGuard } from '../services/auth-guard.service';
 import { AddAdminComponent } from './add-admin/add-admin.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ChangeDetailsComponent } from './change-details/change-details.component';
+import { CategoryInfoComponent } from './category-info/category-info.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 
 const routes: Routes = [
@@ -33,6 +35,14 @@ const routes: Routes = [
       {
         path: 'changeDetails',
         component: ChangeDetailsComponent
+      },
+      {
+        path: 'categoryInfo',
+        component: CategoryInfoComponent,
+      },
+      {
+        path: 'addCategory',
+        component: AddCategoryComponent
       }
     ],
     canActivate: [AuthGuard]
