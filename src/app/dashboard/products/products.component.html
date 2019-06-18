@@ -1,0 +1,81 @@
+<!-- <div class="container-fluid">
+    <table class="table" >  
+        <tr ngclass="btn-primary">  
+          <th class="tbl1">Product ID</th>  
+          <th class="tbl1">Product Name</th>  
+          <th class="tbl1">Quantity</th>  
+          <th class="tbl1">Reorder Level</th>  
+          <th class="tbl1">Price</th>  
+          <th class="tbl1">Product Description</th>  
+          <th class="tbl1">Category</th>  
+          <th class="tbl1">Sub Catogory</th>
+          <th class="tbl1">View</th>
+          <th class="tbl1">Remove</th>  
+        </tr>  
+        <tr *ngFor="let product of allProducts | async">  
+          <td class="tbl1">{{product.productId}}</td>  
+          <td class="tbl1">{{product.productName }}</td>  
+          <td class="tbl1">{{product.quantity}}</td>  
+          <td class="tbl1">{{product.reorderLevel}}</td>  
+          <td class="tbl1">{{product.price}}</td>  
+          <td class="tbl1">{{product.productDescription}}</td>
+          <td class="tbl1">{{product.category}}</td>
+          <td class="tbl1">{{product.subCategory}}</td>
+          <td class="tbl1">  
+            <button type="button" class="btn btn-info"matTooltip="Click Edit Button">View</button>  
+          </td>  
+          <td class="tbl2">  
+            <button type="button" class="btn btn-danger"matTooltip="Click Delete Button"(click)="deleteProduct(product.productId)">Remove</button>  
+          </td>  
+        </tr>  
+
+      </table>  
+</div> -->
+
+<div class="container-fluid">
+  <div class="row">
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Products</h1>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th class="tbl1">Product ID</th>
+              <th class="tbl1">Product Name</th>
+              <th class="tbl1">Quantity</th>
+              <th class="tbl1">Reorder Level</th>
+              <th class="tbl1">Price</th>
+              <th class="tbl1">Product Description</th>
+              <th class="tbl1">Category</th>
+              <th class="tbl1">Sub Catogory</th>
+              <th class="tbl1">View</th>
+              <th class="tbl1">Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of allProducts">
+              <td class="tbl1">{{product.id}}</td>
+              <td class="tbl1">{{product.product_name }}</td>
+              <td class="tbl1">{{product.quantity}}</td>
+              <td class="tbl1">{{product.reorderLevel}}</td>
+              <td class="tbl1">{{product.price}}</td>
+              <td class="tbl1">{{product.product_Discription}}</td>
+              <td class="tbl1">{{product.category}}</td>
+              <td class="tbl1">{{product.sub_category}}</td>
+              <td class="tbl1">
+                <button type="button" class="btn btn-info" matTooltip="Click Edit Button">View</button>
+              </td>
+              <td class="tbl2">
+                <button type="button" class="btn btn-danger" matTooltip="Click Delete Button"
+                  (click)="deleteProduct(product.id)">Remove</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>

@@ -14,6 +14,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
 import { AuthService } from './services/auth-service.service';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { ProductService } from './services/product.service';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
   ],
   providers: [
     AuthService,
+    ProductService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
