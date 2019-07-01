@@ -15,10 +15,11 @@ import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
 import { AuthService } from './services/auth-service.service';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ProductService } from './services/product.service';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

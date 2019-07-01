@@ -14,7 +14,7 @@ export class ProductService {
    }
 
   getAllProduct(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.url + '/products');
+    return this.http.get<any>(this.url);
   }
   deleteProductById(productid: number): Observable<number> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };

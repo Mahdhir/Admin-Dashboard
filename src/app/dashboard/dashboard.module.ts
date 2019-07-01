@@ -18,6 +18,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ChangeDetailsComponent } from './change-details/change-details.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductService } from '../services/product.service';
+import { FilterPipe } from '../filter.pipe';
+import { BuyersComponent } from './buyers/buyers.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +31,17 @@ import { ProductService } from '../services/product.service';
     AddAdminComponent,
     ChangePasswordComponent,
     ChangeDetailsComponent,
-    ProductsComponent
+    ProductsComponent,
+    FilterPipe,
+    BuyersComponent
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     ReactiveFormsModule,
     PasswordStrengthMeterModule,
-    ShowHidePasswordModule
+    ShowHidePasswordModule,
+    
   ],
   providers: [
     AuthGuard,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product';
+import { AuthService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-products',
@@ -10,12 +11,21 @@ import { Product } from '../../models/product';
 })
 export class ProductsComponent implements OnInit {
   dataSaved = false;
-  allProducts: Product[];
+  allProducts:any = [];
+  searchText = null;
   messaage = null;
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private authService: AuthService
+    ) { }
 
   ngOnInit() {
     this.loadAllProducts();
+  }
+
+  logOut() {
+    this.authService.logout();
+    console.log('Logout');
   }
 
   loadAllProducts() {
@@ -44,9 +54,17 @@ export class ProductsComponent implements OnInit {
       });
     }
   }
+  
   resetTable() {
     this.messaage = null;
     this.dataSaved = false;
+  }
+
+  search(ev:any){
+    console.log(ev.target.value);
+    this.searchText = ev.target.value;
+
+    console.log(this.allProducts);
   }
 
 }
