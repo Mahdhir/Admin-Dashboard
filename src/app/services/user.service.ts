@@ -11,4 +11,7 @@ export class UserService {
   getAllBuyers(){
     return this.http.get(`${this.url}/allBuyers`);
   }
+  getAllSellers(){
+    return this.http.get(`${this.url}/allSellers`);
+  }
 }

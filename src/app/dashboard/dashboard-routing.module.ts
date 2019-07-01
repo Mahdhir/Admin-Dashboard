@@ -9,7 +9,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ChangeDetailsComponent } from './change-details/change-details.component';
 import { ProductsComponent } from './products/products.component';
 import { BuyersComponent } from './buyers/buyers.component';
-
+import {SellersComponent} from './sellers/sellers.component';
 
 const routes: Routes = [
   {
@@ -43,7 +43,12 @@ const routes: Routes = [
       {
         path: 'buyers',
         component: BuyersComponent
+      },
+      {
+        path: 'sellers',
+        component: SellersComponent
       }
+
     ],
     canActivate: [AuthGuard]
   }

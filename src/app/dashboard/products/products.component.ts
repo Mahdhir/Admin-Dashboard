@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/services/auth-service.service';
 })
 export class ProductsComponent implements OnInit {
   dataSaved = false;
-  allProducts:any = [];
+  allProducts: any = [];
   searchText = null;
   messaage = null;
   constructor(
@@ -54,13 +54,13 @@ export class ProductsComponent implements OnInit {
       });
     }
   }
-  
+
   resetTable() {
     this.messaage = null;
     this.dataSaved = false;
   }
 
-  search(ev:any){
+  search(ev: any) {
     console.log(ev.target.value);
     this.searchText = ev.target.value;
 

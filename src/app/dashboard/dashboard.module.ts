@@ -20,6 +20,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductService } from '../services/product.service';
 import { FilterPipe } from '../filter.pipe';
 import { BuyersComponent } from './buyers/buyers.component';
+import { SellersComponent } from './sellers/sellers.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { BuyersComponent } from './buyers/buyers.component';
     ChangeDetailsComponent,
     ProductsComponent,
     FilterPipe,
-    BuyersComponent
+    BuyersComponent,
+    SellersComponent
   ],
   imports: [
     CommonModule,
