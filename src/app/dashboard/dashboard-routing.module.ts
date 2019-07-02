@@ -10,6 +10,9 @@ import { ChangeDetailsComponent } from './change-details/change-details.componen
 import { ProductsComponent } from './products/products.component';
 import { BuyersComponent } from './buyers/buyers.component';
 import {SellersComponent} from './sellers/sellers.component';
+import { CategoryInfoComponent } from './category-info/category-info.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
+
 
 const routes: Routes = [
   {
@@ -47,6 +50,14 @@ const routes: Routes = [
       {
         path: 'sellers',
         component: SellersComponent
+      },
+      {
+        path: 'categoryInfo',
+        component: CategoryInfoComponent,
+      },
+      {
+        path: 'addCategory',
+        component: AddCategoryComponent
       }
 
     ],

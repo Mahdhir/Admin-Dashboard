@@ -81,4 +81,8 @@ export class AuthService {
   resetPassword(user) {
     return this.http.post(`http://localhost:4009/admin/ResetPassword`, user);
   }
+
+  // addcategory(data){
+  //   return this.http.post<any>(`http://localhost:4009/categories`, data);
+  // }
 }

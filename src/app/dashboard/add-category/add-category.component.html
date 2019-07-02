@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="row">
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <h2>Add Category</h2>
+      <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="category">Category</label>
+          <input id="category" formControlName="category" type="text" class="form-control"
+            [class.is-invalid]="categoryForm.get('category').invalid && categoryForm.get('category').touched" required
+            placeholder="Category">
+          <small [class.d-none]="categoryForm.get('category').valid || categoryForm.get('category').untouched"
+            class="text-danger">
+            Enter Category Name.
+          </small>
+        </div>
+        <div class="form-group">
+          <label for="subCategory">Sub Category</label>
+          <input id="subCategory" formControlName="subCategory" type="text" class="form-control"
+            [class.is-invalid]="categoryForm.get('subCategory').invalid && categoryForm.get('subCategory').touched"
+            required placeholder="Sub Category">
+          <small [class.d-none]="categoryForm.get('subCategory').valid || categoryForm.get('subCategory').untouched"
+            class="text-danger">
+            Atleast add one Sub Category.
+          </small>
+          <br>
+          <button type="button" class="btn btn-secondary btn-sm m-2" (click)="addAlternateSubCategories()">
+            Add another Sub Category</button>
+          <div formArrayName="alternatesubCategories"
+            *ngFor="let subCategory of alternatesubCategories.controls; let i = index">
+            <input type="text" class="form-control my-1" [formControlName]="i">
+          </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Add</button>
+
+      </form>
+      {{categoryForm.value | json}}
+    </main>
+  </div>
+</div>

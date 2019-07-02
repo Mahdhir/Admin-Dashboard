@@ -21,6 +21,8 @@ import { ProductService } from '../services/product.service';
 import { FilterPipe } from '../filter.pipe';
 import { BuyersComponent } from './buyers/buyers.component';
 import { SellersComponent } from './sellers/sellers.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
+import { CategoryInfoComponent } from './category-info/category-info.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { SellersComponent } from './sellers/sellers.component';
     ProductsComponent,
     FilterPipe,
     BuyersComponent,
-    SellersComponent
+    SellersComponent,
+    AddCategoryComponent,
+    CategoryInfoComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +47,6 @@ import { SellersComponent } from './sellers/sellers.component';
     ReactiveFormsModule,
     PasswordStrengthMeterModule,
     ShowHidePasswordModule,
-    
   ],
   providers: [
     AuthGuard,
