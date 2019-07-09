@@ -23,6 +23,8 @@ import { BuyersComponent } from './buyers/buyers.component';
 import { SellersComponent } from './sellers/sellers.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { CategoryInfoComponent } from './category-info/category-info.component';
+import { SellerfilterPipe } from './sellers/sellerfilter.pipe';
+import { BuyerfilterPipe } from './buyers/buyerfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { CategoryInfoComponent } from './category-info/category-info.component';
     BuyersComponent,
     SellersComponent,
     AddCategoryComponent,
-    CategoryInfoComponent
+    CategoryInfoComponent,
+    SellerfilterPipe,
+    BuyerfilterPipe
   ],
   imports: [
     CommonModule,

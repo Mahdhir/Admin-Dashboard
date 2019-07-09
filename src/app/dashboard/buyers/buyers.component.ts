@@ -8,9 +8,10 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class BuyersComponent implements OnInit {
 
-  users:any = [];
+  users: any = [];
+  searchText = null ;
   constructor(
-    private userService:UserService
+    private userService: UserService
     ) { }
 
   ngOnInit() {
@@ -24,5 +25,11 @@ export class BuyersComponent implements OnInit {
       console.log(this.users);
     })
     .catch( err => console.log(err));
+  }
+  search(ev: any) {
+    console.log(ev.target.value);
+    this.searchText = ev.target.value;
+
+    console.log(this.users);
   }
 }

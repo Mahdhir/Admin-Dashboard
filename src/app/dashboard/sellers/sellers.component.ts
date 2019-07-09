@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-
+import {AuthService} from 'src/app/services/auth-service.service';
 @Component({
   selector: 'app-sellers',
   templateUrl: './sellers.component.html',
@@ -8,12 +8,14 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SellersComponent implements OnInit {
   users: any = [];
+  searchText = null;
   constructor(private userService: UserService) {
   }
 
   ngOnInit() {
     this.loadData();
   }
+  
   loadData(){
     this.userService.getAllSellers().toPromise()
     .then( res => {
@@ -21,5 +23,11 @@ export class SellersComponent implements OnInit {
       console.log(this.users);
     })
     .catch( err => console.log(err));
+  }
+  search(ev: any) {
+    console.log(ev.target.value);
+    this.searchText = ev.target.value;
+
+    console.log(this.users);
   }
 }
