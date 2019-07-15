@@ -16,15 +16,8 @@ import { JwtInterceptor } from '../helpers/jwt.interceptor';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ChangeDetailsComponent } from './change-details/change-details.component';
-import { ProductsComponent } from './products/products.component';
-import { ProductService } from '../services/product.service';
-import { FilterPipe } from '../filter.pipe';
-import { BuyersComponent } from './buyers/buyers.component';
-import { SellersComponent } from './sellers/sellers.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { CategoryInfoComponent } from './category-info/category-info.component';
-import { SellerfilterPipe } from './sellers/sellerfilter.pipe';
-import { BuyerfilterPipe } from './buyers/buyerfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -36,26 +29,19 @@ import { BuyerfilterPipe } from './buyers/buyerfilter.pipe';
     AddAdminComponent,
     ChangePasswordComponent,
     ChangeDetailsComponent,
-    ProductsComponent,
-    FilterPipe,
-    BuyersComponent,
-    SellersComponent,
     AddCategoryComponent,
-    CategoryInfoComponent,
-    SellerfilterPipe,
-    BuyerfilterPipe
+    CategoryInfoComponent
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     ReactiveFormsModule,
     PasswordStrengthMeterModule,
-    ShowHidePasswordModule,
+    ShowHidePasswordModule
   ],
   providers: [
     AuthGuard,
     AuthService,
-    ProductService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ]
 })

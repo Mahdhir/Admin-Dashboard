@@ -1,26 +1,6 @@
 #bac{
-    height:674px;
-    background-image:url("//grapesjs.com/img/bg-gr-v.png"), url("//grapesjs.com/img/work-desk.jpg");
-    background-attachment:scroll, scroll;
-    background-position:left top, center center;
-    background-repeat:repeat-y, no-repeat;
-    background-size:contain, cover;
-}
-form{
-   /* border:solid;
-    padding-left:40px; */
-    /* margin-left:200px; */
-    /* border-radius:  12px 12px 12px 12px; */
-    height: 480px;
-    background-color:rgba(255, 234, 234, 0.623);
-    /* box-shadow: 2px 2px 2px 2px grey; */
+    background-color:rgb(194, 223, 247);
 }
 .btn{
-    background-color:rgba(176, 21, 190, 0.87);
-    border: none;
-    margin-bottom: 5px;
-}
-a{
-    color: rgb(176, 21, 190);
-     font-weight: 400; 
+    background-color:rgba(1, 93, 214, 0.87);
 }
