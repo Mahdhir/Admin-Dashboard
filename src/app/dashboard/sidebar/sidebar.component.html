@@ -4,7 +4,7 @@
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['info']" routerLinkActive="active" id="a">
+            <a class="nav-link" [routerLink]="['info']" routerLinkActive="active">
               <span data-feather="home"></span>
               Dashboard <span class="sr-only"></span>
             </a>
@@ -16,25 +16,25 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" [routerLink]="['products']" routerLinkActive="active">
+              <span data-feather="shopping-cart"></span>
+              Products
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" [routerLink]="['categoryInfo']" routerLinkActive="active">
               <span data-feather="file"></span>
               Categories
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="products.html">
-              <span data-feather="shopping-cart"></span>
-              Products
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="buyers.html">
+            <a class="nav-link" [routerLink]="['buyers']" routerLinkActive="active">
               <span data-feather="users"></span>
               Buyers
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="sellers.html">
+            <a class="nav-link" [routerLink]="['sellers']" routerLinkActive="active">              
               <span data-feather="users"></span>
               Sellers
             </a>

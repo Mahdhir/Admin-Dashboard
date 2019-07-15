@@ -7,6 +7,9 @@ import { AuthGuard } from '../services/auth-guard.service';
 import { AddAdminComponent } from './add-admin/add-admin.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ChangeDetailsComponent } from './change-details/change-details.component';
+import { ProductsComponent } from './products/products.component';
+import { BuyersComponent } from './buyers/buyers.component';
+import {SellersComponent} from './sellers/sellers.component';
 import { CategoryInfoComponent } from './category-info/category-info.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 
@@ -37,6 +40,18 @@ const routes: Routes = [
         component: ChangeDetailsComponent
       },
       {
+        path: 'products',
+        component: ProductsComponent
+      },
+      {
+        path: 'buyers',
+        component: BuyersComponent
+      },
+      {
+        path: 'sellers',
+        component: SellersComponent
+      },
+      {
         path: 'categoryInfo',
         component: CategoryInfoComponent,
       },
@@ -44,6 +59,7 @@ const routes: Routes = [
         path: 'addCategory',
         component: AddCategoryComponent
       }
+
     ],
     canActivate: [AuthGuard]
   }
