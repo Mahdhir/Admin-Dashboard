@@ -18,7 +18,9 @@ form{
 .btn{
     background-color:rgba(176, 21, 190, 0.87);
     border: none;
+    margin-bottom: 5px;
 }
 a{
     color: rgb(176, 21, 190);
+     font-weight: 400; 
 }
