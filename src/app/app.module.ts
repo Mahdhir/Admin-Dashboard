@@ -18,27 +18,29 @@ import { ProductService } from './services/product.service';
 import { FilterPipe } from './filter.pipe';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    LoginModule,
-    LoginRoutingModule,
-    DashboardModule,
-    HttpClientModule,
-    DashboardRoutingModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot(),
-    PasswordStrengthMeterModule,
-    ShowHidePasswordModule
-  ],
-  providers: [
-    AuthService,
-    ProductService,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
-  ],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      LoginModule,
+      LoginRoutingModule,
+      DashboardModule,
+      HttpClientModule,
+      DashboardRoutingModule,
+      BrowserAnimationsModule,
+      ToastrModule.forRoot(),
+      PasswordStrengthMeterModule,
+      ShowHidePasswordModule
+   ],
+   providers: [
+      AuthService,
+      ProductService,
+      { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+   ],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }

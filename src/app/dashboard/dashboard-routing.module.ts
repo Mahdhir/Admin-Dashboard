@@ -12,7 +12,9 @@ import { BuyersComponent } from './buyers/buyers.component';
 import {SellersComponent} from './sellers/sellers.component';
 import { CategoryInfoComponent } from './category-info/category-info.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
-import { AdvertisementsComponent } from './advertisements/advertisements.component';
+import { PendingAdComponent } from './pendingAd/pendingAd.component';
+import { ActiveAdComponent } from './activeAd/activeAd.component';
+import { ExpiredAdComponent } from './expiredAd/expiredAd.component';
 
 
 const routes: Routes = [
@@ -59,11 +61,18 @@ const routes: Routes = [
       {
         path: 'addCategory',
         component: AddCategoryComponent
-      }
-      ,
+      },
       {
-        path: 'advertisements',
-        component: AdvertisementsComponent
+        path: 'pendingAd',
+        component: PendingAdComponent
+      },
+      {
+        path: 'activeAd',
+        component: ActiveAdComponent
+      },
+      {
+        path: 'expiredAd',
+        component: ExpiredAdComponent
       }
     ],
     canActivate: [AuthGuard]

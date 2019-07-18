@@ -25,7 +25,9 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { CategoryInfoComponent } from './category-info/category-info.component';
 import { SellerfilterPipe } from './sellers/sellerfilter.pipe';
 import { BuyerfilterPipe } from './buyers/buyerfilter.pipe';
-import { AdvertisementsComponent } from './advertisements/advertisements.component';
+import { PendingAdComponent } from './pendingAd/pendingAd.component';
+import { ActiveAdComponent } from './activeAd/activeAd.component';
+import { ExpiredAdComponent } from './expiredAd/expiredAd.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { AdvertisementsComponent } from './advertisements/advertisements.compone
     CategoryInfoComponent,
     SellerfilterPipe,
     BuyerfilterPipe,
-    AdvertisementsComponent
+    PendingAdComponent,
+    ActiveAdComponent,
+    ExpiredAdComponent
   ],
   imports: [
     CommonModule,
