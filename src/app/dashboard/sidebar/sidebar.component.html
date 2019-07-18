@@ -39,6 +39,30 @@
               Sellers
             </a>
           </li>
+          <li class="nav-item" >          
+              <a class="nav-link"  data-toggle="collapse" data-target="#sub">
+                <span data-feather="users"></span>Advertisements</a>
+          </li>
+          <ul id="sub" class="nav flex-column" class="collapse">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['pendingad']" routerLinkActive="active">              
+              <span data-feather="users"></span>
+               Pending Advertisements
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['activead']" routerLinkActive="active">              
+              <span data-feather="users"></span>
+               Active Advertisements
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['rejectedad']" routerLinkActive="active">              
+              <span data-feather="users"></span>
+               Expired Advertisements
+            </a>
+          </li>
+        </ul>
         </ul> 
       </div>
     </nav>

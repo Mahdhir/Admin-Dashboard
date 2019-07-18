@@ -12,6 +12,7 @@ import { BuyersComponent } from './buyers/buyers.component';
 import {SellersComponent} from './sellers/sellers.component';
 import { CategoryInfoComponent } from './category-info/category-info.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
+import { AdvertisementsComponent } from './advertisements/advertisements.component';
 
 
 const routes: Routes = [
@@ -59,7 +60,11 @@ const routes: Routes = [
         path: 'addCategory',
         component: AddCategoryComponent
       }
-
+      ,
+      {
+        path: 'advertisements',
+        component: AdvertisementsComponent
+      }
     ],
     canActivate: [AuthGuard]
   }
