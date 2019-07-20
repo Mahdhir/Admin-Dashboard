@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { AdverticementsService } from '../../services/adverticements.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'app-pendingAd',
@@ -16,7 +17,8 @@ export class PendingAdComponent implements OnInit {
   constructor(
     private advertServices: AdverticementsService,
     private authService: AuthService,
-    private toastCtrl: ToastrService
+    private toastCtrl: ToastrService,
+    public ngxSmartModalService: NgxSmartModalService
   ) { }
 
   ngOnInit() {

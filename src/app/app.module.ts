@@ -18,6 +18,7 @@ import { ProductService } from './services/product.service';
 import { FilterPipe } from './filter.pipe';
 import { ImageViewerModule } from "ngx-image-viewer";
 import { LightboxModule } from 'ngx-lightbox';
+import { NgxSmartModalModule } from 'ngx-smart-modal';
 
 @NgModule({
    declarations: [
@@ -36,7 +37,8 @@ import { LightboxModule } from 'ngx-lightbox';
       PasswordStrengthMeterModule,
       ShowHidePasswordModule,
       ImageViewerModule.forRoot(),
-      LightboxModule
+      LightboxModule,
+      NgxSmartModalModule.forRoot()
    ],
    providers: [
       AuthService,

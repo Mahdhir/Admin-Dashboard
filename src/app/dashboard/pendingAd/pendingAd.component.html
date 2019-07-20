@@ -40,7 +40,7 @@
                 <td class="tbl1">{{ad.timestamp}} Days</td>
                 <td class="tbl1">
                   <button type="button" class="btn btn-info" matTooltip="Click Edit Button"
-                  (click)="img()">View</button>
+                  (click)="ngxSmartModalService.getModal('myModal').open()">View</button>
                 </td>
                 <td class="tbl1">
                     <button type="button" class="btn btn-success" matTooltip="Click Delete Button"
@@ -51,14 +51,15 @@
                     (click)="reject(ad.id)" [disabled]="ad.status=='accepted'">Reject</button>
                 </td>
               </tr>
-              <tr class="imgrow" *ngFor="let ad of allPendingAds">
-                <td colspan="9" align="center">
-                  <img class="img" *ngIf="viewImg" [src] = "ad.url">
-                </td>
-              </tr>
             </tbody>
           </table>
         </div>
+        <ngx-smart-modal *ngFor="let ad of allPendingAds" #myModal identifier="myModal">
+            <h1>Title</h1>
+            <img class="img" src={{ad.url}}>
+            <p>Some stuff...</p>
+            <button (click)="myModal.close()">Close</button>
+            </ngx-smart-modal>
       </main>
     </div>
   </div>
