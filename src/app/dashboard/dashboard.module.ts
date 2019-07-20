@@ -28,6 +28,7 @@ import { BuyerfilterPipe } from './buyers/buyerfilter.pipe';
 import { PendingAdComponent } from './pendingAd/pendingAd.component';
 import { ActiveAdComponent } from './activeAd/activeAd.component';
 import { ExpiredAdComponent } from './expiredAd/expiredAd.component';
+import { ImageViewerModule } from 'ngx-image-viewer';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { ExpiredAdComponent } from './expiredAd/expiredAd.component';
     ReactiveFormsModule,
     PasswordStrengthMeterModule,
     ShowHidePasswordModule,
+    ImageViewerModule
   ],
   providers: [
     AuthGuard,
