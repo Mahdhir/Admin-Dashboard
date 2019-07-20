@@ -52,7 +52,9 @@
                 </td>
               </tr>
               <tr class="imgrow" *ngFor="let ad of allPendingAds">
-                <td colspan="9" align="center"><img class="img" *ngIf="viewImg" [src] = {{ad.url}}></td>
+                <td colspan="9" align="center">
+                  <img class="img" *ngIf="viewImg" [src] = "ad.url">
+                </td>
               </tr>
             </tbody>
           </table>
