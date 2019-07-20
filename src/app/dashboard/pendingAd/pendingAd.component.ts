@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { AdverticementsService } from '../../services/adverticements.service';
 import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-pendingAd',
   templateUrl: './pendingAd.component.html',
-  styleUrls: ['./pendingAd.component.css']
+  styleUrls: ['./pendingAd.component.css'],
 })
 export class PendingAdComponent implements OnInit {
   allPendingAds: Object;
@@ -86,4 +87,5 @@ export class PendingAdComponent implements OnInit {
   img(){
     this.viewImg = true;
   }
+  
 }

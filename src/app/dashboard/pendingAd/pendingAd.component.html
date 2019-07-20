@@ -51,11 +51,11 @@
                     (click)="reject(ad.id)" [disabled]="ad.status=='accepted'">Reject</button>
                 </td>
               </tr>
+              <tr class="imgrow" *ngFor="let ad of allPendingAds">
+                <td colspan="9" align="center"><img class="img" *ngIf="viewImg" [src] = {{ad.url}}></td>
+              </tr>
             </tbody>
           </table>
-        </div>
-        <div *ngIf="viewImg">
-          <ngx-image-viewer  [src]="images" [(index)]="imageIndex"></ngx-image-viewer>
         </div>
       </main>
     </div>

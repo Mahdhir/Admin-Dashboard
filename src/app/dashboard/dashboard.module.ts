@@ -29,6 +29,7 @@ import { PendingAdComponent } from './pendingAd/pendingAd.component';
 import { ActiveAdComponent } from './activeAd/activeAd.component';
 import { ExpiredAdComponent } from './expiredAd/expiredAd.component';
 import { ImageViewerModule } from 'ngx-image-viewer';
+import { LightboxModule } from 'ngx-lightbox';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { ImageViewerModule } from 'ngx-image-viewer';
     ReactiveFormsModule,
     PasswordStrengthMeterModule,
     ShowHidePasswordModule,
-    ImageViewerModule
+    ImageViewerModule,
+    LightboxModule 
   ],
   providers: [
     AuthGuard,
