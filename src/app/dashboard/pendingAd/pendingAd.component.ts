@@ -10,7 +10,8 @@ import { ToastrService } from 'ngx-toastr';
 export class PendingAdComponent implements OnInit {
   allPendingAds: Object;
   adStatus: Object;
-
+  searchText = null;
+  viewImg = false;
   constructor(
     private advertServices: AdverticementsService,
     private authService: AuthService,
@@ -20,6 +21,7 @@ export class PendingAdComponent implements OnInit {
   ngOnInit() {
     this.loadAllAds();
   }
+
   logOut() {
     this.authService.logout();
     console.log('Logout');
@@ -53,6 +55,7 @@ export class PendingAdComponent implements OnInit {
       console.log(error);
     }
   }
+
   async reject(id) {
     const obj = {
       id: id,
@@ -71,5 +74,16 @@ export class PendingAdComponent implements OnInit {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  search(ev: any) {
+    console.log(ev.target.value);
+    this.searchText = ev.target.value;
+
+    console.log(this.allPendingAds);
+  }
+  
+  img(){
+    this.viewImg = true;
   }
 }

@@ -16,6 +16,7 @@ import { AuthService } from './services/auth-service.service';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ProductService } from './services/product.service';
 import { FilterPipe } from './filter.pipe';
+import { ImageViewerModule } from "ngx-image-viewer";
 
 @NgModule({
    declarations: [
@@ -32,7 +33,8 @@ import { FilterPipe } from './filter.pipe';
       BrowserAnimationsModule,
       ToastrModule.forRoot(),
       PasswordStrengthMeterModule,
-      ShowHidePasswordModule
+      ShowHidePasswordModule,
+      ImageViewerModule.forRoot()
    ],
    providers: [
       AuthService,

@@ -39,7 +39,8 @@
                 <td class="tbl1">{{ad.paymentStatus}}</td>
                 <td class="tbl1">{{ad.timestamp}} Days</td>
                 <td class="tbl1">
-                  <button type="button" class="btn btn-info" matTooltip="Click Edit Button">View</button>
+                  <button type="button" class="btn btn-info" matTooltip="Click Edit Button"
+                  (click)="img()">View</button>
                 </td>
                 <td class="tbl1">
                     <button type="button" class="btn btn-success" matTooltip="Click Delete Button"
@@ -52,6 +53,9 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div *ngIf="viewImg">
+          <ngx-image-viewer  [src]="images" [(index)]="imageIndex"></ngx-image-viewer>
         </div>
       </main>
     </div>
