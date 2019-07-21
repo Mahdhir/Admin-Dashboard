@@ -21,7 +21,7 @@
               <tr>
                 <th class="tbl1">Adverticement ID</th>
                 <th class="tbl1">Product ID</th>
-                <th class="tbl1">User Id</th>
+                <!-- <th class="tbl1">User Id</th> -->
                 <th class="tbl1">Date Added</th>
                 <th class="tbl1">Payment Status</th>
                 <th class="tbl1">Valid Period</th>
@@ -34,7 +34,7 @@
               <tr *ngFor="let ad of allPendingAds | filter:searchText">
                 <td class="tbl1">{{ad.id}}</td>
                 <td class="tbl1">{{ad.productId }}</td>
-                <td class="tbl1">{{ad.userId}}</td>
+                <!-- <td class="tbl1">{{ad.userId}}</td> -->
                 <td class="tbl1">{{ ad.dateAdded | date }}</td>
                 <td class="tbl1">{{ad.paymentStatus}}</td>
                 <td class="tbl1">{{ad.timestamp}} Days</td>
@@ -57,8 +57,8 @@
         <ngx-smart-modal *ngFor="let ad of allPendingAds" #myModal identifier="myModal">
             <h1>Title</h1>
             <img class="img" src={{ad.url}}>
-            <p>Some stuff...</p>
-            <button (click)="myModal.close()">Close</button>
+            <h5 class="tbl1"><span id="tag">User Id:</span> {{ad.userId}}</h5>
+            <button type="button" class="btn btn-primary" (click)="myModal.close()">Close</button>
             </ngx-smart-modal>
       </main>
     </div>
