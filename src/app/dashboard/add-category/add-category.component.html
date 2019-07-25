@@ -14,13 +14,18 @@
           </small>
         </div>
         <div class="form-group">
-          <label for="subCategory">Sub Category</label>
-          <input id="subCategory" formControlName="subCategory" type="text" class="form-control"
-            [class.is-invalid]="categoryForm.get('subCategory').invalid && categoryForm.get('subCategory').touched"
-            required placeholder="Sub Category">
-          <small [class.d-none]="categoryForm.get('subCategory').valid || categoryForm.get('subCategory').untouched"
+          <label for="subCategory01">Sub Category 01</label>
+          <input id="subCategory1" formControlName="subCategory1" type="text" class="form-control"
+            [class.is-invalid]="categoryForm.get('subCategory1').invalid && categoryForm.get('subCategory1').touched"
+            required placeholder="Sub Category 01">
+            <br />
+          <label for="subCategory02">Sub Category 02</label>
+          <input id="subCategory2" formControlName="subCategory2" type="text" class="form-control"
+            [class.is-invalid]="categoryForm.get('subCategory2').invalid && categoryForm.get('subCategory2').touched"
+            required placeholder="Sub Category2">
+          <small [class.d-none]="categoryForm.get('subCategory1').valid || categoryForm.get('subCategory1').untouched"
             class="text-danger">
-            Atleast add one Sub Category.
+            Must add atleast two Sub Categories.
           </small>
           <br>
           <button type="button" class="btn btn-secondary btn-sm m-2" (click)="addAlternateSubCategories()">
@@ -31,7 +36,7 @@
           </div>
         </div>
 
-        <button class="btn btn-primary" type="submit">Add</button>
+        <button class="btn btn-primary" type="submit" (click)="Add()">Add</button>
 
       </form>
       {{categoryForm.value | json}}

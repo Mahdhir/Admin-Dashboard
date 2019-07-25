@@ -1,3 +1,4 @@
+import { CategoryService } from './services/category.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,6 +16,7 @@ import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
 import { AuthService } from './services/auth-service.service';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ProductService } from './services/product.service';
+
 import { FilterPipe } from './filter.pipe';
 
 @NgModule({
@@ -37,6 +39,7 @@ import { FilterPipe } from './filter.pipe';
   providers: [
     AuthService,
     ProductService,
+    CategoryService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
