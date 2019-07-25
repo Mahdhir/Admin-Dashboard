@@ -9,13 +9,21 @@ import {AuthService} from 'src/app/services/auth-service.service';
 export class SellersComponent implements OnInit {
   users: any = [];
   searchText = null;
-  constructor(private userService: UserService) {
+  constructor(
+    private userService: UserService,
+    private authservice:AuthService
+    ) {
   }
 
   ngOnInit() {
     this.loadData();
   }
   
+  logOut(){
+    this.authservice.logout();
+    console.log("logout");
+  }
+
   loadData(){
     this.userService.getAllSellers().toPromise()
     .then( res => {

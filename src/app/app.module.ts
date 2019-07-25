@@ -18,30 +18,37 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ProductService } from './services/product.service';
 
 import { FilterPipe } from './filter.pipe';
+import { ImageViewerModule } from "ngx-image-viewer";
+import { LightboxModule } from 'ngx-lightbox';
+import { NgxSmartModalModule } from 'ngx-smart-modal';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    LoginModule,
-    LoginRoutingModule,
-    DashboardModule,
-    HttpClientModule,
-    DashboardRoutingModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot(),
-    PasswordStrengthMeterModule,
-    ShowHidePasswordModule
-  ],
-  providers: [
-    AuthService,
-    ProductService,
-    CategoryService,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
-  ],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      LoginModule,
+      LoginRoutingModule,
+      DashboardModule,
+      HttpClientModule,
+      DashboardRoutingModule,
+      BrowserAnimationsModule,
+      ToastrModule.forRoot(),
+      PasswordStrengthMeterModule,
+      ShowHidePasswordModule,
+      ImageViewerModule.forRoot(),
+      LightboxModule,
+      NgxSmartModalModule.forRoot()
+   ],
+   providers: [
+      AuthService,
+      ProductService,
+      { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+   ],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }

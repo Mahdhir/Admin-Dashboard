@@ -27,6 +27,12 @@ import { SellerfilterPipe } from './sellers/sellerfilter.pipe';
 import { BuyerfilterPipe } from './buyers/buyerfilter.pipe';
 import { CategoryService } from './../services/category.service';
 
+import { PendingAdComponent } from './pendingAd/pendingAd.component';
+import { ActiveAdComponent } from './activeAd/activeAd.component';
+import { ExpiredAdComponent } from './expiredAd/expiredAd.component';
+import { ImageViewerModule } from 'ngx-image-viewer';
+import { LightboxModule } from 'ngx-lightbox';
+import { NgxSmartModalModule } from 'ngx-smart-modal';
 
 @NgModule({
   declarations: [
@@ -45,7 +51,10 @@ import { CategoryService } from './../services/category.service';
     AddCategoryComponent,
     CategoryInfoComponent,
     SellerfilterPipe,
-    BuyerfilterPipe
+    BuyerfilterPipe,
+    PendingAdComponent,
+    ActiveAdComponent,
+    ExpiredAdComponent
   ],
   imports: [
     CommonModule,
@@ -53,6 +62,9 @@ import { CategoryService } from './../services/category.service';
     ReactiveFormsModule,
     PasswordStrengthMeterModule,
     ShowHidePasswordModule,
+    ImageViewerModule,
+    LightboxModule,
+    NgxSmartModalModule.forRoot() 
   ],
   providers: [
     AuthGuard,

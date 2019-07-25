@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import * as $ from 'jquery';
+import { AuthService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-buyers',
@@ -12,7 +13,8 @@ export class BuyersComponent implements OnInit {
   users: any = [];
   searchText = null ;
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private authservice:AuthService
     ) { }
 
   ngOnInit() {
@@ -71,6 +73,11 @@ export class BuyersComponent implements OnInit {
         }
       });
     });
+  }
+
+  logOut(){
+    this.authservice.logout();
+    console.log("logout");
   }
 
   loadData(){

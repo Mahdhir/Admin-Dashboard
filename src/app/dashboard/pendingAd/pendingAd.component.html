@@ -1,0 +1,67 @@
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Winkel</a>
+  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"
+    (keyup)="search($event)">
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" (click)="logOut()" id="a">Sign out</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Products</h1>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th class="tbl1">Adverticement ID</th>
+              <th class="tbl1">Product ID</th>
+              <!-- <th class="tbl1">User Id</th> -->
+              <th class="tbl1">Date Added</th>
+              <th class="tbl1">Payment Status</th>
+              <th class="tbl1">Valid Period</th>
+              <th class="tbl1">View</th>
+              <th class="tbl1">Accept</th>
+              <th class="tbl1">Reject</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ad of allPendingAds | filter:searchText">
+              <td class="tbl1">{{ad.id}}</td>
+              <td class="tbl1">{{ad.productId }}</td>
+              <td class="tbl1">{{ ad.dateAdded | date }}</td>
+              <td class="tbl1">{{ad.paymentStatus}}</td>
+              <td class="tbl1">{{ad.timestamp}} Days</td>
+              <td class="tbl1">
+                <button type="button" class="btn btn-info" matTooltip="Click Edit Button"
+                  (click)="openAdvert(ad)">View</button>
+              </td>
+              <td class="tbl1">
+                <button type="button" class="btn btn-success" matTooltip="Click Delete Button" (click)="accept(ad.id)"
+                  [disabled]="ad.status=='accepted'">Accept</button>
+              </td>
+              <td class="tbl2">
+                <button type="button" class="btn btn-danger" matTooltip="Click Delete Button" (click)="reject(ad.id)"
+                  [disabled]="ad.status=='accepted'">Reject</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ngx-smart-modal #myModal identifier="myModal">
+        <div *ngIf="myModal.hasData()">
+          <img class="img" [src]="myModal.getData().url">
+          <h5 class="tbl1"><span id="tag">User Id:</span> {{myModal.getData().userId}}</h5>
+        </div>
+
+        <button type="button" class="btn btn-primary" (click)="closeAdvert()">Close</button>
+      </ngx-smart-modal>
+    </main>
+  </div>
+</div>
