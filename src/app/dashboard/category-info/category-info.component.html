@@ -2,4 +2,72 @@
   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <button class="btn btn-primary" (click)="addCategory()">Add Category</button>
   </main>
+  <!-- <table class="table">
+		<thead>
+			<tr>
+				<th>Main Category</th>
+				<th>Sub Category 01</th>
+				<th>Sub Category 02</th>
+				<th>Alternate Sub Categories</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let cat of categoryDetails$">
+				<td> {{cat.category}} </td>
+				<td> {{cat.subCategory1}} </td>
+				<td> {{cat.subCategory2}} </td>
+				<td> {{cat.alternatesubCategories}} </td>
+				<td> 
+          <button type="button" class="btn btn-info" matTooltip="Click Delete Button">Edit</button>
+				</td>
+			</tr>
+		</tbody>
+	</table> -->
+  <div class="col">
+    <div class="row">
+      <ng-container *ngFor="let cat of categoryDetails$; let i = index">
+        <div class="col">
+          <div class="card" style="width: 15rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{cat.category}}</h5>
+              <p class="card-text"><img src="../../../assets/imgs/category.jpg" class="card-img-top" alt="...">{{cat.subCategory1}}</p>
+              <p class="card-text"><img src="../../../assets/imgs/category1.jpg" class="card-img-top" alt="...">{{cat.subCategory2}}</p>
+              <p class="card-text"><img src="../../../assets/imgs/category2.jpg" class="card-img-top" alt="...">{{cat.alternatesubCategories}}</p>
+              <button type="button" class="btn btn-info edit" matTooltip="Click Delete Button">Edit</button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="(i + 1) % 4 === 0" class="w-100"></div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary modal" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>

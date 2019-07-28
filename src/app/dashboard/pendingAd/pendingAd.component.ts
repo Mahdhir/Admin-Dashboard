@@ -14,6 +14,8 @@ export class PendingAdComponent implements OnInit {
   adStatus: Object;
   searchText = null;
   viewImg = false;
+  modalService: any;
+  
   constructor(
     private advertServices: AdverticementsService,
     private authService: AuthService,
@@ -67,7 +69,7 @@ export class PendingAdComponent implements OnInit {
     let reason = window.prompt("Reason for rejection");
     try {
       if (reason) {
-        let data = await this.advertServices.UpdateAdStatus(obj, null).toPromise();
+        let data = await this.advertServices.UpdateAdStatus(obj, reason).toPromise();
         console.log(data)
         this.loadAllAds();
       }else{
@@ -89,5 +91,25 @@ export class PendingAdComponent implements OnInit {
   img(){
     this.viewImg = true;
   }
+
+  openAdvert(advert){
+
+    this.ngxSmartModalService.setModalData(advert, 'myModal');
+    this.ngxSmartModalService.getModal('myModal').open();
+    this.modalService = this.ngxSmartModalService.getModal('myModal').onAnyCloseEvent.subscribe(
+      () => {
+        this.ngxSmartModalService.resetModalData('myModal');
+      }
+    );
+  }
+
+  closeAdvert(){
+    this.ngxSmartModalService.close('myModal');
+  }
   
+  ngOnDestroy(){
+    if(this.modalService){
+      this.modalService.unsubscribe();
+    }
+  }
 }

@@ -25,6 +25,8 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { CategoryInfoComponent } from './category-info/category-info.component';
 import { SellerfilterPipe } from './sellers/sellerfilter.pipe';
 import { BuyerfilterPipe } from './buyers/buyerfilter.pipe';
+import { CategoryService } from './../services/category.service';
+
 import { PendingAdComponent } from './pendingAd/pendingAd.component';
 import { ActiveAdComponent } from './activeAd/activeAd.component';
 import { ExpiredAdComponent } from './expiredAd/expiredAd.component';
@@ -70,6 +72,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     AuthGuard,
     AuthService,
     ProductService,
+    CategoryService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ]
 })

@@ -30,6 +30,7 @@
     "angular2-jwt": "^0.2.3",
     "core-js": "^2.5.4",
     "feather-icons": "^4.22.1",
+    "jquery": "^3.4.1",
     "ngx-image-viewer": "^1.0.13",
     "ngx-lightbox": "^1.2.0",
     "ngx-show-hide-password": "^2.0.3",
