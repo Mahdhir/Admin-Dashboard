@@ -31,6 +31,7 @@ import { ExpiredAdComponent } from './expiredAd/expiredAd.component';
 import { ImageViewerModule } from 'ngx-image-viewer';
 import { LightboxModule } from 'ngx-lightbox';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
     BuyerfilterPipe,
     PendingAdComponent,
     ActiveAdComponent,
-    ExpiredAdComponent
+    ExpiredAdComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,

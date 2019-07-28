@@ -14,6 +14,7 @@ export class ProductsComponent implements OnInit {
   allProducts: any = [];
   searchText = null;
   messaage = null;
+  showSpinner: boolean = true;
   constructor(
     private productService: ProductService,
     private authService: AuthService
@@ -21,6 +22,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.loadAllProducts();
+    this.allProducts.subscribe(() => this.showSpinner = false);
   }
 
   logOut() {

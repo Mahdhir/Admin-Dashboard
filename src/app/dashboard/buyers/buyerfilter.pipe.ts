@@ -10,7 +10,9 @@ export class BuyerfilterPipe implements PipeTransform {
     if (!searchText) return items;
     searchText = searchText.toLowerCase();
     return items.filter(it => {
-      return it.firstName.toLowerCase().includes(searchText);
+      return ((it.firstName.toLowerCase().includes(searchText))
+      || (it.lastName.toLowerCase().includes(searchText))
+      || (it.email.toLowerCase().includes(searchText)));
     });
   }
 }
