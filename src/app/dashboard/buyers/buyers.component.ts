@@ -20,7 +20,7 @@ export class BuyersComponent implements OnInit {
   ngOnInit() {
     this.loadData();
       $(document).ready(function() {
-      $('.filterable .btn-filter').click(function() {
+      $('.filterable .filters').click(function() {
         const $panel = $(this).parents('.filterable'),
           $filters = $panel.find('.filters input'),
           $tbody = $panel.find('.table tbody');

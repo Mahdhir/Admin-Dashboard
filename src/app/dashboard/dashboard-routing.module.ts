@@ -15,6 +15,7 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { PendingAdComponent } from './pendingAd/pendingAd.component';
 import { ActiveAdComponent } from './activeAd/activeAd.component';
 import { ExpiredAdComponent } from './expiredAd/expiredAd.component';
+import { MessagesComponent } from './messages/messages.component';
 
 
 const routes: Routes = [
@@ -61,6 +62,10 @@ const routes: Routes = [
       {
         path: 'addCategory',
         component: AddCategoryComponent
+      },
+      {
+        path: 'messages',
+        component: MessagesComponent
       },
       {
         path: 'pendingAd',

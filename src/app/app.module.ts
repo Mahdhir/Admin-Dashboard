@@ -18,7 +18,7 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ProductService } from './services/product.service';
 
 import { FilterPipe } from './filter.pipe';
-import { ImageViewerModule } from "ngx-image-viewer";
+import { ImageViewerModule } from 'ngx-image-viewer';
 import { LightboxModule } from 'ngx-lightbox';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
 

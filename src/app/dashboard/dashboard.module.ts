@@ -33,6 +33,9 @@ import { ExpiredAdComponent } from './expiredAd/expiredAd.component';
 import { ImageViewerModule } from 'ngx-image-viewer';
 import { LightboxModule } from 'ngx-lightbox';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
+import { MessagesComponent } from './messages/messages.component';
+import {MatMenuModule} from '@angular/material/menu'; // create a shared module
+
 
 @NgModule({
   declarations: [
@@ -54,7 +57,8 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
     BuyerfilterPipe,
     PendingAdComponent,
     ActiveAdComponent,
-    ExpiredAdComponent
+    ExpiredAdComponent,
+    MessagesComponent
   ],
   imports: [
     CommonModule,
@@ -64,7 +68,8 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
     ShowHidePasswordModule,
     ImageViewerModule,
     LightboxModule,
-    NgxSmartModalModule.forRoot() 
+    MatMenuModule,
+    NgxSmartModalModule.forRoot(),
   ],
   providers: [
     AuthGuard,
