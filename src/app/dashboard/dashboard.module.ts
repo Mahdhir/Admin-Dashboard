@@ -36,6 +36,7 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { MessagesComponent } from './messages/messages.component';
 import {MatMenuModule} from '@angular/material/menu'; // create a shared module
 
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import {MatMenuModule} from '@angular/material/menu'; // create a shared module
     ActiveAdComponent,
     ExpiredAdComponent,
     MessagesComponent
+    SpinnerComponent
   ],
   imports: [
     CommonModule,
