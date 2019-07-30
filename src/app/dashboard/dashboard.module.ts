@@ -59,7 +59,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     PendingAdComponent,
     ActiveAdComponent,
     ExpiredAdComponent,
-    MessagesComponent
+    MessagesComponent,
     SpinnerComponent
   ],
   imports: [
