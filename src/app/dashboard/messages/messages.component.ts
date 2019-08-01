@@ -1,3 +1,7 @@
+import { Message } from './../../models/message';
+import { FormBuilder } from '@angular/forms';
+import { AuthService } from './../../services/auth-service.service';
+import { MessageService } from './../../services/message.service';
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 
@@ -8,7 +12,25 @@ import * as $ from 'jquery';
 })
 export class MessagesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private messageService: MessageService, private fb: FormBuilder) { }
+
+  chatForm = this.fb.group({
+    message: [''],
+  });
+
+  get message() {
+    return this.chatForm.get('message');
+  }
+
+  sendMessage() {
+    document.getElementById('message').innerHTML = '';
+    console.log(this.chatForm.value);
+    this.messageService.SendMessageFromAdmin(this.chatForm.value)
+    .subscribe(
+      response => console.log('Message Sent', response),
+      error => console.log('Error', error)
+    );
+  }
 
   ngOnInit() {
     $(document).ready(function() {
