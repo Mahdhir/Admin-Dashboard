@@ -38,6 +38,8 @@ import {MatMenuModule} from '@angular/material/menu'; // create a shared module
 
 import { SpinnerComponent } from './spinner/spinner.component';
 import { MessageService } from '../services/message.service';
+import { ActivePromosComponent } from './activePromos/activePromos.component';
+import { PendingPromosComponent } from './pendingPromos/pendingPromos.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import { MessageService } from '../services/message.service';
     ActiveAdComponent,
     ExpiredAdComponent,
     MessagesComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ActivePromosComponent,
+    PendingPromosComponent
   ],
   imports: [
     CommonModule,

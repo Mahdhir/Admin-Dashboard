@@ -4,49 +4,49 @@
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['info']" routerLinkActive="active" (click)="noad()">
+            <a class="nav-link" [routerLink]="['info']" routerLinkActive="active">
               <span data-feather="home"></span>
               Dashboard <span class="sr-only"></span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['orders']" routerLinkActive="active" (click)="noad()">
+            <a class="nav-link" [routerLink]="['orders']" routerLinkActive="active">
               <span data-feather="file"></span>
               Orders
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['products']" routerLinkActive="active" (click)="noad()">
+            <a class="nav-link" [routerLink]="['products']" routerLinkActive="active">
               <span data-feather="shopping-cart"></span>
               Products
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['categoryInfo']" routerLinkActive="active" (click)="noad()">
+            <a class="nav-link" [routerLink]="['categoryInfo']" routerLinkActive="active">
               <span data-feather="file"></span>
               Categories
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['buyers']" routerLinkActive="active" (click)="noad()">
+            <a class="nav-link" [routerLink]="['buyers']" routerLinkActive="active">
               <span data-feather="users"></span>
               Buyers
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['sellers']" routerLinkActive="active" (click)="noad()">              
+            <a class="nav-link" [routerLink]="['sellers']" routerLinkActive="active">              
               <span data-feather="users"></span>
               Sellers
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['messages']" routerLinkActive="active" (click)="noad()">              
+            <a class="nav-link" [routerLink]="['messages']" routerLinkActive="active">              
               <span data-feather="users"></span>
               Messages
             </a>
           </li>
           <li class="nav-item" >          
-              <a class="nav-link" (click)="ads()">
+              <a class="nav-link" (click)="ads()" [routerLink]="['ads']" routerLinkActive="active">
                 <span data-feather="users"></span>Advertisements</a>
           </li>
           <ul type="none" *ngIf="val" [@slideInOut]>
@@ -69,6 +69,26 @@
                 </a>
               </li>
             </ul>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['pr']" routerLinkActive="active" (click)="promos()">              
+                <span data-feather="users"></span>
+                Promotions
+              </a>
+            </li>
+            <ul type="none" *ngIf="val2" [@slideInOut]>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['pendingPromos']" routerLinkActive="active">              
+                  <span data-feather="users"></span>
+                   Pending Promotions
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['activePromos']" routerLinkActive="active">              
+                  <span data-feather="users"></span>
+                   Active Promotions
+                </a>
+              </li>
+              </ul>
         </ul> 
       </div>
     </nav>

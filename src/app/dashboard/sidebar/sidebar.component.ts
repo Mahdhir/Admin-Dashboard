@@ -20,15 +20,28 @@ import { trigger, transition, animate, style } from '@angular/animations'
 export class SidebarComponent implements OnInit {
 
   val = false;
+  val2=false;
   constructor() { }
 
   ngOnInit() {
   }
 
   ads(){
+    if(this.val==false)
     this.val = true;
+    else
+    this.val=false;
   }
   noad(){
     this.val = false;
+  }
+  promos(){
+    if(this.val2==false)
+    this.val2 = true;
+    else
+    this.val2=false;
+  }
+  nopromos(){
+    this.val2 = false;
   }
 }
