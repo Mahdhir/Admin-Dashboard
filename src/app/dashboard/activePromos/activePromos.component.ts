@@ -13,7 +13,6 @@ import { PromosService } from 'src/app/services/promos.service';
 export class ActivePromosComponent implements OnInit {
 
   allActivePromos: Object;
-  adStatus: Object;
   viewImg = false;
   modalService: any;
 

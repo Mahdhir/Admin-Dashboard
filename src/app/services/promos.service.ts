@@ -17,5 +17,8 @@ export class PromosService {
   GetAllAcceptedPromos() {
     return this.http.get(`${this.url}/promo/active`);
   }
+  UpdatePromoStatus(obj){
+    return this.http.put(`${this.url}/promo/approval`,obj);
+  }
 
 }
