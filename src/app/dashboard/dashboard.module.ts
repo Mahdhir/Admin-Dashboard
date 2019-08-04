@@ -37,6 +37,9 @@ import { MessagesComponent } from './messages/messages.component';
 import {MatMenuModule} from '@angular/material/menu'; // create a shared module
 
 import { SpinnerComponent } from './spinner/spinner.component';
+import { MessageService } from '../services/message.service';
+import { ActivePromosComponent } from './activePromos/activePromos.component';
+import { PendingPromosComponent } from './pendingPromos/pendingPromos.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +63,9 @@ import { SpinnerComponent } from './spinner/spinner.component';
     ActiveAdComponent,
     ExpiredAdComponent,
     MessagesComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ActivePromosComponent,
+    PendingPromosComponent
   ],
   imports: [
     CommonModule,
@@ -78,6 +83,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     AuthService,
     ProductService,
     CategoryService,
+    MessageService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ]
 })

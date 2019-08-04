@@ -1,5 +1,5 @@
 #bac{
-    height:674px;
+    height:100vh;
     background-image:url("//grapesjs.com/img/bg-gr-v.png"), url("https://data.1freewallpapers.com/download/rock-steady-technology.jpg");
     background-repeat:repeat-y, no-repeat;
     background-size:contain, cover;
@@ -10,7 +10,7 @@ form{
     /* margin-left:200px; */
     /* border-radius:  12px 12px 12px 12px; */
     height: 480px;
-    background-color:rgba(255, 234, 234, 0.623);
+    background-color:rgba(255, 234, 234, 0.726);
     /* box-shadow: 2px 2px 2px 2px grey; */
 }
 .btn{

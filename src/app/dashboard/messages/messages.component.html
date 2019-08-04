@@ -22,66 +22,6 @@
             </p>
             <div class="status available">6</div>
           </div>
-
-          <div class="friend">
-            <img src="../../../assets/imgs/black-widow.jpg">
-            <p>
-              <strong>Mahdhi Rezvi</strong>
-              <br />
-              <span>mahdhi@gmail.com</span>
-            </p>
-            <!-- <div class="status away"></div> -->
-          </div>
-
-          <div class="friend">
-            <img src="../../../assets/imgs/black-widow.jpg">
-            <p>
-              <strong>Nethmi Wijesinghe</strong>
-              <br />
-              <span>nethmi@gmail.com</span>
-            </p>
-            <!-- <div class="status inactive"></div> -->
-          </div>
-
-          <div class="friend">
-            <img src="../../../assets/imgs/black-widow.jpg">
-            <p>
-              <strong>Thanveer Ahamed</strong>
-              <br />
-              <span>thanveer@gmail.com</span>
-            </p>
-            <!-- <div class="status inactive"></div> -->
-          </div>
-
-          <div class="friend">
-            <img src="../../../assets/imgs/black-widow.jpg">
-            <p>
-              <strong>Raviru Jayathilake</strong>
-              <br />
-              <span>raviru18@gmail.com</span>
-            </p>
-            <!-- <div class="status inactive"></div> -->
-          </div>
-
-          <div class="friend">
-            <img src="../../../assets/imgs/black-widow.jpg">
-            <p>
-              <strong>Manusha Cheti</strong>
-              <br />
-              <span>manusha@gmail.com</span>
-            </p>
-            <!-- <div class="status inactive"></div> -->
-          </div>
-
-          <div class="friend agileits">
-            <img src="../../../assets/imgs/black-widow.jpg">
-            <p>
-              <strong>Sachitha Illeyperuma</strong>
-              <br />
-              <span>sachitha1997@gmail.com</span>
-            </p>
-            <!-- <div class="status inactive"></div> -->
-          </div>
         </div>
       </div>
 
@@ -141,15 +81,16 @@
 
         </div>
 
-        <div id="sendmessage">
-          <input type="text" value="Send message...">
-          <button id="send"></button>
-        </div>
+        <form [formGroup]="chatForm" (ngSubmit)="sendMessage()">
+          <div id="sendmessage">
+            <input id="message" type="text" formControlName="message" value="Send message...">
+            <button id="send" onclick="document.getElementById('message').value = ''"></button>
+          </div>
+        </form>
 
       </div>
 
     </div>
-
   </div>
-
+  {{chatForm.value | json}}
 </body>
