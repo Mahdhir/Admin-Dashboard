@@ -63,7 +63,7 @@ export class PendingPromosComponent implements OnInit {
   }
 
   loadAllPromos() {
-    this.advertServices.GetAllAcceptedPromos().subscribe(res => {
+    this.advertServices.GetAllPendingPromos().subscribe(res => {
       this.allPendingPromos = res;
       console.log(this.allPendingPromos);
     },
