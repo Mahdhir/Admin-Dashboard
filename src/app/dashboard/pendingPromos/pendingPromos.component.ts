@@ -90,6 +90,17 @@ export class PendingPromosComponent implements OnInit {
     this.ngxSmartModalService.close('myModal');
   }
 
+  openAdvert2() {
+
+   // this.ngxSmartModalService.setModalData('myModal2');
+    this.ngxSmartModalService.getModal('myModal2').open();
+    this.modalService = this.ngxSmartModalService.getModal('myModal2').onAnyCloseEvent.subscribe(
+      () => {
+        this.ngxSmartModalService.resetModalData('myModal2');
+      }
+    );
+  }
+
   ngOnDestroy() {
     if (this.modalService) {
       this.modalService.unsubscribe();

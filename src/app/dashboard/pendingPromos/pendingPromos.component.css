@@ -13,3 +13,8 @@ h4{
 #tag{
     font-weight: bold;
 }
+#input{
+    margin-bottom: 2vh;
+    height: 6vh;
+    width: 63vh;
+}
