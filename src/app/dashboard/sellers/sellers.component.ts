@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import {AuthService} from 'src/app/services/auth-service.service';
+import { ToastrService } from 'ngx-toastr';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 @Component({
   selector: 'app-sellers',
   templateUrl: './sellers.component.html',
@@ -9,9 +11,12 @@ import {AuthService} from 'src/app/services/auth-service.service';
 export class SellersComponent implements OnInit {
   users: any = [];
   searchText = null;
+  modalService: any;
   constructor(
     private userService: UserService,
-    private authservice:AuthService
+    private authservice: AuthService,
+    private toastCtrl: ToastrService,
+    public ngxSmartModalService: NgxSmartModalService
     ) {
   }
 
@@ -37,5 +42,23 @@ export class SellersComponent implements OnInit {
     this.searchText = ev.target.value;
 
     console.log(this.users);
+  }
+  openSeller(seller){
+
+    this.ngxSmartModalService.setModalData(seller, 'viewSeller');
+    this.ngxSmartModalService.getModal('viewSeller').open();
+    this.modalService = this.ngxSmartModalService.getModal('viewSeller').onAnyCloseEvent.subscribe(
+      () => {
+        this.ngxSmartModalService.resetModalData('viewSeller');
+      }
+    );
+  }
+  closeSeller(){
+    this.ngxSmartModalService.close('viewSeller');
+  }
+  ngOnDestroy(){
+    if(this.modalService){
+      this.modalService.unsubscribe();
+    }
   }
 }

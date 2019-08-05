@@ -3,7 +3,8 @@ import { Observable } from 'rxjs';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product';
 import { AuthService } from 'src/app/services/auth-service.service';
-
+import { ToastrService } from 'ngx-toastr';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -14,15 +15,20 @@ export class ProductsComponent implements OnInit {
   allProducts: any = [];
   searchText = null;
   messaage = null;
-  showSpinner: boolean = true;
+  showSpinner =  true;
+  image = false;
+  modalService: any;
+  
   constructor(
     private productService: ProductService,
-    private authService: AuthService
+    private authService: AuthService,
+    private toastCtrl: ToastrService,
+    public ngxSmartModalService: NgxSmartModalService
     ) { }
 
   ngOnInit() {
     this.loadAllProducts();
-    this.allProducts.subscribe(() => this.showSpinner = false);
+    
   }
 
   logOut() {
@@ -33,6 +39,7 @@ export class ProductsComponent implements OnInit {
   loadAllProducts() {
     this.productService.getAllProduct().subscribe( res => {
       this.allProducts = res;
+      this.showSpinner = false;
       console.log(this.allProducts);
     },
     error => {
@@ -69,4 +76,26 @@ export class ProductsComponent implements OnInit {
     console.log(this.allProducts);
   }
 
+  img() {
+    this.image = true;
+  }
+
+  openProduct(product){
+
+    this.ngxSmartModalService.setModalData(product, 'viewProduct');
+    this.ngxSmartModalService.getModal('viewProduct').open();
+    this.modalService = this.ngxSmartModalService.getModal('viewProduct').onAnyCloseEvent.subscribe(
+      () => {
+        this.ngxSmartModalService.resetModalData('viewProduct');
+      }
+    );
+  }
+  closeProduct(){
+    this.ngxSmartModalService.close('viewProduct');
+  }
+  ngOnDestroy(){
+    if(this.modalService){
+      this.modalService.unsubscribe();
+    }
+  }
 }
