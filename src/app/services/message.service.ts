@@ -11,6 +11,7 @@ export class MessageService {
   constructor(private http: HttpClient) { }
 
   getMessageForAdminFromUser(userEmail) {
+
     return this.http.get(`${this.url}/admin/${userEmail}`);
   }
 
@@ -22,8 +23,12 @@ export class MessageService {
     return this.http.get(`${this.url}/admin/unread`);
   }
 
-  SendMessageFromAdmin(message) {
-    return this.http.post(`${this.url}/admin`, message);
+  SendMessageFromAdmin(data) {
+    return this.http.post(`${this.url}/admin`,data);
+  }
+
+  MakeUnreadMessagesAsReadAdmin(userId) {
+    return this.http.get(`${this.url}/admin/opened/${userId}`);
   }
 
 }

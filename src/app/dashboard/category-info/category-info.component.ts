@@ -1,6 +1,7 @@
 import { CategoryService } from './../../services/category.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 import { AuthService } from 'src/app/services/auth-service.service';
 import * as $ from 'jquery';
 
@@ -9,24 +10,42 @@ import * as $ from 'jquery';
   templateUrl: './category-info.component.html',
   styleUrls: ['./category-info.component.css']
 })
+
 export class CategoryInfoComponent implements OnInit {
   public categoryDetails$;
+  modalService: any;
 
   constructor(private router: Router,
               private authServices: AuthService,
-              private categoryService: CategoryService) { }
+              private categoryService: CategoryService,
+              public ngxSmartModalService: NgxSmartModalService
+              ) { }
 
   ngOnInit() {
     this.categoryDetails$ = this.categoryService.getCategories();
-
-    // tslint:disable-next-line: only-arrow-functions
-    $(document).ready(() => {
-      $('#myModal').modal();
-    });
   }
 
   addCategory() {
     this.router.navigate(['dashboard/addCategory']);
+  }
+
+  openModal(cat) {
+
+    this.ngxSmartModalService.setModalData(cat, 'myModal');
+    this.ngxSmartModalService.getModal('myModal').open();
+    this.modalService = this.ngxSmartModalService.getModal('myModal').onAnyCloseEvent.subscribe(
+      () => {
+        this.ngxSmartModalService.resetModalData('myModal');
+      }
+    );
+  }
+
+  nextModal() {
+    // this.index++;
+  }
+
+  closeModal() {
+    this.ngxSmartModalService.close('myModal');
   }
 
 }

@@ -63,7 +63,7 @@ export class PendingPromosComponent implements OnInit {
   }
 
   loadAllPromos() {
-    this.advertServices.GetAllAcceptedPromos().subscribe(res => {
+    this.advertServices.GetAllPendingPromos().subscribe(res => {
       this.allPendingPromos = res;
       console.log(this.allPendingPromos);
     },
@@ -88,6 +88,17 @@ export class PendingPromosComponent implements OnInit {
 
   closeAdvert() {
     this.ngxSmartModalService.close('myModal');
+  }
+
+  openAdvert2() {
+
+   // this.ngxSmartModalService.setModalData('myModal2');
+    this.ngxSmartModalService.getModal('myModal2').open();
+    this.modalService = this.ngxSmartModalService.getModal('myModal2').onAnyCloseEvent.subscribe(
+      () => {
+        this.ngxSmartModalService.resetModalData('myModal2');
+      }
+    );
   }
 
   ngOnDestroy() {

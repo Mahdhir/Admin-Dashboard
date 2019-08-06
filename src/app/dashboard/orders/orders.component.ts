@@ -1,14 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { OrdersService } from 'src/app/services/orders.service';
+import { FormBuilder } from '@angular/forms';
+import { NgxSmartModalService } from 'ngx-smart-modal';
+import { Router } from '@angular/router';
+
 import { AuthService } from 'src/app/services/auth-service.service';
 import { ToastrService } from 'ngx-toastr';
-import { NgxSmartModalService } from 'ngx-smart-modal';
-import {OrdersService} from '../../services/orders.service';
+
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
+
+  ngOnInit() { }
   allOrders: any = [];
   searchText = null;
   showSpinner =  true;
@@ -21,9 +27,7 @@ export class OrdersComponent implements OnInit {
     public ngxSmartModalService: NgxSmartModalService
   ) { }
 
-  ngOnInit() {
-    this.loadAllOrders();
-  }
+
   logOut() {
     this.authService.logout();
     console.log('Logout');

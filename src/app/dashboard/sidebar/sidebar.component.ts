@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, animate, style } from '@angular/animations'
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-sidebar',
@@ -19,7 +20,10 @@ import { trigger, transition, animate, style } from '@angular/animations'
 })
 export class SidebarComponent implements OnInit {
 
+  // mode = new FormControl('over');
+  // shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
   val = false;
+
   val2=false;
   constructor() { }
 

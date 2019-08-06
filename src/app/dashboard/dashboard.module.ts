@@ -1,3 +1,4 @@
+import { OrdersService } from './../services/orders.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -9,7 +10,7 @@ import { AdminInfoComponent } from './admin-info/admin-info.component';
 import { AuthGuard } from '../services/auth-guard.service';
 import { AuthService } from '../services/auth-service.service';
 import { AddAdminComponent } from './add-admin/add-admin.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from '../helpers/jwt.interceptor';
@@ -38,6 +39,12 @@ import {MatMenuModule} from '@angular/material/menu'; // create a shared module
 
 import { SpinnerComponent } from './spinner/spinner.component';
 import { MessageService } from '../services/message.service';
+import { UnreadMessagesComponent } from './unread-messages/unread-messages.component';
+import { MessageListComponent } from './message-list/message-list.component';
+
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatRadioModule} from '@angular/material/radio';
+
 import { ActivePromosComponent } from './activePromos/activePromos.component';
 import { PendingPromosComponent } from './pendingPromos/pendingPromos.component';
 
@@ -64,10 +71,13 @@ import { PendingPromosComponent } from './pendingPromos/pendingPromos.component'
     ExpiredAdComponent,
     MessagesComponent,
     SpinnerComponent,
+    UnreadMessagesComponent,
+    MessageListComponent,
     ActivePromosComponent,
     PendingPromosComponent
   ],
   imports: [
+    FormsModule,
     CommonModule,
     DashboardRoutingModule,
     ReactiveFormsModule,
@@ -75,7 +85,11 @@ import { PendingPromosComponent } from './pendingPromos/pendingPromos.component'
     ShowHidePasswordModule,
     ImageViewerModule,
     LightboxModule,
+
     MatMenuModule,
+    MatSidenavModule,
+    MatRadioModule,
+
     NgxSmartModalModule.forRoot(),
   ],
   providers: [
@@ -84,6 +98,7 @@ import { PendingPromosComponent } from './pendingPromos/pendingPromos.component'
     ProductService,
     CategoryService,
     MessageService,
+    OrdersService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ]
 })
