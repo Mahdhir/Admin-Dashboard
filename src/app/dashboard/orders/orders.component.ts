@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrdersService } from 'src/app/services/orders.service';
-import { FormBuilder } from '@angular/forms';
-import { NgxSmartModalService } from 'ngx-smart-modal';
-import { Router } from '@angular/router';
 
-import { AuthService } from 'src/app/services/auth-service.service';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-orders',
@@ -14,47 +8,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class OrdersComponent implements OnInit {
 
-  ngOnInit() { }
-  allOrders: any = [];
-  searchText = null;
-  showSpinner =  true;
-  dataSaved = false;
-  messaage = null;
+  ngOnInit() { 
+  }
+
+
   constructor(
-    private ordersService: OrdersService,
-    private authService: AuthService,
-    private toastCtrl: ToastrService,
-    public ngxSmartModalService: NgxSmartModalService
+
   ) { }
 
-
-  logOut() {
-    this.authService.logout();
-    console.log('Logout');
-  }
-  loadAllOrders() {
-    this.ordersService.getAllOrders().subscribe( res => {
-      this.allOrders = res;
-      this.showSpinner = false;
-      console.log(this.allOrders);
-    },
-    error => {
-      console.log(error);
-      if (error.status === 0) {
-        alert('Connection Error');
-      }
-    }
-    );
-  }
-  resetTable() {
-    this.messaage = null;
-    this.dataSaved = false;
-  }
-
-  search(ev: any) {
-    console.log(ev.target.value);
-    this.searchText = ev.target.value;
-
-    console.log(this.allOrders);
-  }
 }

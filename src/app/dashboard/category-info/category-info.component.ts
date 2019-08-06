@@ -12,8 +12,8 @@ import * as $ from 'jquery';
 })
 
 export class CategoryInfoComponent implements OnInit {
-  public categoryDetails$;
   modalService: any;
+  allCategories: any = [];
 
   constructor(private router: Router,
               private authServices: AuthService,
@@ -22,7 +22,22 @@ export class CategoryInfoComponent implements OnInit {
               ) { }
 
   ngOnInit() {
-    this.categoryDetails$ = this.categoryService.getCategories();
+    this.loadAllCategories();
+  }
+
+  
+  loadAllCategories() {
+    this.categoryService.GetCategorywithSubCategories().subscribe( res => {
+      this.allCategories = res;
+      console.log(this.allCategories);
+    },
+    error => {
+      console.log(error);
+      if (error.status === 0) {
+        alert('Connection Error');
+      }
+    }
+    );
   }
 
   addCategory() {

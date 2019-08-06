@@ -59,7 +59,8 @@ export class MessageListComponent implements OnInit {
     }, error => {
       console.log(error);
     });
-    // this.newMessage.content = '';
+    this.newMessage.content = '';
+    location.reload();
   }
 
 }

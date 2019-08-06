@@ -48,9 +48,9 @@ export class MessagesComponent implements OnInit {
       if(message.isUnRead==true)
       {
         console.log("true");
-        this.messageService.MakeUnreadMessagesAsReadAdmin(message.userMail).subscribe( res => {
+        this.messageService.MakeUnreadMessagesAsReadAdmin(message.sender).subscribe( res => {
           this.allMessages = res;
-          console.log("true" , message.userMail);
+          console.log("true" , message.sender);
         },
         error => {
           console.log(error);

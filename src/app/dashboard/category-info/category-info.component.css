@@ -11,7 +11,12 @@ ngx-smart-modal{
 h5{
     font-size: 14px;
     margin-top: 6px;
+    text-align: left;
 }
 #tag{
     font-weight: bold;
+}
+
+button {
+    margin-right: 10px;
 }
