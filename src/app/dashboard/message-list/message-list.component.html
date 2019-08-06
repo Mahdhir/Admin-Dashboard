@@ -1,0 +1,43 @@
+<body>
+    <!-- <div class="input-group mb-3">
+        <input #message (keypress)="sendMessage(message.value)" type="text" class="form-control" placeholder="Enter Message"
+          aria-label="Recipient's username" aria-describedby="button-addon2">
+        <!-- <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+            onclick="sendMessage(message)">Send</button>
+        </div> -->
+    <!-- </div> -->
+  <div class="card-body" *ngFor="let message of allMessages">
+    <div *ngIf="message.sender != 'admin'">
+      <p style="margin-left: 100px">
+        {{message.message}}
+        <br />
+        <small>{{message.sender}}</small>
+      </p>
+    </div>
+    <br />
+    <div *ngIf="message.sender == 'admin'">
+      <p style="margin-left: 700px">
+        {{message.message}}
+        <br />
+        <small>{{message.sender}}</small>
+      </p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <form #messageForm="ngForm" (ngSubmit)="messageForm.valid && sendMessage(allMessages.sender)">
+      <div class="input-group">
+        <input 
+            type="text" 
+            class="form-control input-sm" 
+            [(ngModel)]="newMessage.content"
+            name="content"
+            required
+            placeholder="Send a message">
+        <div class="input-group-append">
+          <button class="btn btn-primary" [disabled]="!messageForm.valid">Send</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>

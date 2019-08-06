@@ -16,6 +16,8 @@ import { PendingAdComponent } from './pendingAd/pendingAd.component';
 import { ActiveAdComponent } from './activeAd/activeAd.component';
 import { ExpiredAdComponent } from './expiredAd/expiredAd.component';
 import { MessagesComponent } from './messages/messages.component';
+import { UnreadMessagesComponent } from './unread-messages/unread-messages.component';
+import { MessageListComponent } from './message-list/message-list.component';
 
 
 const routes: Routes = [
@@ -66,6 +68,14 @@ const routes: Routes = [
       {
         path: 'messages',
         component: MessagesComponent
+      },
+      {
+        path: 'unreadMessages',
+        component: UnreadMessagesComponent
+      },
+      {
+        path: 'messageList/:userEmail',
+        component: MessageListComponent
       },
       {
         path: 'pendingAd',

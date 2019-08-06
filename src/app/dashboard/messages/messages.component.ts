@@ -1,9 +1,9 @@
-import { Message } from './../../models/message';
+import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
-import { AuthService } from './../../services/auth-service.service';
 import { MessageService } from './../../services/message.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import * as $ from 'jquery';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-messages',
@@ -11,106 +11,57 @@ import * as $ from 'jquery';
   styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent implements OnInit {
+  allMessages: any = [];
+  allChat: any = [];
+  showSpinner: boolean = true;
+  read: any;
 
-  constructor(private messageService: MessageService, private fb: FormBuilder) { }
-
-  chatForm = this.fb.group({
-    message: [''],
-  });
-
-  get message() {
-    return this.chatForm.get('message');
-  }
-
-  sendMessage() {
-    document.getElementById('message').innerHTML = '';
-    console.log(this.chatForm.value);
-    this.messageService.SendMessageFromAdmin(this.chatForm.value)
-    .subscribe(
-      response => console.log('Message Sent', response),
-      error => console.log('Error', error)
-    );
-  }
+  constructor(private messageService: MessageService,
+              private fb: FormBuilder,
+              private router: Router) { }
 
   ngOnInit() {
-    $(document).ready(function() {
 
-      const preloadbg = document.createElement('img');
-      preloadbg.src = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/timeline1.png';
+    this.loadAllMessages();
+    // this.loadChat();
 
-      $('#searchfield').focus(function() {
-        if ($(this).val() === 'Search contacts...') {
-          $(this).val('');
-        }
-      });
-      $('#searchfield').focusout(function() {
-        if ($(this).val() === '') {
-          $(this).val('Search contacts...');
-        }
-      });
-
-      $('#sendmessage input').focus(function() {
-        if ($(this).val() === 'Send message...') {
-          $(this).val('');
-        }
-      });
-      $('#sendmessage input').focusout(function() {
-        if ($(this).val() === '') {
-          $(this).val('Send message...');
-
-        }
-      });
-
-      $('.friend').each(function(){
-        $(this).click(function() {
-          const childOffset = $(this).offset();
-          const parentOffset = $(this).parent().parent().offset();
-          const childTop = childOffset.top - parentOffset.top;
-          const clone = $(this).find('img').eq(0).clone();
-          const top = childTop + 12 + 'px';
-
-          $(clone).css({'top': top}).addClass('floatingImg').appendTo('#chatbox');
-
-          setTimeout(function() {$('#profile p').addClass('animate'); $('#profile').addClass('animate'); }, 100);
-          setTimeout(function() {
-            $('#chat-messages').addClass('animate');
-            $('.cx, .cy').addClass('s1');
-            setTimeout(function() {$('.cx, .cy').addClass('s2'); }, 100);
-            setTimeout(function() {$('.cx, .cy').addClass('s3'); }, 200);
-          }, 150);
-
-          $('.floatingImg').animate({
-            width: '68px',
-            left: '108px',
-            top: '20px'
-          }, 200);
-
-          const name = $(this).find('p strong').html();
-          const email = $(this).find('p span').html();
-          $('#profile p').html(name);
-          $('#profile span').html(email);
-
-          $('.message').not('.right').find('img').attr('src', $(clone).attr('src'));
-          $('#friendslist').fadeOut();
-          $('#chatview').fadeIn();
-
-          $('#close').unbind('click').click(function() {
-            $('#chat-messages, #profile, #profile p').removeClass('animate');
-            $('.cx, .cy').removeClass('s1 s2 s3');
-            $('.floatingImg').animate({
-              width: '40px',
-              top: 'top',
-              left: '12px'
-            }, 200, function() {$('.floatingImg').remove()});
-
-            setTimeout(function() {
-              $('#chatview').fadeOut();
-              $('#friendslist').fadeIn();
-            }, 50);
-          });
-        });
-      });
-    });
+    // this.allMessages.subscribe(() => this.showSpinner = false);
+    // this.allChat.subscribe(() => this.showSpinner = false);
   }
 
+    loadAllMessages() {
+      this.messageService.getLastMessageFromUsers().subscribe( res => {
+        this.allMessages = res;
+        console.log(this.allMessages);
+      },
+      error => {
+        console.log(error);
+        if (error.status === 0) {
+          alert('Connection Error');
+        }
+      }
+      );
+    }
+  
+    viewChat(message) {
+      console.log(message);
+      if(message.isUnRead==true)
+      {
+        console.log("true");
+        this.messageService.MakeUnreadMessagesAsReadAdmin(message.userMail).subscribe( res => {
+          this.allMessages = res;
+          console.log("true" , message.userMail);
+        },
+        error => {
+          console.log(error);
+          if (error.status === 0) {
+            alert('Connection Error');
+          }
+        }
+        );
+      }
+      let data = JSON.stringify(message);
+      localStorage.setItem("message",data);
+      this.router.navigate(['dashboard/messageList', message.userMail]);
+    }
 }

@@ -1,96 +1,43 @@
-<head>
-  <!-- Web-Fonts -->
-  <link href='//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800' rel='stylesheet' type='text/css'>
-  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-  <!-- //Web-Fonts -->
-</head>
-
 <body>
-  <div class="container w3layouts agileits">
-    <div id="chatbox">
-      <div id="search">
-        <input type="text" id="searchfield" value="Search contacts...">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="btn-group">
+        <button class="btn btn-danger" btnRadio="NewMessage" [routerLink]="['/dashboard/']">
+          <i class="fa fa-envelope"></i>New Message
+        </button>
+        <button class="btn btn-info" btnRadio="Messages" [routerLink]="['/dashboard/messages']">
+          <i class="fa fa-paper-plane"></i>Messages
+        </button>
       </div>
-      <div id="friendslist">
-        <div id="friends">
-          <div class="friend">
-            <img src="../../../assets/imgs/black-widow.jpg">
-            <p>
-              <strong>Nethmi Wijesinghe</strong>
-              <br />
-              <span>wnethmi96@gmail.com</span>
-            </p>
-            <div class="status available">6</div>
-          </div>
-        </div>
-      </div>
-
-      <div id="chatview" class="p1">
-        <div id="profile">
-          <div id="close">
-            <div class="cy"></div>
-            <div class="cx"></div>
-          </div>
-          <p>Bucky Barnes</p>
-          <span>wintersoldier@gmail.com</span>
-        </div>
-
-        <div id="chat-messages">
-
-          <label>Monday 01</label>
-
-          <div class="message">
-            <img src="../../../assets/imgs/black-widow.jpg">
-            <div class="bubble">
-              Buyer's message 01
-              <span>4 min</span>
-            </div>
-          </div>
-
-          <div class="message right agileits">
-            <img src="../../../assets/imgs/black-widow.jpg">
-            <div class="bubble">
-              Admin message 01
-              <span>3 min</span>
-            </div>
-          </div>
-
-          <div class="message">
-            <img src="../../../assets/imgs/black-widow.jpg">
-            <div class="bubble">
-              Buyer's message 02
-              <span>2 Min</span>
-            </div>
-          </div>
-
-          <div class="message right">
-            <img src="../../../assets/imgs/black-widow.jpg">
-            <div class="bubble">
-              Admin message 02
-              <span>1 Min</span>
-            </div>
-          </div>
-
-          <div class="message">
-            <img src="../../../assets/imgs/black-widow.jpg">
-            <div class="bubble">
-              Buyer's message 03
-              <span>Now</span>
-            </div>
-          </div>
-
-        </div>
-
-        <form [formGroup]="chatForm" (ngSubmit)="sendMessage()">
-          <div id="sendmessage">
-            <input id="message" type="text" formControlName="message" value="Send message...">
-            <button id="send" onclick="document.getElementById('message').value = ''"></button>
-          </div>
-        </form>
-
-      </div>
-
     </div>
+
+    <div class="row" *ngIf="allMessages.length==0">
+      <h3>No messages</h3>
+    </div>
+     <div class="row" *ngIf="allMessages.length>0">
+      <table class="table table-hover" style="cursor: pointer">
+        <tr>
+          <th style="width: 40%">Email</th>
+          <th style="width: 30%">Sender Name</th>
+          <th style="width: 30%">Message</th>
+          <th style="width: 20%">Received/Sent Time</th>
+          <th style="width: 10%"></th>
+        </tr>
+        <tr *ngFor="let message of allMessages" (click)="viewChat(message)">
+          <td *ngIf="message.isUnRead==true"><strong>{{message.userMail}}</strong></td>
+          <td *ngIf="message.isUnRead==true"><strong>{{message.userFullName}}</strong></td>
+          <td *ngIf="message.isUnRead==true"><strong>{{message.message}}</strong></td>
+          <td *ngIf="message.isUnRead==true"><strong>{{message.timeSent}}</strong></td>
+        </tr>
+        <tr *ngFor="let message of allMessages" (click)="viewChat(message)">
+          <!-- variable class -->
+          <td *ngIf="message.isUnRead==false">{{message.userMail}}</td>
+          <td *ngIf="message.isUnRead==false">{{message.userFullName}}</td>
+          <td *ngIf="message.isUnRead==false">{{message.message}}</td>
+          <td *ngIf="message.isUnRead==false">{{message.timeSent}}</td>
+        </tr>
+      </table>
+    </div>
+
   </div>
-  {{chatForm.value | json}}
 </body>
