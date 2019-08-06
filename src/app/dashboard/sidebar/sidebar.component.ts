@@ -24,15 +24,28 @@ export class SidebarComponent implements OnInit {
   // shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
   val = false;
 
+  val2=false;
   constructor() { }
 
   ngOnInit() {
   }
 
   ads(){
+    if(this.val==false)
     this.val = true;
+    else
+    this.val=false;
   }
   noad(){
     this.val = false;
+  }
+  promos(){
+    if(this.val2==false)
+    this.val2 = true;
+    else
+    this.val2=false;
+  }
+  nopromos(){
+    this.val2 = false;
   }
 }

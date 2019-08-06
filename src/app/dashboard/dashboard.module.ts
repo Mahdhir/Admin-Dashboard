@@ -45,6 +45,8 @@ import { MessageListComponent } from './message-list/message-list.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatRadioModule} from '@angular/material/radio';
 
+import { ActivePromosComponent } from './activePromos/activePromos.component';
+import { PendingPromosComponent } from './pendingPromos/pendingPromos.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import {MatRadioModule} from '@angular/material/radio';
     MessagesComponent,
     SpinnerComponent,
     UnreadMessagesComponent,
-    MessageListComponent
+    MessageListComponent,
+    ActivePromosComponent,
+    PendingPromosComponent
   ],
   imports: [
     FormsModule,

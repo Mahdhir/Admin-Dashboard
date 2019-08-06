@@ -18,6 +18,9 @@ import { ExpiredAdComponent } from './expiredAd/expiredAd.component';
 import { MessagesComponent } from './messages/messages.component';
 import { UnreadMessagesComponent } from './unread-messages/unread-messages.component';
 import { MessageListComponent } from './message-list/message-list.component';
+import { PendingPromosComponent } from './pendingPromos/pendingPromos.component';
+import { ActivePromosComponent } from './activePromos/activePromos.component';
+
 
 
 const routes: Routes = [
@@ -88,6 +91,14 @@ const routes: Routes = [
       {
         path: 'expiredAd',
         component: ExpiredAdComponent
+      },
+      {
+        path: 'pendingPromos',
+        component: PendingPromosComponent
+      },
+      {
+        path: 'activePromos',
+        component: ActivePromosComponent
       }
     ],
     canActivate: [AuthGuard]

@@ -26,9 +26,5 @@ export class AdverticementsService {
   UpdateAdStatus(obj,reason){
     return this.http.put(`${this.url}/approval/${reason}`,obj);
   }
-//   deleteProductById(productid: number): Observable<number> {
-//     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-//     return this.http.delete<number>(`${this.url}/${productid}`,
-//       httpOptions);
-//   }
+  
  }
