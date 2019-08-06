@@ -8,11 +8,49 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdersComponent implements OnInit {
 
-  ngOnInit() { 
+  
+  allOrders: any = [];
+  searchText = null;
+  showSpinner =  true;
+  dataSaved = false;
+  messaage = null;
+  
+  constructor(
+    private ordersService: OrdersService,
+    private authService: AuthService,
+    private toastCtrl: ToastrService,
+    public ngxSmartModalService: NgxSmartModalService
+  ) { }
+
+
+  logOut() {
+    this.authService.logout();
+    console.log('Logout');
   }
 
+  ngOnInit() { 
+    this.loadAllOrders();
+  }
 
-  constructor(
+  loadAllOrders() {
+    this.ordersService.getAllOrders().subscribe( res => {
+      this.allOrders = res;
+      this.showSpinner = false;
+      console.log(this.allOrders);
+    },
+    error => {
+      console.log(error);
+      if (error.status === 0) {
+        alert('Connection Error');
+      }
+    }
+    );
+  }
+
+  resetTable() {
+    this.messaage = null;
+    this.dataSaved = false;
+  }
 
   ) { }
 

@@ -15,7 +15,7 @@ export class PendingAdComponent implements OnInit {
   searchText = null;
   viewImg = false;
   modalService: any;
-  
+  showSpinner = true;
   constructor(
     private advertServices: AdverticementsService,
     private authService: AuthService,
@@ -35,6 +35,7 @@ export class PendingAdComponent implements OnInit {
   loadAllAds() {
     this.advertServices.GetAllPendingAdvertisement().subscribe(res => {
       this.allPendingAds = res;
+      this.showSpinner = false;
       console.log(this.allPendingAds);
     },
       error => {

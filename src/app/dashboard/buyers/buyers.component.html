@@ -15,14 +15,17 @@
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Buyers</h1>
       </div>
-      <div class="panel panel-primary filterable">
+      <!-- <div class="panel panel-primary filterable">
         <table class="table">
           <thead>
             <tr class="filters">
               <th><input type="text" class="form-control" placeholder="First Name" disabled></th>
               <th><input type="text" class="form-control" placeholder="Last Name" disabled></th>
               <th><input type="text" class="form-control" placeholder="Email" disabled></th>
+              
             </tr>
+            
+            
           </thead>
           <tbody>
             <tr *ngFor="let user of users | buyerfilter:searchText">
@@ -30,15 +33,17 @@
               <td>{{user.lastName}}</td>
               <td>{{user.email}}</td>
               <td>
-                <button type="button" class="btn btn-info" matTooltip="Click Edit Button">View</button>
+                <button type="button" class="btn btn-info" (click)="openBuyer(user)" matTooltip="Click Edit Button">View</button>
               </td>
               <td>
-                <button type="button" class="btn btn-danger" matTooltip="Click Delete Button">Remove</button>
+                <button type="button" class="btn btn-danger" matTooltip="Click Delete Button"  
+                >Lock</button>
               </td>
+           
             </tr>
           </tbody>
-        </table>
-        <!-- <div class="table-responsive">
+        </table> -->
+        <div class="table-responsive">
               <table class="table table-striped table-sm">
                 <thead>
                   <tr>
@@ -47,7 +52,8 @@
                     <th>Last Name</th>
                     <th>Email</th>
                     <th>View</th>
-                    <th>Remove</th>
+                    <th>Lock</th>
+                    <th>Unlock</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -57,17 +63,34 @@
                     <td>{{user.lastName}}</td>
                     <td>{{user.email}}</td>
                     <td>
-                        <button type="button" class="btn btn-info" matTooltip="Click Edit Button">View</button>
+                        <button type="button" class="btn btn-info" (click)="openBuyer(user)" matTooltip="Click Edit Button">View</button>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-danger" matTooltip="Click Delete Button"
-                        >Remove</button>
+                        <button type="button" class="btn btn-danger" matTooltip="Click Delete Button" [disabled]="user.isLocked" (click)="LockBuyer(user.id)"
+                        > Lock</button>
                     </td>
+                      <td>
+                <button type="button" class="btn btn-success" matTooltip="Click Delete Button" [disabled]="!user.isLocked" (click)="UnLockBuyer(user.id)">Unlock</button>
+              </td>
                   </tr>
                 </tbody>
               </table>
-          </div> -->
-      </div>
+          </div> 
+      
+      <ngx-smart-modal #viewBuyer identifier="viewBuyer">
+        <div *ngIf="viewBuyer.hasData()">
+        <div class="text-center"><img class="img" height="320" [src]="viewBuyer.getData().imageUrl"></div>
+          <h5 class="tbl1"><span id="tag">Delivery Details :</span> {{viewBuyer.getData().deliveryDetails}}</h5>
+          <h5 class="tbl1"><span id="tag">Store Information :</span> {{viewBuyer.getData().storeInfo}}</h5>
+          <h5 class="tbl1"><span id="tag">Billing Information :</span> {{viewBuyer.getData().billingInfo}}</h5>
+          <h5 class="tbl1"><span id="tag">Phone Number :</span> {{viewBuyer.getData().phoneNumber}}</h5>
+         
+        </div>
+        <div class="text-center">
+       <button type="button"  class="btn btn-primary" (click)="closeBuyer()">Close</button>
+       </div>
+      </ngx-smart-modal>
     </main>
   </div>
+  <app-spinner *ngIf="showSpinner"></app-spinner>
 </div>
