@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import {AuthService} from 'src/app/services/auth-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import {UsermanagmentService} from 'src/app/services/usermanagment.service'
 @Component({
   selector: 'app-sellers',
   templateUrl: './sellers.component.html',
@@ -10,9 +11,13 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 })
 export class SellersComponent implements OnInit {
   users: any = [];
+  dataSaved =false;
   searchText = null;
   modalService: any;
+  messaage = null;
+  showSpinner =  true;
   constructor(
+    private userManagmentService : UsermanagmentService,
     private userService: UserService,
     private authservice: AuthService,
     private toastCtrl: ToastrService,
@@ -29,10 +34,36 @@ export class SellersComponent implements OnInit {
     console.log("logout");
   }
 
+  LockSeller(id){
+    console.log(id);
+    if (confirm('Are you sure you want to block this Seller ?')) {
+     
+      let fordays = parseInt(window.prompt("Number of Days") );
+      debugger;
+      if(isNaN(fordays))
+      fordays=null;
+      this.userManagmentService.LockUser(id,fordays).subscribe(() => {
+        alert('Seller Blocked Successfully!!');
+        this.ngOnInit();
+
+      });
+  }}
+
+  UnLockSeller(id){
+    console.log(id);
+    if(confirm('Are you sure you want to unlock this Seller ?')){
+      this.userManagmentService.UnlockUser(id).subscribe(()=>{
+        alert ('Seller Unlocked!!');
+        this.ngOnInit();
+      })
+    }
+  }
+  
   loadData(){
     this.userService.getAllSellers().toPromise()
     .then( res => {
       this.users = res;
+      this.showSpinner=false;
       console.log(this.users);
     })
     .catch( err => console.log(err));
