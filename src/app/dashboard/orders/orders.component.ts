@@ -14,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class OrdersComponent implements OnInit {
 
-  ngOnInit() { }
+  
   allOrders: any = [];
   searchText = null;
   showSpinner =  true;
@@ -33,6 +33,11 @@ export class OrdersComponent implements OnInit {
     this.authService.logout();
     console.log('Logout');
   }
+
+  ngOnInit() { 
+    this.loadAllOrders();
+  }
+
   loadAllOrders() {
     this.ordersService.getAllOrders().subscribe( res => {
       this.allOrders = res;
@@ -47,6 +52,7 @@ export class OrdersComponent implements OnInit {
     }
     );
   }
+
   resetTable() {
     this.messaage = null;
     this.dataSaved = false;
