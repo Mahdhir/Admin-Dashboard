@@ -14,7 +14,23 @@ export class CategoryService {
     return this.http.get(`${this.url}`);
   }
 
-  AddCategory() {
-    return this.http.get(`${this.url}`);
+  AddCategory(data) {
+    return this.http.post(`${this.url}`, data);
+  }
+  
+  UpdateCategory(data) {
+    return this.http.put(`${this.url}/updateCategory`, data);
+  }
+
+  DeleteCategory(id) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
+
+  AddSubCategory(data, Id) {
+    return this.http.post(`${this.url}/addsubcategory/${Id}`, data);
+  }
+
+  DeleteSubCategory(categoryId, SubcategoryId) {
+    return this.http.delete(`${this.url}/subcategory/${categoryId}/${SubcategoryId}`);
   }
 }

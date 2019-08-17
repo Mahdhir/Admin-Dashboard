@@ -1,45 +1,55 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div class="row">
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      <h2>Add Category</h2>
-      <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="category">Category</label>
-          <input id="category" formControlName="category" type="text" class="form-control"
-            [class.is-invalid]="categoryForm.get('category').invalid && categoryForm.get('category').touched" required
-            placeholder="Category">
-          <small [class.d-none]="categoryForm.get('category').valid || categoryForm.get('category').untouched"
-            class="text-danger">
-            Enter Category Name.
-          </small>
-        </div>
-        <div class="form-group">
-          <label for="subCategory01">Sub Category 01</label>
-          <input id="subCategory1" formControlName="subCategory1" type="text" class="form-control"
-            [class.is-invalid]="categoryForm.get('subCategory1').invalid && categoryForm.get('subCategory1').touched"
-            required placeholder="Sub Category 01">
-            <br />
-          <label for="subCategory02">Sub Category 02</label>
-          <input id="subCategory2" formControlName="subCategory2" type="text" class="form-control"
-            [class.is-invalid]="categoryForm.get('subCategory2').invalid && categoryForm.get('subCategory2').touched"
-            required placeholder="Sub Category2">
-          <small [class.d-none]="categoryForm.get('subCategory1').valid || categoryForm.get('subCategory1').untouched"
-            class="text-danger">
-            Must add atleast two Sub Categories.
-          </small>
-          <br>
-          <button type="button" class="btn btn-secondary btn-sm m-2" (click)="addAlternateSubCategories()">
-            Add another Sub Category</button>
-          <div formArrayName="alternatesubCategories"
-            *ngFor="let subCategory of alternatesubCategories.controls; let i = index">
-            <input type="text" class="form-control my-1" [formControlName]="i">
-          </div>
-        </div>
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Add New Category</h1>
 
-        <button class="btn btn-primary" type="submit" (click)="Add()">Add</button>
+      </div>
+      <div>
 
-      </form>
+        <body>
+          <form class="" [formGroup]= "categoryForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="categoryName">Category Name</label>
+              <input type="text" id="categoryName" class="form-control cs" formControlName="categoryName"
+                placeholder="Category Name" autofocus>
+                <div *ngIf="!categoryForm.controls['categoryName'].valid && categoryForm.controls['categoryName'].touched">
+                    <small color="danger">Category Name required</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+              <label for="subCat1Name">Sub Category 1 Name</label>
+              <input type="text" id="subCat1Name" class="form-control cs" formControlName="subCat1Name"
+                placeholder="Sub Category Name">
+                <div *ngIf="!categoryForm.controls['subCat1Name'].valid && categoryForm.controls['subCat1Name'].touched">
+                    <small color="danger">Sub Category 1 is required</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+              <label for="subCat2Name">Sub Category 2 Name</label>
+              <input type="text" id="subCat2" class="form-control cs" formControlName="subCat2Name"
+                placeholder="Sub Category Name">
+                <div *ngIf="!categoryForm.controls['subCat2Name'].valid && categoryForm.controls['subCat2Name'].touched">
+                    <small color="danger">Sub Catgegory 2 is required</small>
+                </div>
+            </div>
+
+            <br>
+            <button type="button" class="btn btn-secondary btn-sm m-2" (click)="addAlternateSubCategories()">
+              Add another Sub Category</button>
+            <div formArrayName="alternatesubCategories"
+              *ngFor="let subCategory of alternatesubCategories.controls; let i = index">
+              <input type="text" class="form-control my-1" [formControlName]="i">
+            </div>
+
+            <button class="btn btn-primary " [disabled]="!categoryForm.valid" type="submit">Add Category</button>
+          </form>
+        </body>
+      </div>
       {{categoryForm.value | json}}
     </main>
   </div>
-</div>
+</div> -->

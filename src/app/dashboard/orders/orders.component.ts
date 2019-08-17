@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { OrdersService } from 'src/app/services/orders.service';
+import { AuthService } from 'src/app/services/auth-service.service';
+import { ToastrService } from 'ngx-toastr';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 
 @Component({
@@ -52,6 +56,5 @@ export class OrdersComponent implements OnInit {
     this.dataSaved = false;
   }
 
-  ) { }
 
 }

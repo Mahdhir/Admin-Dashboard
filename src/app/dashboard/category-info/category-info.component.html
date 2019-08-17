@@ -6,7 +6,7 @@
         <h1 class="h2">Categories</h1>
         <br>
         <button type="button" class="btn btn-info" matTooltip="Click Edit Button"
-        (click)="addCategory()">Add New Category</button>
+        (click)="openModal2()">Add New Category</button>
         <div class="table-responsive">
           <table class="table table-striped table-sm">
             <thead>
@@ -20,23 +20,74 @@
                 <td class="tbl1">{{cat.id}}</td>
                 <td class="tbl1">{{cat.categoryName}}</td>
                 <td class="tbl1">
-                  <button type="button" class="btn btn-info" matTooltip="Click Edit Button"
+                  <button type="button" class="btn btn-outline-info" matTooltip="Click Edit Button"
                     (click)="openModal(cat)">View</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
+                  <button type="button" class="btn btn-outline-success" (click)="openModal4(cat.categoryName, cat.id)">Edit</button>
+                  <button type="button" class="btn btn-outline-secondary" (click)="openModal3(cat.id)">Add New Sub Category</button>
+                  <button type="button" class="btn btn-outline-danger" (click)="deleteCategory(cat.id)">Delete</button>
                 </td>
 
               </tr>
             </tbody>
           </table>
         </div>
+        <!--View Category Details-->
         <ngx-smart-modal #myModal identifier="myModal">
           <div *ngIf="myModal.hasData()">
-            <img class="img">{{myModal.getData().subCategorys[0].url}}
-            <h5 class="tbl1"><span id="tag">Sub Category Name:</span> {{myModal.getData().subCategorys[0].subCategoryName}}</h5>
+            <img class="img" [src]="myModal.getData().subCategorys[index].url">
+            <h5 class="tbl1"><span id="tag">Sub Category Name:</span> {{myModal.getData().subCategorys[index].subCategoryName}}</h5>
             <br />
-            <h5 class="tbl1"><span id="tag">Sub Category Id:</span> {{myModal.getData().subCategorys[0].id}}</h5>
+            <h5 class="tbl1"><span id="tag">Sub Category Id:</span> {{myModal.getData().subCategorys[index].id}}</h5>
           </div>
+          <button type="button" class="btn btn-danger" (click)="deleteSub(myModal.getData().id, myModal.getData().subCategorys[index].id)">Delete</button>
           <button type="button" class="btn btn-success" (click)="nextModal()">Next</button>
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+        </ngx-smart-modal>
+        <!--Add New Category-->
+        <ngx-smart-modal addCategory identifier="addCategory">
+          <form class="" [formGroup]= "categoryForm" (ngSubmit)="addCategory()">
+            <div class="form-group">
+              <label for="categoryName" class="col-form-label">Category Name:</label>
+              <input type="text" id="categoryName" class="form-control cs" formControlName="categoryName" autofocus>
+              <div *ngIf="!categoryForm.controls['categoryName'].valid && categoryForm.controls['categoryName'].touched">
+                  <small color="danger">Category Name required</small>
+              </div>
+            </div>
+          </form>
+          <button type="button" class="btn btn-success" [disabled]="!categoryForm.valid" (click)="addCategory()">Add</button>
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+        </ngx-smart-modal>
+        <!--Edit Category Details-->
+        <ngx-smart-modal editCategory identifier="editCategory">
+          <form [formGroup]= "updateCategoryForm" (ngSubmit)="editCategoryDetails()"> 
+            <div class="form-group">
+              <label for="categoryName" class="col-form-label">Category Name:</label>
+              <input type="text" id="categoryName" class="form-control cs" formControlName="categoryName" autofocus>
+              <div *ngIf="!updateCategoryForm.controls['categoryName'].valid && updateCategoryForm.controls['categoryName'].touched">
+                  <small color="danger">Category Name required</small>
+              </div>
+            </div>
+          </form>
+          <button type="button" class="btn btn-success" [disabled]="!updateCategoryForm.valid" (click)="editCategoryDetails()">Save</button>
+          <button type="button" class="btn btn-danger" (click)="closeModal()">Cancel</button>
+        </ngx-smart-modal>
+        <!--Add New Sub Category-->
+        <ngx-smart-modal addCategory identifier="addSubCategory">
+          <form class="" [formGroup]= "subCategoryForm" (ngSubmit)="addSubCategory()">
+            <div class="form-group">
+              <label for="SubCategoryName" class="col-form-label">Sub Category Name:</label>
+              <input type="text" id="SubCategoryName" class="form-control cs" formControlName="SubCategoryName">
+              <div *ngIf="!subCategoryForm.controls['SubCategoryName'].valid && subCategoryForm.controls['SubCategoryName'].touched">
+                  <small color="danger">Sub Category Name required</small>
+              </div>
+              <label for="url" class="col-form-label">Sub Category Image:</label>
+              <input type="text" id="url" class="form-control cs" formControlName="url">
+              <div *ngIf="!subCategoryForm.controls['url'].valid && subCategoryForm.controls['url'].touched">
+                  <small color="danger">Sub Category Image required</small>
+              </div>
+            </div>
+          </form>
+          <button type="button" class="btn btn-success" [disabled]="!subCategoryForm.valid" (click)="addSubCategory()">Add</button>
           <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
         </ngx-smart-modal>
       </main>

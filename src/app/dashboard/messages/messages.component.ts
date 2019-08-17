@@ -1,9 +1,8 @@
+import { AuthService } from './../../services/auth-service.service';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { MessageService } from './../../services/message.service';
 import { Component, OnInit, Output } from '@angular/core';
-import * as $ from 'jquery';
-import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-messages',
@@ -15,10 +14,12 @@ export class MessagesComponent implements OnInit {
   allChat: any = [];
   showSpinner: boolean = true;
   read: any;
+  searchText = null;
 
   constructor(private messageService: MessageService,
               private fb: FormBuilder,
-              private router: Router) { }
+              private router: Router,
+              private authservice: AuthService) { }
 
   ngOnInit() {
 
@@ -29,9 +30,14 @@ export class MessagesComponent implements OnInit {
     // this.allChat.subscribe(() => this.showSpinner = false);
   }
 
+    logOut(){
+    this.authservice.logout();
+    console.log("logout");
+    }
     loadAllMessages() {
       this.messageService.getLastMessageFromUsers().subscribe( res => {
         this.allMessages = res;
+        this.showSpinner = false;
         console.log(this.allMessages);
       },
       error => {
@@ -41,6 +47,12 @@ export class MessagesComponent implements OnInit {
         }
       }
       );
+    }
+    search(ev: any) {
+      console.log(ev.target.value);
+      this.searchText = ev.target.value;
+  
+      console.log(this.allMessages);
     }
   
     viewChat(message) {

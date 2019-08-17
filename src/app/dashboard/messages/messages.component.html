@@ -1,43 +1,55 @@
 <body>
-  <div class="container mt-5">
-    <div class="row">
-      <div class="btn-group">
-        <button class="btn btn-danger" btnRadio="NewMessage" [routerLink]="['/dashboard/']">
-          <i class="fa fa-envelope"></i>New Message
-        </button>
-        <button class="btn btn-info" btnRadio="Messages" [routerLink]="['/dashboard/messages']">
-          <i class="fa fa-paper-plane"></i>Messages
-        </button>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Winkel</a>
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"
+          (keyup)="search($event)">
+        <ul class="navbar-nav px-3">
+          <li class="nav-item text-nowrap">
+            <a class="nav-link" (click)="logOut()" id="a">Sign out</a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="container mt-5">
+        <div class="row">
+          <div class="btn-group">
+            <button class="btn btn-danger" btnRadio="NewMessage" [routerLink]="['/dashboard/']">
+              <i class="fa fa-envelope"></i>New Message
+            </button>
+            <button class="btn btn-info" btnRadio="Messages" [routerLink]="['/dashboard/messages']">
+              <i class="fa fa-paper-plane"></i>Messages
+            </button>
+          </div>
+        </div>
+    
+        <div class="row" *ngIf="allMessages.length==0">
+          <h3>No messages</h3>
+        </div>
+         <div class="row" *ngIf="allMessages.length>0">
+          <table class="table table-hover" style="cursor: pointer">
+            <tr>
+              <th style="width: 40%">Email</th>
+              <th style="width: 30%">Sender Name</th>
+              <th style="width: 30%">Message</th>
+              <th style="width: 20%">Received/Sent Time</th>
+              <th style="width: 10%"></th>
+            </tr>
+            <tr *ngFor="let message of allMessages | messagefilter:searchText" (click)="viewChat(message)">
+              <td *ngIf="message.isUnRead==true"><strong>{{message.userMail}}</strong></td>
+              <td *ngIf="message.isUnRead==true"><strong>{{message.userFullName}}</strong></td>
+              <td *ngIf="message.isUnRead==true"><strong>{{message.message}}</strong></td>
+              <td *ngIf="message.isUnRead==true"><strong>{{message.timeSent}}</strong></td>
+            </tr>
+            <tr *ngFor="let message of allMessages | messagefilter:searchText" (click)="viewChat(message)">
+              <!-- variable class -->
+              <td *ngIf="message.isUnRead==false">{{message.userMail}}</td>
+              <td *ngIf="message.isUnRead==false">{{message.userFullName}}</td>
+              <td *ngIf="message.isUnRead==false">{{message.message}}</td>
+              <td *ngIf="message.isUnRead==false">{{message.timeSent}}</td>
+            </tr>
+          </table>
+        </div>
+        <app-spinner *ngIf="showSpinner"></app-spinner>
       </div>
-    </div>
-
-    <div class="row" *ngIf="allMessages.length==0">
-      <h3>No messages</h3>
-    </div>
-     <div class="row" *ngIf="allMessages.length>0">
-      <table class="table table-hover" style="cursor: pointer">
-        <tr>
-          <th style="width: 40%">Email</th>
-          <th style="width: 30%">Sender Name</th>
-          <th style="width: 30%">Message</th>
-          <th style="width: 20%">Received/Sent Time</th>
-          <th style="width: 10%"></th>
-        </tr>
-        <tr *ngFor="let message of allMessages" (click)="viewChat(message)">
-          <td *ngIf="message.isUnRead==true"><strong>{{message.userMail}}</strong></td>
-          <td *ngIf="message.isUnRead==true"><strong>{{message.userFullName}}</strong></td>
-          <td *ngIf="message.isUnRead==true"><strong>{{message.message}}</strong></td>
-          <td *ngIf="message.isUnRead==true"><strong>{{message.timeSent}}</strong></td>
-        </tr>
-        <tr *ngFor="let message of allMessages" (click)="viewChat(message)">
-          <!-- variable class -->
-          <td *ngIf="message.isUnRead==false">{{message.userMail}}</td>
-          <td *ngIf="message.isUnRead==false">{{message.userFullName}}</td>
-          <td *ngIf="message.isUnRead==false">{{message.message}}</td>
-          <td *ngIf="message.isUnRead==false">{{message.timeSent}}</td>
-        </tr>
-      </table>
-    </div>
-
-  </div>
+    
 </body>
