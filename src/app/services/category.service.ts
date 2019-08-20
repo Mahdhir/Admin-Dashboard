@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class CategoryService {
 
   url = 'http://localhost:4009/category';
+  url1 = 'http://localhost:4009/photo';
 
   constructor(private http: HttpClient) { }
 
@@ -32,5 +33,9 @@ export class CategoryService {
 
   DeleteSubCategory(categoryId, SubcategoryId) {
     return this.http.delete(`${this.url}/subcategory/${categoryId}/${SubcategoryId}`);
+  }
+
+  AddSubCategoryPhoto(SubCategoryId, Photo) {
+    return this.http.post(`${this.url1}/subCategory/${SubCategoryId}`, Photo);
   }
 }

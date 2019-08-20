@@ -38,14 +38,14 @@
               <td *ngIf="message.isUnRead==true"><strong>{{message.userMail}}</strong></td>
               <td *ngIf="message.isUnRead==true"><strong>{{message.userFullName}}</strong></td>
               <td *ngIf="message.isUnRead==true"><strong>{{message.message}}</strong></td>
-              <td *ngIf="message.isUnRead==true"><strong>{{message.timeSent}}</strong></td>
+              <td *ngIf="message.isUnRead==true"><strong>{{message.timeSent | date}}</strong></td>
             </tr>
             <tr *ngFor="let message of allMessages | messagefilter:searchText" (click)="viewChat(message)">
               <!-- variable class -->
               <td *ngIf="message.isUnRead==false">{{message.userMail}}</td>
               <td *ngIf="message.isUnRead==false">{{message.userFullName}}</td>
               <td *ngIf="message.isUnRead==false">{{message.message}}</td>
-              <td *ngIf="message.isUnRead==false">{{message.timeSent}}</td>
+              <td *ngIf="message.isUnRead==false">{{message.timeSent | date}}</td>
             </tr>
           </table>
         </div>

@@ -39,6 +39,9 @@
             <br />
             <h5 class="tbl1"><span id="tag">Sub Category Id:</span> {{myModal.getData().subCategorys[index].id}}</h5>
           </div>
+          <!-- <div *ngIf="!myModal.hasData()">
+            Add another Sub Category...
+          </div> -->
           <button type="button" class="btn btn-danger" (click)="deleteSub(myModal.getData().id, myModal.getData().subCategorys[index].id)">Delete</button>
           <button type="button" class="btn btn-success" (click)="nextModal()">Next</button>
           <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
@@ -81,7 +84,11 @@
                   <small color="danger">Sub Category Name required</small>
               </div>
               <label for="url" class="col-form-label">Sub Category Image:</label>
-              <input type="text" id="url" class="form-control cs" formControlName="url">
+              <br />
+              <img [src]="imageUrl" style="width:250px; height:200px">
+              <br />
+              <input style="display: none" type="file" formControlName="url" #url accept="image/*" (change)="onFileChanged($event.target.files)">
+              <button (click)="url.click()">Select File</button>
               <div *ngIf="!subCategoryForm.controls['url'].valid && subCategoryForm.controls['url'].touched">
                   <small color="danger">Sub Category Image required</small>
               </div>

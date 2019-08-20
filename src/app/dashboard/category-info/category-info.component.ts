@@ -27,6 +27,8 @@ export class CategoryInfoComponent implements OnInit {
   CategoryId: any;
   CategoryName: any;
   categoryName;
+  imageUrl: string = '../assets/imgs/deafult.jpg';
+  fileToUpload: File = null;
 
   constructor(private route: Router,
               private authServices: AuthService,
@@ -59,7 +61,17 @@ export class CategoryInfoComponent implements OnInit {
  
   }
 
-  
+  onFileChanged(file: FileList){
+    this.fileToUpload = file.item(0);
+
+    //Show image preview
+    var reader = new FileReader();
+    reader.onload = (event:any) => {
+      this.imageUrl = event.target.result;
+    }
+    reader.readAsDataURL(this.fileToUpload);
+  }
+
   loadAllCategories() {
     this.categoryService.GetCategorywithSubCategories().subscribe( res => {
       this.allCategories = res;
@@ -135,6 +147,9 @@ export class CategoryInfoComponent implements OnInit {
       }
     );
   }
+ onUpload(){
+   
+ }
 
   addSubCategory() {
     console.log('Submitted');
@@ -148,11 +163,23 @@ export class CategoryInfoComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          const uploadData = new FormData();
+          uploadData.append('file', this.fileToUpload, this.fileToUpload.name);
+          this.categoryService.AddSubCategoryPhoto(data,uploadData).subscribe(
+            data => {
+              this.toastCtrl.success('Sub Category is added Successfully');
+              this.closeModal();
+              this.loadAllCategories();
+            },
+            error => {
+              if (error.status === 400) {
+                this.toastCtrl.error('Cannot add sub category image.\n' + error.error.message);
+              } 
+              
+            }
+          );
           console.log(this.subCategoryForm.value);
-          this.toastCtrl.success('Sub Category is added Successfully');
-          this.subCategoryForm.reset();
-          this.closeModal();
-          this.loadAllCategories();
+    
         },
         error => {
           console.log(error);
