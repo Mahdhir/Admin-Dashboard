@@ -80,11 +80,9 @@
       <ngx-smart-modal #viewBuyer identifier="viewBuyer">
         <div *ngIf="viewBuyer.hasData()">
         <div class="text-center"><img class="img" height="320" [src]="viewBuyer.getData().imageUrl"></div>
-          <h5 class="tbl1"><span id="tag">Delivery Details :</span> {{viewBuyer.getData().deliveryDetails}}</h5>
-          <h5 class="tbl1"><span id="tag">Store Information :</span> {{viewBuyer.getData().storeInfo}}</h5>
-          <h5 class="tbl1"><span id="tag">Billing Information :</span> {{viewBuyer.getData().billingInfo}}</h5>
-          <h5 class="tbl1"><span id="tag">Phone Number :</span> {{viewBuyer.getData().phoneNumber}}</h5>
-         
+          <h5 class="tbl1"><span id="tag">User Name :</span> {{viewBuyer.getData().userName}}</h5>
+          <h5 class="tbl1"><span id="tag">Id :</span> {{viewBuyer.getData().id}}</h5>
+          <h5 class="tbl1"><span id="tag">Role :</span> {{viewBuyer.getData().role}}</h5>
         </div>
         <div class="text-center">
        <button type="button"  class="btn btn-primary" (click)="closeBuyer()">Close</button>

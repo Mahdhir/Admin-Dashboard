@@ -1,1 +1,26 @@
 @import '../../../assets/dashboard.css';
+
+@import '../../../assets/dashboard.css';
+
+body {
+    margin-top: 60px;
+}
+.img{
+    max-height:280px;
+    /* margin-left: 110px; */
+}
+ngx-smart-modal{
+    text-align: center;
+}
+h5{
+    font-size: 14px;
+    margin-top: 6px;
+    text-align: left;
+}
+#tag{
+    font-weight: bold;
+}
+
+button {
+    margin-right: 10px;
+}

@@ -15,6 +15,7 @@ export class BuyersComponent implements OnInit {
   users: any = [];
   searchText = null ;
   modalService: any;
+  index = 0;
   showSpinner=true;
   constructor(
     private userService: UserService,

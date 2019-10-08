@@ -38,13 +38,14 @@
             <h5 class="tbl1"><span id="tag">Sub Category Name:</span> {{myModal.getData().subCategorys[index].subCategoryName}}</h5>
             <br />
             <h5 class="tbl1"><span id="tag">Sub Category Id:</span> {{myModal.getData().subCategorys[index].id}}</h5>
+            <button type="button" class="btn btn-danger" (click)="deleteSub(myModal.getData().id, myModal.getData().subCategorys[index].id)">Delete</button>
+          <button type="button" class="btn btn-success" [disabled]="myModal.getData().subCategorys.length===index+1" (click)="nextModal(myModal.getData().subCategorys)">Next</button>
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
           </div>
           <!-- <div *ngIf="!myModal.hasData()">
             Add another Sub Category...
           </div> -->
-          <button type="button" class="btn btn-danger" (click)="deleteSub(myModal.getData().id, myModal.getData().subCategorys[index].id)">Delete</button>
-          <button type="button" class="btn btn-success" (click)="nextModal()">Next</button>
-          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+          
         </ngx-smart-modal>
         <!--Add New Category-->
         <ngx-smart-modal addCategory identifier="addCategory">

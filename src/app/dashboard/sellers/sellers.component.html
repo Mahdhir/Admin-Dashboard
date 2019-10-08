@@ -44,7 +44,7 @@
                       [disabled] ="user.status== 'Locked'" >Lock</button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-success" matTooltip="Click Delete Button" (click)="UnLockSeller(user.id)">Unlock</button>
+                    <button type="button" class="btn btn-success" matTooltip="Click Delete Button" [disabled]="!user.isLocked" (click)="UnLockSeller(user.id)">Unlock</button>
                   </td>
                 </tr>
               </tbody>
@@ -52,11 +52,10 @@
           </div>
           <ngx-smart-modal #viewSeller identifier="viewSeller">
               <div *ngIf="viewSeller.hasData()">
-              <div class="text-center"><img class="img" height="320" [src]="viewSeller.getData().imageUrl"></div>
-                <h5 class="tbl1"><span id="tag">Delivery Details :</span> {{viewSeller.getData().deliveryDetails}}</h5>
-                <h5 class="tbl1"><span id="tag">Store Information :</span> {{viewSeller.getData().storeInfo}}</h5>
-                <h5 class="tbl1"><span id="tag">Billing Information :</span> {{viewSeller.getData().billingInfo}}</h5>
-                <h5 class="tbl1"><span id="tag">Phone Number :</span> {{viewSeller.getData().phoneNumber}}</h5>
+                <div class="text-center"><img class="img" height="320" [src]="viewSeller.getData().imageUrl"></div>
+                <h5 class="tbl1"><span id="tag">User Name :</span> {{viewSeller.getData().userName}}</h5>
+                <h5 class="tbl1"><span id="tag">Id :</span> {{viewSeller.getData().id}}</h5>
+                <h5 class="tbl1"><span id="tag">Role :</span> {{viewSeller.getData().role}}</h5>
                
               </div>
               <div class="text-center">

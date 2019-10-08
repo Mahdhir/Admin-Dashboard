@@ -1,15 +1,16 @@
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Winkel</a>
-  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" (keyup)="search($event)">
+  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"
+    (keyup)="search($event)">
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
-      <a class="nav-link" (click) = "logOut()" id="a">Sign out</a>
+      <a class="nav-link" (click)="logOut()" id="a">Sign out</a>
     </li>
   </ul>
-  </nav>
+</nav>
 
 <div class="container-fluid">
- 
+
   <div class="row">
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div
@@ -24,10 +25,10 @@
               <th class="tbl1">Buyer ID</th>
               <th class="tbl1">Total Price</th>
               <th class="tbl1">Date & Time Added</th>
-              
+
               <th class="tbl1">Payment Status</th>
               <th class="tbl1">Details</th>
-              
+
             </tr>
           </thead>
           <tbody>
@@ -36,18 +37,40 @@
               <td class="tbl1">{{orders.buyerId }}</td>
               <td class="tbl1">{{orders.total_Price}}</td>
               <td class="tbl1">{{orders.dateAdded | date :"medium"}}</td>
-              
+
               <td class="tbl1">{{orders.paymentStatus}}</td>
-         
-              
+
+
               <td class="tbl1">
-                <button type="button" class="btn btn-info" matTooltip="Click Edit Button">Details</button>
+                <button type="button" class="btn btn-info" matTooltip="Click Edit Button"
+                  (click)="openModal(orders)">Details</button>
               </td>
-            
+
             </tr>
           </tbody>
         </table>
       </div>
+      <!--View Category Details-->
+      <ngx-smart-modal #myModal identifier="myModal">
+        <div *ngIf="myModal.hasData()">
+          <img class="img" [src]="myModal.getData().orderDetails[index].mainPhotoUrl">
+          <h5 class="tbl1"><span id="tag">Id:</span>
+            {{myModal.getData().orderDetails[index].id}}</h5>
+          <br />
+          <h5 class="tbl1"><span id="tag">Order Id:</span> {{myModal.getData().orderDetails[index].orderId}}</h5>
+          <h5 class="tbl1"><span id="tag">Product Id:</span> {{myModal.getData().orderDetails[index].productId}}</h5>
+          <h5 class="tbl1"><span id="tag">Product Name:</span> {{myModal.getData().orderDetails[index].product_Name}}</h5>
+          <h5 class="tbl1"><span id="tag">Seller Id:</span> {{myModal.getData().orderDetails[index].sellerId}}</h5>
+          <h5 class="tbl1"><span id="tag">Price:</span> {{myModal.getData().orderDetails[index].price}}</h5>
+          <button type="button" class="btn btn-success" [disabled]="myModal.getData().orderDetails.length===index+1"
+            (click)="nextModal(myModal.getData().orderDetails)">Next</button>
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+        </div>
+        <!-- <div *ngIf="!myModal.hasData()">
+                  Add another Sub Category...
+                </div> -->
+
+      </ngx-smart-modal>
     </main>
   </div>
   <app-spinner *ngIf="showSpinner"></app-spinner>

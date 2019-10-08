@@ -28,7 +28,7 @@ export class MessageService {
   }
 
   MakeUnreadMessagesAsReadAdmin(userId) {
-    return this.http.get(`${this.url}/admin/opened/${userId}`);
+    return this.http.post(`${this.url}/admin/opened/${userId}`,{});
   }
 
 }

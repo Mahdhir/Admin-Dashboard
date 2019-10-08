@@ -18,6 +18,8 @@ export class OrdersComponent implements OnInit {
   showSpinner =  true;
   dataSaved = false;
   messaage = null;
+  index = 0;
+  modalService: any;
   
   constructor(
     private ordersService: OrdersService,
@@ -56,5 +58,26 @@ export class OrdersComponent implements OnInit {
     this.dataSaved = false;
   }
 
+  openModal(order) {
+
+    //view order details
+    this.ngxSmartModalService.setModalData(order, 'myModal');
+    this.ngxSmartModalService.getModal('myModal').open();
+    this.modalService = this.ngxSmartModalService.getModal('myModal').onAnyCloseEvent.subscribe(
+      () => {
+        this.ngxSmartModalService.resetModalData('myModal');
+      }
+    );
+  }
+
+  nextModal(data:[]) {
+    console.log(data.length);
+    if(data.length>=this.index+2)
+    this.index ++;
+  }
+
+  closeModal() {
+    this.ngxSmartModalService.close('myModal');
+  }
 
 }

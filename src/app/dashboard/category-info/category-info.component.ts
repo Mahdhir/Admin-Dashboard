@@ -168,8 +168,8 @@ export class CategoryInfoComponent implements OnInit {
           this.categoryService.AddSubCategoryPhoto(data,uploadData).subscribe(
             data => {
               this.toastCtrl.success('Sub Category is added Successfully');
-              this.closeModal();
               this.loadAllCategories();
+              this.closeModal();
             },
             error => {
               if (error.status === 400) {
@@ -209,11 +209,12 @@ export class CategoryInfoComponent implements OnInit {
     console.log(categoryId, SubcategoryId);
     if (confirm('Are you sure you want to delete this Sub Category?')) {
       this.categoryService.DeleteSubCategory(categoryId, SubcategoryId).subscribe(() => {
-        this.dataSaved = true;
         this.loadAllCategories();
         this.messaage = 'Sub Category Deleted Succefully';
         // alert('Category Deleted Succefully');
         this.toastCtrl.error('Sub Category Deleted');
+        this.closeModal();
+        this.loadAllCategories();
       });
     }
   }
@@ -257,6 +258,9 @@ export class CategoryInfoComponent implements OnInit {
   openModal(cat) {
 
     //view category details
+    if (cat.subCategorys.length == 0) {
+      this.toastCtrl.error('No Sub Categories added!');
+    } else {
     this.ngxSmartModalService.setModalData(cat, 'myModal');
     this.ngxSmartModalService.getModal('myModal').open();
     this.modalService = this.ngxSmartModalService.getModal('myModal').onAnyCloseEvent.subscribe(
@@ -264,9 +268,12 @@ export class CategoryInfoComponent implements OnInit {
         this.ngxSmartModalService.resetModalData('myModal');
       }
     );
+   }
   }
 
-  nextModal() {
+  nextModal(data:[]) {
+    console.log(data.length);
+    if(data.length>=this.index+2)
     this.index ++;
   }
 
