@@ -15,7 +15,7 @@ export class PendingPromosComponent implements OnInit {
   promoStatus: Object;
   viewImg = false;
   modalService: any;
-
+  showSpinner = true;
   constructor(
     private advertServices: PromosService,
     private authService: AuthService,
@@ -65,6 +65,7 @@ export class PendingPromosComponent implements OnInit {
   loadAllPromos() {
     this.advertServices.GetAllPendingPromos().subscribe(res => {
       this.allPendingPromos = res;
+      this.showSpinner =false;
       console.log(this.allPendingPromos);
     },
       error => {

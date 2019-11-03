@@ -33,6 +33,9 @@ export class SellersComponent implements OnInit {
     this.authservice.logout();
     console.log("logout");
   }
+  onImgError(event) { 
+    event.target.src = 'src\assets\imgs\profile-placeholder.png';
+}
 
   LockSeller(id){
     console.log(id);

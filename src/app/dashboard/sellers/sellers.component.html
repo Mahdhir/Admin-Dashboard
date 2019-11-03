@@ -52,7 +52,15 @@
           </div>
           <ngx-smart-modal #viewSeller identifier="viewSeller">
               <div *ngIf="viewSeller.hasData()">
-                <div class="text-center"><img class="img" height="320" [src]="viewSeller.getData().imageUrl"></div>
+                <div class="text-center">
+                  <!-- <img class="img" height="320" [src]="viewSeller.getData().imageUrl"> -->
+                  
+                    <img  class="img" height= "320" [src]="viewSeller.getData().imageUrl" onError="this.src='http://www.buckinghamandcompany.com.au/wp-content/uploads/2016/03/profile-placeholder.png';"/>
+              
+                  
+                  
+                  
+                </div>
                 <h5 class="tbl1"><span id="tag">User Name :</span> {{viewSeller.getData().userName}}</h5>
                 <h5 class="tbl1"><span id="tag">Id :</span> {{viewSeller.getData().id}}</h5>
                 <h5 class="tbl1"><span id="tag">Role :</span> {{viewSeller.getData().role}}</h5>

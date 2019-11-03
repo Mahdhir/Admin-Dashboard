@@ -79,7 +79,9 @@
       
       <ngx-smart-modal #viewBuyer identifier="viewBuyer">
         <div *ngIf="viewBuyer.hasData()">
-        <div class="text-center"><img class="img" height="320" [src]="viewBuyer.getData().imageUrl"></div>
+        <div class="text-center">
+            <img  class="img" height= "320" [src]="viewBuyer.getData().imageUrl" onError="this.src='http://www.buckinghamandcompany.com.au/wp-content/uploads/2016/03/profile-placeholder.png';"/>
+        </div>
           <h5 class="tbl1"><span id="tag">User Name :</span> {{viewBuyer.getData().userName}}</h5>
           <h5 class="tbl1"><span id="tag">Id :</span> {{viewBuyer.getData().id}}</h5>
           <h5 class="tbl1"><span id="tag">Role :</span> {{viewBuyer.getData().role}}</h5>
