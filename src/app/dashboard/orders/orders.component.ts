@@ -57,6 +57,12 @@ export class OrdersComponent implements OnInit {
     this.messaage = null;
     this.dataSaved = false;
   }
+  search(ev: any) {
+    console.log(ev.target.value);
+    this.searchText = ev.target.value;
+
+    console.log(this.allOrders);
+  }
 
   openModal(order) {
 

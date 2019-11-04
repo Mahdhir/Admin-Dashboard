@@ -22,7 +22,7 @@
           <thead>
             <tr>
               <th class="tbl1">Order ID</th>
-              <th class="tbl1">Buyer ID</th>
+              <th class="tbl1">Buyer Email</th>
               <th class="tbl1">Total Price</th>
               <th class="tbl1">Date & Time Added</th>
 
@@ -32,9 +32,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let orders of allOrders | filter:searchText">
+            <tr *ngFor="let orders of allOrders | orderfilter:searchText">
               <td class="tbl1">{{orders.id}}</td>
-              <td class="tbl1">{{orders.buyerId }}</td>
+              <td class="tbl1">{{orders.buyerEmail }}</td>
               <td class="tbl1">{{orders.total_Price}}</td>
               <td class="tbl1">{{orders.dateAdded | date :"medium"}}</td>
 

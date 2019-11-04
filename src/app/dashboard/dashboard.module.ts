@@ -48,6 +48,7 @@ import {MatRadioModule} from '@angular/material/radio';
 
 import { ActivePromosComponent } from './activePromos/activePromos.component';
 import { PendingPromosComponent } from './pendingPromos/pendingPromos.component';
+import { OrderfilterPipe } from './orders/orderfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { PendingPromosComponent } from './pendingPromos/pendingPromos.component'
     UnreadMessagesComponent,
     MessageListComponent,
     ActivePromosComponent,
-    PendingPromosComponent
+    PendingPromosComponent,
+    OrderfilterPipe
   ],
   imports: [
     FormsModule,

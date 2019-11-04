@@ -51,11 +51,13 @@ export class MessageListComponent implements OnInit {
     let data = {
       receiverEmail:this.user.userMail,
       message:this.newMessage.content
+      
     };
     this.messageService.SendMessageFromAdmin(data)
       .subscribe(message => {
         console.log("Message Sent");
         this.allMessages.unshift(message);
+        
     }, error => {
       console.log(error);
     });
