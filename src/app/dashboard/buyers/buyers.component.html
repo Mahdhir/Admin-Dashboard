@@ -1,94 +1,110 @@
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Winkel</a>
-  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"
-    (keyup)="search($event)">
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" (click)="logOut()" id="a">Sign out</a>
-    </li>
-  </ul>
-</nav>
-<div class="container-fluid">
-  <div class="row">
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      <div
-        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Buyers</h1>
+<body>
+  <div>
+    <div class="flex-wrap flex-md-nowrap pt-3 pb-2 mb-3">
+      <h1>
+        <a (click)="back()">
+          <!-- <i class="fas fa-home"></i> -->
+        </a><span class="heading">Buyers</span></h1>
+      <hr>
+    </div>
+    <input class="form-controls w-100" type="text" placeholder="Search" aria-label="Search" (keyup)="search($event)">
+    <div>
+      <div>
+        <section class="content">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="table-container">
+                  <table class="table table-filter">
+                    <tbody>
+                      <tr class="head">
+                        <td>First Name</td>
+                        <td>Last Name</td>
+                        <td>Email</td>
+                        <td>View</td>
+                        <td>Lock</td>
+                        <td>Unlock</td>
+                      </tr>
+                      <tr data-status="pagado" *ngFor="let user of users | buyerfilter:searchText">
+                        <td>
+                          <div class="media">
+                            <div class="media-body">
+                              <h4 class="title">
+                                {{user.firstName }}
+                              </h4>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div class="media">
+                            <div class="media-body">
+                              <h4 class="title">
+                                {{user.lastName }}
+                              </h4>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div class="media">
+                            <div class="media-body">
+                              <h4 class="title">
+                                {{user.email}}
+                              </h4>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td class="info">
+                          <i class="fas fa-tags" (click)="openBuyer(user)"></i>
+                        </td>
+
+                        <td class="edit">
+                          <button class="btn btn-danger" (click)="LockBuyer(user.id)" [disabled]="user.isLocked"><i class="fas fa-lock"></i>
+                          </button>
+                        </td>
+
+                        <td class="edit">
+                          <button class="btn btn-success" (click)="UnLockBuyer(user.id)" [disabled]="!user.isLocked"><i class="fas fa-unlock"></i>
+                          </button>
+                        </td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-      <!-- <div class="panel panel-primary filterable">
-        <table class="table">
-          <thead>
-            <tr class="filters">
-              <th><input type="text" class="form-control" placeholder="First Name" disabled></th>
-              <th><input type="text" class="form-control" placeholder="Last Name" disabled></th>
-              <th><input type="text" class="form-control" placeholder="Email" disabled></th>
-              
-            </tr>
-            
-            
-          </thead>
-          <tbody>
-            <tr *ngFor="let user of users | buyerfilter:searchText">
-              <td>{{user.firstName}}</td>
-              <td>{{user.lastName}}</td>
-              <td>{{user.email}}</td>
-              <td>
-                <button type="button" class="btn btn-info" (click)="openBuyer(user)" matTooltip="Click Edit Button">View</button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-danger" matTooltip="Click Delete Button"  
-                >Lock</button>
-              </td>
-           
-            </tr>
-          </tbody>
-        </table> -->
-        <div class="table-responsive">
-              <table class="table table-striped table-sm">
-                <thead>
-                  <tr>
-                    
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>View</th>
-                    <th>Lock</th>
-                    <th>Unlock</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let user of users | buyerfilter:searchText">
-                      
-                    <td>{{user.firstName}}</td>
-                    <td>{{user.lastName}}</td>
-                    <td>{{user.email}}</td>
-                    <td>
-                        <button type="button" class="btn btn-info" (click)="openBuyer(user)" matTooltip="Click Edit Button">View</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-danger" matTooltip="Click Delete Button" [disabled]="user.isLocked" (click)="LockBuyer(user.id)"
-                        > Lock</button>
-                    </td>
-                      <td>
-                <button type="button" class="btn btn-success" matTooltip="Click Delete Button" [disabled]="!user.isLocked" (click)="UnLockBuyer(user.id)">Unlock</button>
-              </td>
-                  </tr>
-                </tbody>
-              </table>
-          </div> 
-      
-      <ngx-smart-modal #viewBuyer identifier="viewBuyer">
-        <div *ngIf="viewBuyer.hasData()">
-        <div class="text-center"><img class="img" height="320" [src]="viewBuyer.getData().imageUrl"></div>
-          <h5 class="tbl1"><span id="tag">User Name :</span> {{viewBuyer.getData().userName}}</h5>
-          <h5 class="tbl1"><span id="tag">Id :</span> {{viewBuyer.getData().id}}</h5>
-          <h5 class="tbl1"><span id="tag">Role :</span> {{viewBuyer.getData().role}}</h5>
+    </div>
+
+    <!-- View Buyer Details-->
+    <ngx-smart-modal #viewBuyer identifier="viewBuyer">
+      <div class="product_view" *ngIf="viewBuyer.hasData()">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-12 product_img">
+                  <img [src]="viewBuyer.getData().imageUrl" onError="this.src='http://www.buckinghamandcompany.com.au/wp-content/uploads/2016/03/profile-placeholder.png'" class="img-responsive">
+                </div>
+                <div class="col-md-12 product_content">
+                  <h4>User Name : <span>{{viewBuyer.getData().userName}}</span></h4>
+                  <p>Id : {{viewBuyer.getData().id}}</p>
+                  <p>Role : {{viewBuyer.getData().role}}</p>
+                  <input type="button" value="Close" (click)="closeBuyer()"
+                    style="background: #5d5f61; width: 50%; margin-left: 25%;">
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="text-center">
-       <button type="button"  class="btn btn-primary" (click)="closeBuyer()">Close</button>
-       </div>
-      </ngx-smart-modal>
-    </main>
+      </div>
+    </ngx-smart-modal>
+
+    <app-spinner *ngIf="showSpinner"></app-spinner>
   </div>
-  <app-spinner *ngIf="showSpinner"></app-spinner>
-</div>
+</body>

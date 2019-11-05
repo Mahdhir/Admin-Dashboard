@@ -1,28 +1,28 @@
-@import '../../../assets/dashboard.css';
+@import '../../dashboard/category-info/category-info.component.css';
 
-@import '../../../assets/dashboard.css';
-
-@import '../../../assets/dashboard.css';
-
-body {
-    margin-top: 60px;
-}
-.img{
-    max-height:280px;
-    /* margin-left: 110px; */
-}
-ngx-smart-modal{
-    text-align: center;
-}
-h5{
-    font-size: 14px;
-    margin-top: 6px;
-    text-align: left;
-}
-#tag{
-    font-weight: bold;
+.table-filter .media-body .title{
+    font-weight: 500;
 }
 
-button {
-    margin-right: 10px;
+.table-filter .edit button {
+    margin-left: 20%;
+    border-radius: 60%;
+}
+
+.table-filter .edit button i {
+    color: white;
+    margin-left: 8%;
+    font-size: 15px;
+}
+
+.table-filter .edit .btn-success{
+    background: #2daf99;
+}
+
+.modal-dialog .modal-body .product_content h4{
+    font-size: 22px;
+}
+
+.modal-dialog .modal-body .product_content p {
+    font-size: 17px;
 }

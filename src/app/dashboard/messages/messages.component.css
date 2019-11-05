@@ -1,13 +1,60 @@
-@import '../../../assets/dashboard.css';
+@import "../../dashboard/category-info/category-info.component.css";
 
-body {
-    margin-left: 250px;
+.flex-wrap a i {
+  margin-left: 3%;
+  color: #292b2c;
 }
 
-table {
-    margin-top: 30px;
+.modal-dialog .modal-body .product_content h4 {
+  font-size: 22px;
 }
 
-td {
-    vertical-align: middle;
+.modal-dialog .modal-body .product_content p {
+  font-size: 17px;
+}
+
+.panel .panel-body .empty h3 {
+  margin-left: 45%;
+  font-size: 30px;
+  color: #292b2c;
+  font-family: "Average Sans";
+  font-weight: 600;
+}
+
+.table-filter .open #open {
+  color: rgb(45, 175, 153);
+}
+
+.table-filter .open #close {
+  color: #d9534f;
+}
+
+.table-filter tr {
+  cursor: pointer;
+}
+
+button i {
+  margin-right: 5%;
+}
+
+button[type="menu"] {
+  color: #fffbfb;
+  width: 20%;
+  padding: 0.4em 1em;
+  font-size: 1em;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-left: 0%;
+  margin-bottom: 2%;
+  -webkit-appearance: none;
+  background: #d9534f;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+  transition: 0.5s all;
+  font-family: "Average Sans";
 }

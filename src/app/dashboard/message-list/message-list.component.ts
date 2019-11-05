@@ -1,3 +1,5 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from './../../services/message.service';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -13,16 +15,24 @@ export class MessageListComponent implements OnInit {
   // message = ' ';
   allMessages: any = {};
   chat: any = [];
+  messageForm: FormGroup;
   showSpinner: boolean = true;
   messages: any;
   userId: any;
   user: any;
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService,
+              private router: Router,
+              public formBuilder: FormBuilder,
+              ) { }
 
   ngOnInit() 
   {
     this.loadMessages();
+    this.messageForm = this.formBuilder.group({
+      'content' : ['', Validators.required],
+    },
+    );
     // this.allMessages.subscribe(() => this.showSpinner = false);
   }
 
@@ -55,7 +65,8 @@ export class MessageListComponent implements OnInit {
     this.messageService.SendMessageFromAdmin(data)
       .subscribe(message => {
         console.log("Message Sent");
-        this.allMessages.unshift(message);
+        // this.allMessages.unshift(message);
+        this.allMessages.push(message);
     }, error => {
       console.log(error);
     });
@@ -63,4 +74,7 @@ export class MessageListComponent implements OnInit {
     this.loadMessages();
   }
 
+  back() {
+    this.router.navigate(['dashboard/messages']);
+  }
 }

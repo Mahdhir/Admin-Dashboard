@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { AdverticementsService } from '../../services/adverticements.service';
@@ -20,7 +21,8 @@ export class PendingAdComponent implements OnInit {
     private advertServices: AdverticementsService,
     private authService: AuthService,
     private toastCtrl: ToastrService,
-    public ngxSmartModalService: NgxSmartModalService
+    public ngxSmartModalService: NgxSmartModalService,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -62,9 +64,10 @@ export class PendingAdComponent implements OnInit {
     }
   }
 
-  async reject(id) {
+  async reject(id, ProductId) {
     const obj = {
       id: id,
+      ProductId: ProductId,
       status: "rejected"
     };
     let reason = window.prompt("Reason for rejection");
@@ -112,5 +115,9 @@ export class PendingAdComponent implements OnInit {
     if(this.modalService){
       this.modalService.unsubscribe();
     }
+  }
+
+  back() {
+    this.router.navigate(['dashboard/info']);
   }
 }

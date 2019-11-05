@@ -1,15 +1,13 @@
+@import '../pendingAd/pendingAd.component.css';
 
-.img{
-    max-height:280px;
-    /* margin-left: 110px; */
+.table-filter .info i{
+    color: #2daf99;
 }
-ngx-smart-modal{
-    text-align: center;
+
+a i {
+    margin-right: 0%;
 }
-h5{
-    font-size: 14px;
-    margin-top: 6px;
-}
-#tag{
-    font-weight: bold;
+
+h1 .heading{
+    margin-left: 0%;
 }

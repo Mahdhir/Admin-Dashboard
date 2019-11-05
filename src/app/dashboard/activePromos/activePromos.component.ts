@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { ToastrService } from 'ngx-toastr';
@@ -13,14 +14,17 @@ import { PromosService } from 'src/app/services/promos.service';
 export class ActivePromosComponent implements OnInit {
 
   allActivePromos: Object;
+  searchText = null;
   viewImg = false;
   modalService: any;
+  showSpinner =  true;
 
   constructor(
     private advertServices: PromosService,
     private authService: AuthService,
     private toastCtrl: ToastrService,
-    public ngxSmartModalService: NgxSmartModalService
+    public ngxSmartModalService: NgxSmartModalService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -30,6 +34,7 @@ export class ActivePromosComponent implements OnInit {
   loadAllPromos() {
     this.advertServices.GetAllAcceptedPromos().subscribe(res => {
       this.allActivePromos = res;
+      this.showSpinner=false;
       console.log(this.allActivePromos);
     },
       error => {
@@ -40,6 +45,12 @@ export class ActivePromosComponent implements OnInit {
       }
     );
   }
+
+  search(ev: any) {
+    console.log(ev.target.value);
+    this.searchText = ev.target.value;
+  }
+
   openAdvert(advert) {
 
     this.ngxSmartModalService.setModalData(advert, 'myModal');
@@ -59,5 +70,9 @@ export class ActivePromosComponent implements OnInit {
     if (this.modalService) {
       this.modalService.unsubscribe();
     }
+  }
+
+  back() {
+    this.router.navigate(['dashboard/info']);
   }
 }

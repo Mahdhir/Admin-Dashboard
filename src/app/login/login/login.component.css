@@ -1,24 +1,355 @@
-#bac{
-    height:100vh;
-    background-image:url("//grapesjs.com/img/bg-gr-v.png"), url("https://data.1freewallpapers.com/download/rock-steady-technology.jpg");
-    background-repeat:repeat-y, no-repeat;
-    background-size:contain, cover;
+.clear {
+  clear: both;
 }
-form{
-   /* border:solid;
-    padding-left:40px; */
-    /* margin-left:200px; */
-    /* border-radius:  12px 12px 12px 12px; */
-    height: 480px;
-    background-color:rgba(255, 234, 234, 0.726);
-    /* box-shadow: 2px 2px 2px 2px grey; */
+/*body*/
+body {
+  padding: 3em 0;
+  background: url(../../../assets/imgs/login.jpg);
+  background-color: #404040;
+  background-attachment: fixed;
+  background-size: cover;
 }
-.btn{
-    background-color:rgba(176, 21, 190, 0.87);
-    border: none;
-    margin-bottom: 5px;
+
+.register-full {
+  width: 80%;
+  margin: 2em auto 0;
 }
-a{
-    color: rgb(176, 21, 190);
-     font-weight: 400; 
+
+.register-right {
+  background: rgba(0, 0, 0, 0.726);
+  -webkit-box-shadow: 0px 0px 2px 1px rgba(253, 249, 249, 0.75);
+  -moz-box-shadow: 0px 0px 2px 1px rgba(253, 249, 249, 0.75);
+  box-shadow: 0px 0px 2px 1px rgba(253, 249, 249, 0.75);
+}
+
+.register-in {
+  padding: 3em;
+}
+
+.register-left {
+  width: 60%;
+  float: left;
+}
+
+.register-right {
+  margin-top: 4em;
+  width: 40%;
+  float: left;
+}
+
+.register-right h2 {
+  text-transform: uppercase;
+  font-size: 1.8em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 1px;
+  word-spacing: 3px;
+  color: #fff;
+  font-family: "Fresca";
+}
+
+.register-right img {
+    margin-left: 7%;
+}
+
+.register-form {
+  margin: 2em 0 0 0;
+}
+
+.register input[type="email"],
+.register #inputPassword {
+  font-size: 1em;
+  color: #fff;
+  padding: 0.5em 1em;
+  border: 0;
+  width: 90%;
+  border-bottom: 1px solid #fff;
+  background: none;
+  -webkit-appearance: none;
+  outline: none;
+}
+
+.register #inputPassword {
+  width: 70%;
+}
+
+/*-- input-effect --*/
+.styled-input.agile-styled-input-top {
+  margin-top: 0;
+}
+
+.styled-input input:focus ~ label,
+.styled-input input:invalid ~ label,
+.styled-input input:valid ~ label
+{
+  font-size: 0.9em;
+  color: rgb(182, 175, 175);
+  font-weight: 500;
+  top: -1.3em;
+  -webkit-transition: all 0.125s;
+  -moz-transition: all 0.125s;
+  -o-transition: all 0.125s;
+  -ms-transition: all 0.125s;
+  transition: all 0.125s;
+}
+.styled-input {
+  width: 100%;
+  position: relative;
+  margin: 0 0 2em;
+}
+
+.styled-input label {
+  color: rgb(151, 21, 21);
+  padding: 0.5em 0.9em;
+  letter-spacing: 0.2px;
+  font-weight: 300;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  pointer-events: none;
+  font-size: 0.9em;
+  display: block;
+  line-height: 1em;
+}
+
+.styled-input input ~ span {
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -webkit-transition: all 0.125s;
+  -moz-transition: all 0.125s;
+  transition: all 0.125s;
+}
+
+.styled-input input:focus ~ span {
+  width: 100%;
+  -webkit-transition: all 0.075s;
+  -moz-transition: all 0.075s;
+  transition: all 0.075s;
+}
+
+/*button*/
+.register-form input[type="submit"] {
+  outline: none;
+  color: #fffbfb;
+  width: 100%;
+  padding: 0.4em 1em;
+  font-size: 1.3em;
+  letter-spacing: 1px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 1.5em 0 0 0;
+  -webkit-appearance: none;
+  background: rgb(45, 175, 153);
+  border: 2px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+  transition: 0.5s all;
+  font-family: "Fresca", sans-serif;
+}
+
+.register-form input:disabled {
+    background: rgb(35, 107, 95);
+}
+
+.logo {
+  text-align: center;
+  margin-top: 5em;
+}
+
+.register-form a{
+    font-size: 0.9em;
+    color: rgb(207, 207, 207);
+    font-weight: 600;
+    margin-left: 60%;
+}
+
+/* responsive design */
+@media (max-width: 1366px) {
+  .register-right {
+    width: 42%;
+    float: left;
+  }
+  .register-left {
+    width: 58%;
+    float: left;
+  }
+}
+@media (max-width: 1280px) {
+  .register-right {
+    width: 44%;
+    float: left;
+  }
+  .register-left {
+    width: 56%;
+    float: left;
+  }
+}
+@media (max-width: 1080px) {
+  .register-full {
+    width: 90%;
+  }
+  .register-left p {
+    line-height: 1.6em;
+  }
+  .register-in {
+    padding: 2em;
+  }
+}
+@media (max-width: 1024px) {
+  .register-right h2 {
+    font-size: 1.8em;
+  }
+  label {
+    letter-spacing: 0px;
+  }
+  .logo span.fa {
+    font-size: 5em;
+  }
+  .styled-input {
+    margin: 0 0 1.7em;
+  }
+}
+@media (max-width: 991px) {
+  .register-right h2 {
+    font-size: 1.6em;
+  }
+}
+
+@media (max-width: 900px) {
+  .register-full {
+    width: 95%;
+  }
+  .logo span.fa {
+    font-size: 4em;
+  }
+}
+
+@media (max-width: 800px) {
+  .register-in {
+    padding: 2em;
+  }
+}
+@media (max-width: 768px) {
+  .register-form input[type="submit"] {
+    font-size: 1.2em;
+  }
+  .register-left {
+    width: 100%;
+    float: none;
+  }
+  .register-right {
+    width: 70%;
+    float: none;
+    margin: 4em auto 0;
+  }
+  .logo {
+    text-align: center;
+    margin-top: 2em;
+  }
+}
+
+@media (max-width: 736px) {
+  .styled-input {
+    margin: 0 0 1.2em;
+  }
+  .register-right h2 {
+    font-size: 1.5em;
+  }
+}
+@media (max-width: 667px) {
+  .register-in {
+    padding: 2em;
+  }
+  .register-full {
+    margin: 0em auto 0;
+  }
+  .logo {
+    text-align: center;
+    margin-top: 1em;
+  }
+}
+
+@media (max-width: 568px) {
+  .register-in {
+    padding: 1.5em;
+  }
+  .register-form input[type="submit"] {
+    font-size: 1.1em;
+  }
+}
+@media (max-width: 480px) {
+  .register-left,
+  .register-right {
+    width: 100%;
+    height: inherit;
+  }
+  .register-full {
+    width: 90%;
+  }
+}
+@media (max-width: 414px) {
+  .register-left {
+    width: 100%;
+    height: inherit;
+  }
+  .register-right {
+    width: 100%;
+  }
+  .logo span.fa {
+    font-size: 3.5em;
+  }
+  .register input[type="email"],
+  .register input[type="password"] {
+    width: 87%;
+  }
+  .logo {
+    margin-top: 0em;
+  }
+}
+@media (max-width: 384px) {
+  .register input[type="email"],
+  .register input[type="password"] {
+    width: 85%;
+  }
+}
+@media (max-width: 375px) {
+  .logo span.fa {
+    font-size: 3em;
+  }
+}
+@media (max-width: 320px) {
+  body {
+    padding: 2em 0;
+  }
+
+  .styled-input label {
+    font-size: 0.875em;
+  }
+  .register input[type="email"],
+  .register input[type="password"] {
+    width: 83%;
+  }
+  .register-right h2 {
+    font-size: 1.3em;
+  }
+  .register-form input[type="submit"] {
+    font-size: 1em;
+  }
+  .register-right {
+    margin: 3em auto 0;
+  }
 }

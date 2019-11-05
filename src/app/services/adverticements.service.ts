@@ -18,7 +18,7 @@ export class AdverticementsService {
     return this.http.get(`${this.url}/pendingAdvertisements`);
   }
   GetAllAcceptedAdvertisement(){
-    return this.http.get(`${this.url}/acceptedAdvertisements`);
+    return this.http.get(`${this.url}/activeAdvertisements`);
   }
   GetAllRejectedAdvertisement(){
     return this.http.get(`${this.url}/rejectedAdvertisements`);

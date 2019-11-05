@@ -1,64 +1,113 @@
-<div class="container-fluid">
-  <div class="row">
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      <div
-        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Products</h1>
+<body>
+  <div>
+    <div class="flex-wrap flex-md-nowrap pt-3 pb-2 mb-3">
+      <h1>
+        <a (click)="back()">
+          <!-- <i class="fas fa-hand-point-left"></i> -->
+        </a><span class="heading">Pending Promotions</span></h1>
+      <hr>
+    </div>
+    <!-- <input class="form-controls w-100" type="text" placeholder="Search" aria-label="Search" (keyup)="search($event)"> -->
+    <div>
+      <div>
+        <section class="content">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="table-container">
+                  <table class="table table-filter">
+                    <tbody>
+                      <tr class="head">
+                        <td>Promotion Id</td>
+                        <td>Promotion Name</td>
+                        <td>Day(s) of the Week</td>
+                        <td>View</td>
+                        <td>Accept</td>
+                        <td>Reject</td>
+                      </tr>
+                      <tr data-status="pagado" *ngFor="let ad of allPendingPromos">
+                        <td>
+                          <div class="media">
+                            <div class="media-body">
+                              <h4 class="title">
+                                {{ad.id}}
+                              </h4>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div class="media">
+                            <div class="media-body">
+                              <h4 class="title">
+                                {{ad.promotion_Name}}
+                              </h4>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div class="media">
+                            <div class="media-body">
+                              <h4 class="title">
+                                {{ad.day_of_The_Week}}
+                              </h4>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td class="info">
+                          <i class="fas fa-tags" (click)="openAdvert(ad)"></i>
+                        </td>
+
+                        <td class="edit">
+                          <button class="btn btn-danger" (click)="accept(ad.id)" [disabled]="ad.status=='accepted'"><i
+                              class="fas fa-check"></i>
+                          </button>
+                        </td>
+
+                        <td class="edit">
+                          <button class="btn btn-success" (click)="reject(ad.id)" [disabled]="ad.status=='accepted'"><i
+                              class="fas fa-times"></i>
+                          </button>
+                        </td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-      <div class="table-responsive">
-        <table class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th class="tbl1">Promotions ID</th>
-              <th class="tbl1">Promotions Name</th>
-              <th class="tbl1">Product ID</th>
-              <!-- <th class="tbl1">User Id</th> -->
-              <th class="tbl1">Day(s) of the Week</th>
-              <th class="tbl1">Valid Period</th>
-              <th class="tbl1">View</th>
-              <th class="tbl1">Accept</th>
-              <th class="tbl1">Reject</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let ad of allPendingPromos" >
-              <td class="tbl1">{{ad.id}}</td>
-              <td class="tbl1">{{ad.promotion_Name }}</td>
-              <td class="tbl1">{{ad.productId }}</td>
-              <td class="tbl1">{{ad.day_of_The_Week}}</td>
-              <td class="tbl1">{{ad.frequency}} Week(s)</td>
-              <td class="tbl1">
-                <button type="button" class="btn btn-info" matTooltip="Click Edit Button"
-                  (click)="openAdvert(ad)">View</button>
-              </td>
-              <td class="tbl1">
-                <button type="button" class="btn btn-success" matTooltip="Click Delete Button" (click)="accept(ad.id)"
-                  [disabled]="ad.status=='accepted'">Accept</button>
-              </td>
-              <td class="tbl2">
-                <button type="button" class="btn btn-danger" matTooltip="Click Delete Button" (click)="reject(ad.id)"
-                  [disabled]="ad.status=='accepted'">Reject</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    </div>
+
+    <!-- View Promotion Details-->
+    <ngx-smart-modal #myModal identifier="myModal">
+      <div class="product_view" *ngIf="myModal.hasData()">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-12 product_img">
+                  <h3>{{myModal.getData().promotion_Description}}</h3>
+                </div>
+                <div class="col-md-12 product_content">
+                  <h4>Product Id : <span>{{myModal.getData().productId}}</span></h4>
+                  <p>User Id : {{myModal.getData().userId}}</p>
+                  <p>Valid Period : {{myModal.getData().frequency}}</p>
+                  <p>Expiry Date : {{myModal.getData().expiryDate | date}}</p>
+                  <input type="button" value="Close" (click)="closeAdvert()"
+                    style="background: #5d5f61; width: 50%; margin-left: 25%;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <ngx-smart-modal #myModal identifier="myModal">
-        <div *ngIf="myModal.hasData()">
-          <h4 class="tbl1"> {{myModal.getData().promotion_Description}}</h4>
-          <h5 class="tbl1"><span id="tag">User Id:</span> {{myModal.getData().userId}}</h5>
-        </div>
+    </ngx-smart-modal>
 
-        <button type="button" class="btn btn-primary" (click)="closeAdvert()">Close</button>
-      </ngx-smart-modal>
-
-      <!-- <button (click)="openAdvert2()">Click me</button>
-      <ngx-smart-modal #myModal2 identifier="myModal2">
-        <div>
-          <h5>Reason for Rejection</h5>
-         <input type="text" id="input">
-        </div>
-
-        <button type="button" class="btn btn-primary">Save</button>
-      </ngx-smart-modal> -->
-      
+    <app-spinner *ngIf="showSpinner"></app-spinner>
+  </div>
+</body>

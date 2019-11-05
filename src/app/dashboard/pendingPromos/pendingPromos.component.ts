@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { ToastrService } from 'ngx-toastr';
@@ -14,13 +15,15 @@ export class PendingPromosComponent implements OnInit {
   allPendingPromos: Object;
   promoStatus: Object;
   viewImg = false;
+  showSpinner = true;
   modalService: any;
 
   constructor(
     private advertServices: PromosService,
     private authService: AuthService,
     private toastCtrl: ToastrService,
-    public ngxSmartModalService: NgxSmartModalService
+    public ngxSmartModalService: NgxSmartModalService,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -65,6 +68,7 @@ export class PendingPromosComponent implements OnInit {
   loadAllPromos() {
     this.advertServices.GetAllPendingPromos().subscribe(res => {
       this.allPendingPromos = res;
+      this.showSpinner = false
       console.log(this.allPendingPromos);
     },
       error => {
@@ -105,6 +109,10 @@ export class PendingPromosComponent implements OnInit {
     if (this.modalService) {
       this.modalService.unsubscribe();
     }
+  }
+
+  back() {
+    this.router.navigate(['dashboard/info']);
   }
 
 }

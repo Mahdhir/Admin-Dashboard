@@ -1,14 +1,11 @@
-@import '../../../assets/dashboard.css';
-   
-::placeholder{
-    color:white;
-    opacity:0.8;
-}
-#a{
-    color:white;
+/* 
 
+a {
+  color: white;
 }
-ul:hover{
-    background-color: rgba(126, 126, 129, 0.589);
-    cursor: pointer;
+
+ul:hover {
+  background-color: rgba(126, 126, 129, 0.589);
+  cursor: pointer;
 }
+ */

@@ -1,97 +1,104 @@
-<div class="container-fluid">
-  <div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['info']" routerLinkActive="active">
-              <span data-feather="home"></span>
-              Dashboard <span class="sr-only"></span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['orders']" routerLinkActive="active">
-              <span data-feather="file"></span>
-              Orders
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['products']" routerLinkActive="active">
-              <span data-feather="shopping-cart"></span>
-              Products
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['categoryInfo']" routerLinkActive="active">
-              <span data-feather="file"></span>
-              Categories
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['buyers']" routerLinkActive="active">
-              <span data-feather="users"></span>
-              Buyers
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['sellers']" routerLinkActive="active">              
-              <span data-feather="users"></span>
-              Sellers
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['messages']" routerLinkActive="active">              
-              <span data-feather="users"></span>
-              Messages
-            </a>
-          </li>
-          <li class="nav-item" >          
-              <a class="nav-link" (click)="ads()" [routerLink]="['ads']" routerLinkActive="active">
-                <span data-feather="users"></span>Advertisements</a>
-          </li>
-          <ul type="none" *ngIf="val" [@slideInOut]>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['pendingAd']" routerLinkActive="active">              
-                  <span data-feather="users"></span>
-                   Pending Advertisements
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['activeAd']" routerLinkActive="active">              
-                  <span data-feather="users"></span>
-                   Active Advertisements
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['expiredAd']" routerLinkActive="active">              
-                  <span data-feather="users"></span>
-                   Rejected Advertisements
-                </a>
-              </li>
-            </ul>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['pr']" routerLinkActive="active" (click)="promos()">              
-                <span data-feather="users"></span>
-                Promotions
-              </a>
+<html>
+
+<body>
+  <div class="wrapper">
+    <div class="toggle">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <h1>Winkel</h1>
+          <i class="fas fa-ellipsis-h" aria-hidden="true" (click)='animateMe()'></i>
+        </div>
+      </nav>
+      <!-- Sidebar -->
+      <div class="inner">
+        <nav id="sidebar" [@sideBar]='state'>
+          <ul class="list-unstyled components">
+            <li>
+              <a class="nav-link" [routerLink]="['info']" routerLinkActive="active">
+                <span data-feather="home"></span>
+                Dashboard</a>
             </li>
-            <ul type="none" *ngIf="val2" [@slideInOut]>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['pendingPromos']" routerLinkActive="active">              
-                  <span data-feather="users"></span>
-                   Pending Promotions
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['activePromos']" routerLinkActive="active">              
-                  <span data-feather="users"></span>
-                   Active Promotions
-                </a>
-              </li>
+            <li>
+              <a class="nav-link" [routerLink]="['orders']" routerLinkActive="active">
+                <span data-feather="file"></span>
+                Orders</a>
+            </li>
+            <li>
+              <a class="nav-link" [routerLink]="['products']" routerLinkActive="active">
+                <span data-feather="shopping-cart"></span>
+                Products</a>
+            </li>
+            <li>
+              <a class="nav-link" [routerLink]="['categoryInfo']" routerLinkActive="active">
+                <span data-feather="file"></span>
+                Categories</a>
+            </li>
+            <li>
+              <a class="nav-link" [routerLink]="['buyers']" routerLinkActive="active">
+                <span data-feather="users"></span>
+                Buyers</a>
+            </li>
+            <li>
+              <a class="nav-link" [routerLink]="['sellers']" routerLinkActive="active">
+                <span data-feather="users"></span>
+                Sellers</a>
+            </li>
+            <li>
+              <a class="nav-link" [routerLink]="['messages']" routerLinkActive="active">
+                <span data-feather="messages"></span>
+                Messages</a>
+            </li>
+            <li class="active">
+              <a href="#adSubmenu" data-toggle="collapse" aria-expanded="false"
+                class="dropdown-toggle">Advertisements</a>
+              <ul class="collapse list-unstyled" id="adSubmenu">
+                <li>
+                  <a class="nav-link" [routerLink]="['pendingAd']" routerLinkActive="active">
+                    <span data-feather="users"></span>
+                    Pending Advertisements</a>
+                </li>
+                <li>
+                  <a class="nav-link" [routerLink]="['activeAd']" routerLinkActive="active">
+                    <span data-feather="users"></span>
+                    Active Advertisements</a>
+                </li>
+                <li>
+                  <a class="nav-link" [routerLink]="['expiredAd']" routerLinkActive="active">
+                    <span data-feather="users"></span>
+                    Rejected Advertisements</a>
+                </li>
               </ul>
-        </ul> 
+            </li>
+            <li class="active">
+              <a href="#promoSubmenu" data-toggle="collapse" aria-expanded="false"
+                class="dropdown-toggle">Promotions</a>
+              <ul class="collapse list-unstyled" id="promoSubmenu">
+                <li>
+                  <a class="nav-link" [routerLink]="['pendingPromos']" routerLinkActive="active">
+                    <span data-feather="users"></span>
+                    Pending Promotions</a>
+                </li>
+                <li>
+                  <a class="nav-link" [routerLink]="['activePromos']" routerLinkActive="active">
+                    <span data-feather="users"></span>
+                    Active Promotions</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a class="nav-link" (click)='logOut()'>
+                <span data-feather="file"></span>
+                Log Out</a>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </nav>
+    </div>
+    <!-- Page Content -->
+    <div id="content" class="content">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-  </div>
-  
+</body>
+
+</html>

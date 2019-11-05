@@ -1,43 +1,43 @@
+<html>
+
 <body>
-    <!-- <div class="input-group mb-3">
-        <input #message (keypress)="sendMessage(message.value)" type="text" class="form-control" placeholder="Enter Message"
-          aria-label="Recipient's username" aria-describedby="button-addon2">
-        <!-- <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="button-addon2"
-            onclick="sendMessage(message)">Send</button>
-        </div> -->
-    <!-- </div> -->
-  <div class="card-body" *ngFor="let message of allMessages">
-    <div *ngIf="message.sender != 'admin'">
-      <p style="margin-left: 100px">
-        {{message.message}}
-        <br />
-        <small>{{message.sender}}</small>
-      </p>
+  <div>
+    <div class="flex-wrap flex-md-nowrap pt-3 pb-2 mb-3">
+      <h1>
+        <a (click)="back()">
+          <i class="fas fa-arrow-circle-left"></i>
+        </a><span class="heading">Inbox</span></h1>
+      <hr>
     </div>
-    <br />
-    <div *ngIf="message.sender == 'admin'">
-      <p style="margin-left: 700px">
-        {{message.message}}
-        <br />
-        <small>{{message.sender}}</small>
-      </p>
-    </div>
-  </div>
-  <div class="card-footer">
-    <form #messageForm="ngForm" (ngSubmit)="messageForm.valid && sendMessage(allMessages.sender)">
-      <div class="input-group">
-        <input 
-            type="text" 
-            class="form-control input-sm" 
-            [(ngModel)]="newMessage.content"
-            name="content"
-            required
-            placeholder="Send a message">
-        <div class="input-group-append">
-          <button class="btn btn-primary" [disabled]="!messageForm.valid">Send</button>
+
+    <div class="container">
+      <div class="content-container clearfix">
+        <div class="col-md-12" *ngFor="let message of allMessages">
+          <ul class="mail-list">
+              <li *ngIf="message.sender != 'admin'" style="text-align: left;">
+                  <a>
+                    <div class="mail-sender">{{message.message}}</div>
+                    <!-- <div class="mail-subject">{{message.sender}}</div> -->
+                    <div class="mail-message-preview">{{message.timeSent | date}}</div>
+                  </a>
+                </li>
+            <li *ngIf="message.sender == 'admin'" style="text-align: right;">
+              <a>
+                <div class="mail-sender">{{message.message}}</div>
+                <!-- <div class="mail-subject">{{message.sender}}</div> -->
+                <div class="mail-message-preview">{{message.timeSent | date}}</div>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-    </form>
+    </div>
+      <form #messageForm="ngForm" (ngSubmit)="messageForm.valid && sendMessage(allMessages.sender)">
+        <div class="input-group">
+          <input type="text" class="form-controls" [(ngModel)]="newMessage.content" name="content" required
+            placeholder="Type message">
+            <button class="btn" [disabled]="!messageForm.valid">Send</button>
+        </div>
+      </form>
   </div>
 </body>

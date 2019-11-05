@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { OrdersService } from 'src/app/services/orders.service';
 import { AuthService } from 'src/app/services/auth-service.service';
@@ -25,6 +26,7 @@ export class OrdersComponent implements OnInit {
     private ordersService: OrdersService,
     private authService: AuthService,
     private toastCtrl: ToastrService,
+    private router: Router,
     public ngxSmartModalService: NgxSmartModalService
   ) { }
 
@@ -59,7 +61,6 @@ export class OrdersComponent implements OnInit {
   }
 
   openModal(order) {
-
     //view order details
     this.ngxSmartModalService.setModalData(order, 'myModal');
     this.ngxSmartModalService.getModal('myModal').open();
@@ -80,4 +81,7 @@ export class OrdersComponent implements OnInit {
     this.ngxSmartModalService.close('myModal');
   }
 
+  back() {
+    this.router.navigate(['dashboard/info']);
+  }
 }

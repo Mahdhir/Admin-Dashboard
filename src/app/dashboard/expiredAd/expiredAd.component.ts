@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { AdverticementsService } from '../../services/adverticements.service';
@@ -15,21 +16,25 @@ export class ExpiredAdComponent implements OnInit {
   adStatus: Object;
   searchText = null;
   viewImg = false;
+  showSpinner = true;
   modalService: any;
 
   constructor(
     private advertServices: AdverticementsService,
     private authService: AuthService,
     private toastCtrl: ToastrService,
-    public ngxSmartModalService: NgxSmartModalService
+    public ngxSmartModalService: NgxSmartModalService,
+    public router: Router
   ) { }
 
   ngOnInit() {
     this.loadAllAds();
   }
+
   loadAllAds() {
     this.advertServices.GetAllRejectedAdvertisement().subscribe(res => {
       this.allRejAds = res;
+      this.showSpinner = false
       console.log(this.allRejAds);
     },
       error => {
@@ -40,6 +45,7 @@ export class ExpiredAdComponent implements OnInit {
       }
     );
   }
+
   openAdvert(advert) {
 
     this.ngxSmartModalService.setModalData(advert, 'myModal');
@@ -59,5 +65,9 @@ export class ExpiredAdComponent implements OnInit {
     if (this.modalService) {
       this.modalService.unsubscribe();
     }
+  }
+
+  back() {
+    this.router.navigate(['dashboard/info']);
   }
 }

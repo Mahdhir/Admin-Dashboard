@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import * as $ from 'jquery';
@@ -21,7 +22,8 @@ export class BuyersComponent implements OnInit {
     private userService: UserService,
     private authservice:AuthService,
     public ngxSmartModalService: NgxSmartModalService,
-    private userManagmentService : UsermanagmentService
+    private userManagmentService : UsermanagmentService,
+    public router: Router
     ) { }
 
   ngOnInit() {
@@ -32,6 +34,11 @@ export class BuyersComponent implements OnInit {
     this.authservice.logout();
     console.log("logout");
   }
+
+  onImgError(event) { 
+    event.target.src = 'src\assets\imgs\default.jpg';
+  }
+
   LockBuyer(id){
     console.log(id);
     if (confirm('Are you sure you want to block this Buyer ?')) {
@@ -45,6 +52,7 @@ export class BuyersComponent implements OnInit {
         this.ngOnInit();
       });
   }}
+
   UnLockBuyer(id){
     console.log(id);
     if(confirm('Are you sure you want to unlock this Buyer ?')){
@@ -54,6 +62,7 @@ export class BuyersComponent implements OnInit {
       })
     }
   }
+
   openBuyer(buyer){
 
     this.ngxSmartModalService.setModalData(buyer, 'viewBuyer');
@@ -64,6 +73,7 @@ export class BuyersComponent implements OnInit {
       }
     );
   }
+
   closeBuyer(){
     this.ngxSmartModalService.close('viewBuyer');
   }
@@ -77,15 +87,21 @@ export class BuyersComponent implements OnInit {
     })
     .catch( err => console.log(err));
   }
+
   search(ev: any) {
     console.log(ev.target.value);
     this.searchText = ev.target.value;
 
     console.log(this.users);
   }
+
   ngOnDestroy(){
     if(this.modalService){
       this.modalService.unsubscribe();
     }
+  }
+
+  back() {
+    this.router.navigate(['dashboard/info']);
   }
 }

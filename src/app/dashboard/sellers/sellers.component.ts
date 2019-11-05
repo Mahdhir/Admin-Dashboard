@@ -1,14 +1,17 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import {AuthService} from 'src/app/services/auth-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import {UsermanagmentService} from 'src/app/services/usermanagment.service'
+
 @Component({
   selector: 'app-sellers',
   templateUrl: './sellers.component.html',
   styleUrls: ['./sellers.component.css']
 })
+
 export class SellersComponent implements OnInit {
   users: any = [];
   dataSaved =false;
@@ -21,7 +24,8 @@ export class SellersComponent implements OnInit {
     private userService: UserService,
     private authservice: AuthService,
     private toastCtrl: ToastrService,
-    public ngxSmartModalService: NgxSmartModalService
+    public ngxSmartModalService: NgxSmartModalService,
+    public router: Router
     ) {
   }
 
@@ -34,6 +38,10 @@ export class SellersComponent implements OnInit {
     console.log("logout");
   }
 
+  onImgError(event) { 
+    event.target.src = 'src\assets\imgs\default.jpg';
+  }
+  
   LockSeller(id){
     console.log(id);
     if (confirm('Are you sure you want to block this Seller ?')) {
@@ -68,14 +76,15 @@ export class SellersComponent implements OnInit {
     })
     .catch( err => console.log(err));
   }
+
   search(ev: any) {
     console.log(ev.target.value);
     this.searchText = ev.target.value;
 
     console.log(this.users);
   }
-  openSeller(seller){
 
+  openSeller(seller){
     this.ngxSmartModalService.setModalData(seller, 'viewSeller');
     this.ngxSmartModalService.getModal('viewSeller').open();
     this.modalService = this.ngxSmartModalService.getModal('viewSeller').onAnyCloseEvent.subscribe(
@@ -84,12 +93,18 @@ export class SellersComponent implements OnInit {
       }
     );
   }
+
   closeSeller(){
     this.ngxSmartModalService.close('viewSeller');
   }
+
   ngOnDestroy(){
     if(this.modalService){
       this.modalService.unsubscribe();
     }
+  }
+
+  back() {
+    this.router.navigate(['dashboard/info']);
   }
 }

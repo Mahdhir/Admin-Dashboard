@@ -14,4 +14,17 @@ export class FilterPipe implements PipeTransform {
        );
     });
   }
+
+  transform2(items: any[], searchText: string): any[] {
+    if (!items) return [];
+    if (!searchText) return items;
+    searchText = searchText.toLowerCase();
+    return items.filter(it => {
+      return ((it.promotion_Name.toLowerCase().includes(searchText)) 
+      || (it.day_of_The_Week.toLowerCase().includes(searchText))
+       || (it.id.toLowerCase().includes(searchText))
+       );
+    });
+  }
 }
+

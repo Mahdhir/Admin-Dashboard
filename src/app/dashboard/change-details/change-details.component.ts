@@ -74,4 +74,9 @@ export class ChangeDetailsComponent implements OnInit {
     }
   }
 
+  
+  back() {
+    this.router.navigate(['dashboard/info']);
+  }
+
 }

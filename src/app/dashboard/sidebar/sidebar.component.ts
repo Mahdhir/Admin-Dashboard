@@ -1,5 +1,6 @@
+import { AuthService } from 'src/app/services/auth-service.service';
 import { Component, OnInit } from '@angular/core';
-import { trigger, transition, animate, style } from '@angular/animations'
+import { trigger, transition, animate, style, state, keyframes } from '@angular/animations'
 import {FormControl} from '@angular/forms';
 
 @Component({
@@ -15,37 +16,33 @@ import {FormControl} from '@angular/forms';
       transition(':leave', [
         animate('370ms ease-in', style({transform: 'translateY(-12%)'}))
       ])
+    ]),
+    trigger('sideBar',[
+      state('small', style({height: '0px'})),
+      state('large', style({height: '100vh'})),
+
+      transition('small <=> large', animate('20ms ease-in'))
     ])
   ]
 })
 export class SidebarComponent implements OnInit {
 
-  // mode = new FormControl('over');
-  // shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
-  val = false;
+  constructor(public authService: AuthService) { }
 
-  val2=false;
-  constructor() { }
+  state: string = 'large';
+
+  animateMe() {
+    this.state = (this.state === 'small' ? 'large' : 'small');
+  }
+ 
+  
+  logOut() {
+    this.authService.logout();
+    console.log('Logout');
+  }
 
   ngOnInit() {
   }
 
-  ads(){
-    if(this.val==false)
-    this.val = true;
-    else
-    this.val=false;
-  }
-  noad(){
-    this.val = false;
-  }
-  promos(){
-    if(this.val2==false)
-    this.val2 = true;
-    else
-    this.val2=false;
-  }
-  nopromos(){
-    this.val2 = false;
-  }
+  
 }

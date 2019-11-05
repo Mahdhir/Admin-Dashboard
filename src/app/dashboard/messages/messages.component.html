@@ -1,55 +1,120 @@
 <body>
-    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Winkel</a>
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"
-          (keyup)="search($event)">
-        <ul class="navbar-nav px-3">
-          <li class="nav-item text-nowrap">
-            <a class="nav-link" (click)="logOut()" id="a">Sign out</a>
-          </li>
-        </ul>
-      </nav>
-      
-      <div class="container mt-5">
-        <div class="row">
-          <div class="btn-group">
-            <button class="btn btn-danger" btnRadio="NewMessage" [routerLink]="['/dashboard/']">
-              <i class="fa fa-envelope"></i>New Message
-            </button>
-            <button class="btn btn-info" btnRadio="Messages" [routerLink]="['/dashboard/messages']">
-              <i class="fa fa-paper-plane"></i>Messages
-            </button>
+  <div>
+    <div class="flex-wrap flex-md-nowrap pt-3 pb-2 mb-3">
+      <h1>
+        <a (click)="back()">
+          <!-- <i class="fas fa-home"></i> -->
+        </a><span class="heading">Messages</span></h1>
+      <hr>
+    </div>
+    <input class="form-controls w-100" type="text" placeholder="Search" aria-label="Search" (keyup)="search($event)">
+    <button type="menu" (click)="openModal2()"><i class="fas fa-envelope"></i> New Message </button>
+    <div>
+      <div>
+        <section class="content">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="empty" *ngIf="allMessages.length==0">
+                  <h3>No messages</h3>
+                </div>
+                <div class="table-container" *ngIf="allMessages.length>0">
+                  <table class="table table-filter">
+                    <tbody>
+                      <tr class="head">
+                        <td></td>
+                        <td>Sender Name</td>
+                        <td>Email</td>
+                        <td>Message</td>
+                        <td>Received Time</td>
+                      </tr>
+                      <tr data-status="pagado" *ngFor="let message of allMessages | messagefilter:searchText"
+                        (click)="viewChat(message)">
+
+                        <td class="open">
+                          <i class="fas fa-envelope-open" id="open" *ngIf="message.isUnRead == false"></i>
+                          <i class="fas fa-envelope" id="close" *ngIf="message.isUnRead == true"></i>
+                        </td>
+
+                        <td>
+                          <div class="media">
+                            <div class="media-body">
+                              <h4 class="title">
+                                {{message.userFullName}}
+                              </h4>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div class="media">
+                            <div class="media-body">
+                              <h4 class="title">
+                                {{message.userMail}}
+                              </h4>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div class="media">
+                            <div class="media-body">
+                              <h4 class="title">
+                                {{message.message}}
+                              </h4>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div class="media">
+                            <div class="media-body">
+                              <h4 class="title">
+                                {{message.timeSent | date}}
+                              </h4>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <ngx-smart-modal newMessage identifier="newMessage">
+      <div class="product_view">
+        <div class="modal-dialog">
+          <div class="modal-content cat">
+            <h1>Compose</h1>
+            <div class="modal-body">
+              <form class="" [formGroup]="messageForm" (ngSubmit)="newMessage(messageForm.value)">
+                <div class="form-group">
+                  <label for="ReceiverEmail" class="sr-only cs">ReceiverEmail</label>
+                  <input type="text" id="ReceiverEmail" class="form-controls" formControlName="ReceiverEmail"
+                    placeholder="Receipient Email">
+                  <div *ngIf="!messageForm.controls['ReceiverEmail'].valid && messageForm.controls['ReceiverEmail'].touched">
+                    <label>Receipient Email cannot be empty</label>
+                  </div>
+                  <label for="message" class="sr-only cs">Message</label>
+                  <input type="text" id="message" class="form-controls" formControlName="message"
+                    placeholder="Type your Message">
+                  <div *ngIf="!messageForm.controls['message'].valid && messageForm.controls['message'].touched">
+                    <label>Message cannot be empty</label>
+                  </div>
+                </div>
+                <input type="button" value="Add" style="background: #2daf99;" [disabled]="!messageForm.valid"
+                  (click)="newMessage(messageForm.value)">
+                <input type="button" value="Close" (click)="closeModal()">
+              </form>
+            </div>
           </div>
         </div>
-    
-        <div class="row" *ngIf="allMessages.length==0">
-          <h3>No messages</h3>
-        </div>
-         <div class="row" *ngIf="allMessages.length>0">
-          <table class="table table-hover" style="cursor: pointer">
-            <tr>
-              <th style="width: 40%">Email</th>
-              <th style="width: 30%">Sender Name</th>
-              <th style="width: 30%">Message</th>
-              <th style="width: 20%">Received/Sent Time</th>
-              <th style="width: 10%"></th>
-            </tr>
-            <tr *ngFor="let message of allMessages | messagefilter:searchText" (click)="viewChat(message)">
-              <td *ngIf="message.isUnRead==true"><strong>{{message.userMail}}</strong></td>
-              <td *ngIf="message.isUnRead==true"><strong>{{message.userFullName}}</strong></td>
-              <td *ngIf="message.isUnRead==true"><strong>{{message.message}}</strong></td>
-              <td *ngIf="message.isUnRead==true"><strong>{{message.timeSent | date}}</strong></td>
-            </tr>
-            <tr *ngFor="let message of allMessages | messagefilter:searchText" (click)="viewChat(message)">
-              <!-- variable class -->
-              <td *ngIf="message.isUnRead==false">{{message.userMail}}</td>
-              <td *ngIf="message.isUnRead==false">{{message.userFullName}}</td>
-              <td *ngIf="message.isUnRead==false">{{message.message}}</td>
-              <td *ngIf="message.isUnRead==false">{{message.timeSent | date}}</td>
-            </tr>
-          </table>
-        </div>
-        <app-spinner *ngIf="showSpinner"></app-spinner>
       </div>
-    
+    </ngx-smart-modal>
+    <app-spinner *ngIf="showSpinner"></app-spinner>
+  </div>
 </body>

@@ -1,15 +1,5 @@
+@import '../../dashboard/sellers/sellers.component.css';
 
-.img{
-    max-height:280px;
-    /* margin-left: 110px; */
-}
-ngx-smart-modal{
-    text-align: center;
-}
-h5{
-    font-size: 14px;
-    margin-top: 6px;
-}
-#tag{
-    font-weight: bold;
+.table-filter .info i{
+    color: #2daf99;
 }

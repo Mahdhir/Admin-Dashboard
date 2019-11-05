@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ProductService } from '../../services/product.service';
@@ -23,7 +24,8 @@ export class ProductsComponent implements OnInit {
     private productService: ProductService,
     private authService: AuthService,
     private toastCtrl: ToastrService,
-    public ngxSmartModalService: NgxSmartModalService
+    public ngxSmartModalService: NgxSmartModalService,
+    public router: Router
     ) { }
 
   ngOnInit() {
@@ -97,5 +99,9 @@ export class ProductsComponent implements OnInit {
     if(this.modalService){
       this.modalService.unsubscribe();
     }
+  }
+
+  back() {
+    this.router.navigate(['dashboard/info']);
   }
 }

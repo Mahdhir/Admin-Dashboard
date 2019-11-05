@@ -1,20 +1,11 @@
-ngx-smart-modal{
-    text-align: center;
+@import '../../dashboard/sellers/sellers.component.css';
+
+@import '../../dashboard/activePromos/activePromos.component.css';
+
+.table-filter .edit btn-success {
+    color: #2daf99;
 }
-h5{
-    font-size: 14px;
-    margin-top: 2.5vh;
-}
-h4{
-    margin-top: 3.5vh;
-    background: rgba(255, 207, 75, 0.822);
-    padding: 1.5%;
-}
-#tag{
-    font-weight: bold;
-}
-#input{
-    margin-bottom: 2vh;
-    height: 6vh;
-    width: 63vh;
+
+.table-filter .info i {
+    color: #f0ad4e;
 }

@@ -15,6 +15,7 @@ export class ActiveAdComponent implements OnInit {
   allActiveAds: Object;
   adStatus: Object;
   viewImg = false;
+  showSpinner = true;
   modalService: any;
 
   constructor(
@@ -31,6 +32,7 @@ export class ActiveAdComponent implements OnInit {
   loadAllAds() {
     this.advertServices.GetAllAcceptedAdvertisement().subscribe(res => {
       this.allActiveAds = res;
+      this.showSpinner = false;
       console.log(this.allActiveAds);
     },
       error => {

@@ -18,6 +18,7 @@ export class CategoryInfoComponent implements OnInit {
   allCategories: any = [];
   index = 0;
   dataSaved = false;
+  showSpinner =  true;
   messaage = null;
   categoryForm: FormGroup;
   updateCategoryForm: FormGroup;
@@ -36,18 +37,17 @@ export class CategoryInfoComponent implements OnInit {
               public ngxSmartModalService: NgxSmartModalService,
               public formBuilder: FormBuilder,
               private toastCtrl: ToastrService,
+              private router: Router
               ) { }
 
   ngOnInit() {
     this.loadAllCategories();
     this.categoryForm = this.formBuilder.group({
-      // tslint:disable-next-line:object-literal-key-quotes
       'categoryName': ['', Validators.required],
     },
     );
 
     this.subCategoryForm = this.formBuilder.group({
-      // tslint:disable-next-line:object-literal-key-quotes
       'SubCategoryName': ['', Validators.required],
       'url': ['', Validators.required],
     },
@@ -75,6 +75,7 @@ export class CategoryInfoComponent implements OnInit {
   loadAllCategories() {
     this.categoryService.GetCategorywithSubCategories().subscribe( res => {
       this.allCategories = res;
+      this.showSpinner = false;
       console.log(this.allCategories);
     },
     error => {
@@ -87,6 +88,7 @@ export class CategoryInfoComponent implements OnInit {
   }
 
   addCategory() {
+    setTimeout(() => {
     console.log('Submitted');
     this.submitted = true;
     if (this.categoryForm.invalid) {
@@ -112,6 +114,7 @@ export class CategoryInfoComponent implements OnInit {
           }
         }
       );
+    });
   }
 
   editCategoryDetails() {
@@ -147,9 +150,6 @@ export class CategoryInfoComponent implements OnInit {
       }
     );
   }
- onUpload(){
-   
- }
 
   addSubCategory() {
     console.log('Submitted');
@@ -168,6 +168,8 @@ export class CategoryInfoComponent implements OnInit {
           this.categoryService.AddSubCategoryPhoto(data,uploadData).subscribe(
             data => {
               this.toastCtrl.success('Sub Category is added Successfully');
+              this.subCategoryForm.reset();
+              this.imageUrl = '../assets/imgs/deafult.jpg';
               this.loadAllCategories();
               this.closeModal();
             },
@@ -285,4 +287,7 @@ export class CategoryInfoComponent implements OnInit {
     this.index = 0;
   }
 
+  back() {
+    this.router.navigate(['dashboard/info']);
+  }
 }
