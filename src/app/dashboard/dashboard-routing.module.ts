@@ -101,8 +101,7 @@ const routes: Routes = [
         component: ActivePromosComponent
       }
     ],
-    // canActivate: [AuthGuard]
-    //UNCOMMENT WHEN DONE
+    canActivate: [AuthGuard]
   }
 ];
 

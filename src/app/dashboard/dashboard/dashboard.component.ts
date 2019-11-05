@@ -24,13 +24,12 @@ export class DashboardComponent implements OnInit {
     console.log('On init');
   }
 
-  //UNCOMMENT WHEN DONE
 
-  // ngDoCheck() {
-  //   if (!this.authGuard.canActivate()) {
-  //     this.cd.detectChanges();
-  //     this.toastCtrl.warning('Session Expired. Please Login');
-  //   }
-  // }
+  ngDoCheck() {
+    if (!this.authGuard.canActivate()) {
+      this.cd.detectChanges();
+      this.toastCtrl.warning('Session Expired. Please Login');
+    }
+  }
 
 }
