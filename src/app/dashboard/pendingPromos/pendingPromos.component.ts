@@ -17,7 +17,6 @@ export class PendingPromosComponent implements OnInit {
   viewImg = false;
   showSpinner = true;
   modalService: any;
-  showSpinner = true;
   constructor(
     private advertServices: PromosService,
     private authService: AuthService,
