@@ -26,6 +26,21 @@ hr {
   background-color: #2daf99;
 }
 
+.form-controls {
+  width: 100%;
+  padding: 10px;
+  border: 0.5px solid lightgrey;
+  border-radius: 4px;
+  font-family: 'Average Sans';
+  font-size: 1em;
+  margin-bottom: 2%;
+}
+
+.form-controls:focus {
+  border: 2px solid #2DAF99;
+  border-radius: 4px;
+}
+
 .content .panel {
   width: 1080px;
   margin-left: -2%;
