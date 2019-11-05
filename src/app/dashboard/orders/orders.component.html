@@ -23,7 +23,7 @@
                         <td>Payment Status</td>
                         <td>Date Added</td>
                       </tr>
-                      <tr data-status="pagado" *ngFor="let orders of allOrders | filter:searchText"
+                      <tr data-status="pagado" *ngFor="let orders of allOrders | orderfilter:searchText"
                         (click)="openModal(orders)">
                         <td>
                           <div class="media">
@@ -68,7 +68,7 @@
                         <td>
                           <div class="media">
                             <div class="media-body">
-                              <span class="media-meta pull-right">{{orders.dateAdded | date}} </span>
+                              <span class="media-meta pull-right">{{orders.dateAdded | date :"medium"}} </span>
                             </div>
                           </div>
                         </td>
