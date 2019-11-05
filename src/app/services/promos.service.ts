@@ -1,3 +1,4 @@
+import { HelperService } from './helper.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PromosService {
 
-  url = 'http://localhost:4009/admin';
+  url = `${HelperService.baseURL}/admin`;
 
   constructor(private http: HttpClient) { }
 

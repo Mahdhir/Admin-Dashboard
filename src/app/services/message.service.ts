@@ -1,3 +1,4 @@
+import { HelperService } from './helper.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -6,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class MessageService {
 
-  url = 'http://localhost:4009/chat';
+  url = `${HelperService.baseURL}/chat`;
 
   constructor(private http: HttpClient) { }
 

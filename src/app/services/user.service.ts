@@ -6,15 +6,16 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
+  url = `${HelperService.baseURL}/users`;
 
   constructor(private http: HttpClient) { }
 
   getAllBuyers() {
-    return this.http.get(`${HelperService.baseURL}/users/allBuyers`);
+    return this.http.get(`${this.url}/allBuyers`);
   }
 
   getAllSellers() {
-    return this.http.get(`${HelperService.baseURL}/users/allSellers`);
+    return this.http.get(`${this.url}/allSellers`);
   }
 
 }

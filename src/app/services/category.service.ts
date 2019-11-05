@@ -1,3 +1,4 @@
+import { HelperService } from './helper.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -6,8 +7,8 @@ import { Injectable } from '@angular/core';
 })
 export class CategoryService {
 
-  url = 'http://localhost:4009/category';
-  url1 = 'http://localhost:4009/photo';
+  url = `${HelperService.baseURL}/category`;
+  url1 = `${HelperService.baseURL}/photo`;
 
   constructor(private http: HttpClient) { }
 

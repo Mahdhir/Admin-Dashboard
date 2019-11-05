@@ -1,3 +1,4 @@
+import { HelperService } from './helper.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
@@ -6,7 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class OrdersService {
-  url = 'http://localhost:4009/orders';
+  url = `${HelperService.baseURL}/orders`;
+
   constructor(private http: HttpClient) { }
 
   getAllOrders() {

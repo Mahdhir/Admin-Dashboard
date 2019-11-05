@@ -1,3 +1,4 @@
+import { HelperService } from './helper.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
@@ -8,7 +9,8 @@ import { Product } from '../models/product';
   providedIn: 'root'
 })
 export class ProductService {
-  url = 'http://localhost:4009/product';
+  url = `${HelperService.baseURL}/product`;
+
   constructor(private http: HttpClient) {
 
    }
