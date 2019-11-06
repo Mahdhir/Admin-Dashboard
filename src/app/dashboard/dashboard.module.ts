@@ -50,6 +50,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import { ActivePromosComponent } from './activePromos/activePromos.component';
 import { PendingPromosComponent } from './pendingPromos/pendingPromos.component';
 import { OrderfilterPipe } from './orders/orderfilter.pipe';
+import { FlaggedProductsComponent } from './flagged-products/flagged-products.component';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 @NgModule({
   declarations: [
@@ -80,6 +82,7 @@ import { OrderfilterPipe } from './orders/orderfilter.pipe';
     ActivePromosComponent,
     PendingPromosComponent,
     OrderfilterPipe,
+    FlaggedProductsComponent
   ],
   imports: [
     FormsModule,
@@ -92,6 +95,7 @@ import { OrderfilterPipe } from './orders/orderfilter.pipe';
     LightboxModule,
     NgxPaginationModule,
 
+    NgImageSliderModule,
     MatMenuModule,
     MatSidenavModule,
     MatRadioModule,

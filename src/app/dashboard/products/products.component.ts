@@ -52,6 +52,8 @@ export class ProductsComponent implements OnInit {
       }
     }
     );
+
+
   }
 
   deleteProduct(productId: number) {

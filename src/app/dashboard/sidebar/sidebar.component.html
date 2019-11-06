@@ -39,6 +39,27 @@
                   </li>
                 </ul>
               </li>
+            <!-- <li>
+              <a class="nav-link" [routerLink]="['products']" routerLinkActive="active">
+                <span data-feather="shopping-cart"></span>
+                Products</a>
+            </li> -->
+            <li class="active">
+              <a href="#productSubmenu" data-toggle="collapse" aria-expanded="false"
+                class="dropdown-toggle">Products</a>
+              <ul class="collapse list-unstyled" id="productSubmenu">
+                <li>
+                  <a class="nav-link" [routerLink]="['products']"  routerLinkActive="active">
+                    <span data-feather="users"></span>
+                    Unflagged Products</a>
+                </li>
+                <li>
+                  <a class="nav-link" [routerLink]="['flaggedProducts']"  routerLinkActive="active">
+                    <span data-feather="users"></span>
+                    Flagged Products</a>
+                </li>
+              </ul>
+            </li>
             <li>
               <a class="nav-link" [routerLink]="['categoryInfo']" routerLinkActive="active">
                 <span data-feather="file"></span>

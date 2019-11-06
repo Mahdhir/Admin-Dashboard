@@ -31,6 +31,7 @@
     "core-js": "^2.5.4",
     "feather-icons": "^4.22.1",
     "jquery": "^3.4.1",
+    "ng-image-slider": "^2.2.0",
     "ngx-image-viewer": "^1.0.13",
     "ngx-lightbox": "^1.2.0",
     "ngx-pagination": "^4.1.0",
