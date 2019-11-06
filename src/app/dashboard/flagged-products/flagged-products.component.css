@@ -71,7 +71,7 @@ body {
     font-family: "Average Sans";
     color: #343a40;
     margin-top: 2%;
-    text-align: center;
+    margin-left: 0%;;
   }
   
   .table-filter tbody tr:hover {

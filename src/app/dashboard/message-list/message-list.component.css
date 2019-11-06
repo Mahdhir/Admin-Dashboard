@@ -38,6 +38,7 @@ ul.mail-list{
     list-style:none;
     margin-top:10px;
     font-family: 'Average Sans';
+ 
 }
 
 ul.mail-list li a{
@@ -46,18 +47,21 @@ ul.mail-list li a{
     width: 80%;
     text-decoration:none;
     padding-bottom: 10px;
-    border-bottom: 1.5px dotted #343A40;
+    /* border-bottom: 1.5px dotted #343A40; */
+    
 }
 
 ul.mail-list li a div {
     height: 0%;
     margin: 0%;
-    padding: 0%;
+    /* padding: 0%; */
+    background: rgb(190, 252, 241);
+    padding: 0.4%;
 }
 
-ul.mail-list li a:hover{
+/* ul.mail-list li a:hover{
     background-color: #f7f7f7;
-}
+} */
 
 ul.mail-list li div{
     padding-bottom: 0%;

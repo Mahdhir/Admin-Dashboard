@@ -1,7 +1,7 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from './../../services/message.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-message-list',
@@ -10,6 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MessageListComponent implements OnInit {
   @Input() userMail: string;
+  @ViewChild('content') content:any;
 
   newMessage: any = {}; 
   // message = ' ';
@@ -50,6 +51,7 @@ export class MessageListComponent implements OnInit {
     this.user = data;
     this.messageService.getMessageForAdminFromUser(data.userMail).subscribe( res => {
       this.allMessages = res;
+      this.content.scrollToBottom(300);
       console.log(this.allMessages);
     },
     error => {

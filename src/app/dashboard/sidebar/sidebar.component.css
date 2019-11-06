@@ -1,6 +1,7 @@
 html {
     font-family: 'Average Sans';
     background: #fafafa;
+
 }
 
 .wrapper {
@@ -9,7 +10,7 @@ html {
 }
 
 .inner {
-    height: 0%;
+    height: 70%;
     overflow: hidden;
 }
 /* 
@@ -64,7 +65,7 @@ a, a:hover, a:focus {
     /* margin-top: 30%; */
     margin-left: 0%;
     width: 250px;
-    height: 100vh;
+    /* height: 100vh; */
     padding-top: 2%;
     position: fixed;
 }
@@ -78,8 +79,8 @@ a, a:hover, a:focus {
 }
 
 #sidebar ul li a {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 12px;
+    padding-bottom: 12px;
     padding-left: 40px;
     display: block;
 }
@@ -92,5 +93,6 @@ a, a:hover, a:focus {
 
 .wrapper #content {
     margin-left: 250px;
+    margin-bottom: 5%;
     margin-top: 0%;
 }

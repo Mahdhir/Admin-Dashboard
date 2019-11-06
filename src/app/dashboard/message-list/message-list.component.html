@@ -10,7 +10,7 @@
       <hr>
     </div>
 
-    <div class="container">
+    <div #content class="container">
       <div class="content-container clearfix">
         <div class="col-md-12" *ngFor="let message of allMessages">
           <ul class="mail-list">
@@ -23,9 +23,9 @@
                 </li>
             <li *ngIf="message.sender == 'admin'" style="text-align: right;">
               <a>
-                <div class="mail-sender">{{message.message}}</div>
+                <div class="mail-sender" style=" background: rgb(238, 236, 236)">{{message.message}}</div>
                 <!-- <div class="mail-subject">{{message.sender}}</div> -->
-                <div class="mail-message-preview">{{message.timeSent | date}}</div>
+                <div class="mail-message-preview" style=" background: rgb(238, 236, 236)">{{message.timeSent | date}}</div>
               </a>
             </li>
           </ul>
