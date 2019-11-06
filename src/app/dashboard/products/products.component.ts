@@ -19,6 +19,7 @@ export class ProductsComponent implements OnInit {
   showSpinner =  true;
   image = false;
   modalService: any;
+  p: number = 1;
   
   constructor(
     private productService: ProductService,

@@ -30,6 +30,7 @@ export class CategoryInfoComponent implements OnInit {
   categoryName;
   imageUrl: string = '../assets/imgs/deafult.jpg';
   fileToUpload: File = null;
+  p: number = 1;
 
   constructor(private route: Router,
               private authServices: AuthService,

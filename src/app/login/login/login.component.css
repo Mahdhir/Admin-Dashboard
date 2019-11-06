@@ -3,7 +3,7 @@
 }
 /*body*/
 body {
-  padding: 3em 0;
+  padding: 0;
   background: url(../../../assets/imgs/login.jpg);
   background-color: #404040;
   background-attachment: fixed;
@@ -12,7 +12,7 @@ body {
 
 .register-full {
   width: 80%;
-  margin: 2em auto 0;
+  margin: 0 auto 0;
 }
 
 .register-right {

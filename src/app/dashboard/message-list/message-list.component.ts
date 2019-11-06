@@ -20,6 +20,7 @@ export class MessageListComponent implements OnInit {
   messages: any;
   userId: any;
   user: any;
+  container: HTMLElement;
 
   constructor(private messageService: MessageService,
               private router: Router,
@@ -34,6 +35,11 @@ export class MessageListComponent implements OnInit {
     },
     );
     // this.allMessages.subscribe(() => this.showSpinner = false);
+  }
+
+  ngAfterViewInit(): void {
+    this.container = this.allMessages;
+    this.container.scrollLeft = this.container.scrollHeight;
   }
 
   loadMessages() {
@@ -71,8 +77,8 @@ export class MessageListComponent implements OnInit {
     }, error => {
       console.log(error);
     });
-    this.newMessage.content = '';
     this.loadMessages();
+    this.newMessage.content = '';
   }
 
   back() {

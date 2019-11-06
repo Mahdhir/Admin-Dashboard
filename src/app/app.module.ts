@@ -21,6 +21,7 @@ import { FilterPipe } from './filter.pipe';
 import { ImageViewerModule } from 'ngx-image-viewer';
 import { LightboxModule } from 'ngx-lightbox';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
    declarations: [
@@ -40,7 +41,8 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
       ShowHidePasswordModule,
       ImageViewerModule.forRoot(),
       LightboxModule,
-      NgxSmartModalModule.forRoot()
+      NgxSmartModalModule.forRoot(),
+      NgxPaginationModule
    ],
    providers: [
       AuthService,

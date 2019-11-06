@@ -185,3 +185,26 @@ button:disabled {
     opacity: 0.5;
 }
 
+pagination-controls {
+  font-size: 15px;
+  font-family: 'Average Sans';
+}
+
+.my-pagination /deep/ .ngx-pagination {
+  padding-left: 70%;
+  width: 100%;
+  color: #343a40;
+  float: right;
+  margin-top: 2%;
+}
+
+.my-pagination /deep/ .ngx-pagination :hover {
+  background: lightgray;
+  color: #343a40;
+  text-decoration: none;
+}
+
+.my-pagination /deep/ .ngx-pagination .current {
+  background: #2DAF99;
+  color: white;
+}

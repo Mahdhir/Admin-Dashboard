@@ -21,6 +21,7 @@ export class OrdersComponent implements OnInit {
   messaage = null;
   index = 0;
   modalService: any;
+  p: number = 1;
   
   constructor(
     private ordersService: OrdersService,

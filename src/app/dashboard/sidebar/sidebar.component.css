@@ -12,14 +12,14 @@ html {
     height: 0%;
     overflow: hidden;
 }
-
+/* 
 .toggle { 
     margin-top: 0%;
     margin-left: 0%;
-    height: 40%;
-}
+    height: 0%;
+} */
 
-.toggle i{
+/* .toggle i{
     font-size: 30px;
     color: white;
 }
@@ -27,12 +27,13 @@ html {
 .toggle i:hover {
     cursor: pointer;
     color: rgb(45, 175, 153);
-}
+} */
 
-.toggle h1{
+h1{
     font-family: 'Fresca';
     font-weight: 600;
     color: white;
+    text-align: center;
 }
 
 a[data-toggle="collapse"] {
@@ -63,11 +64,13 @@ a, a:hover, a:focus {
     /* margin-top: 30%; */
     margin-left: 0%;
     width: 250px;
-    height: 750vh;
+    height: 100vh;
+    padding-top: 2%;
+    position: fixed;
 }
 
 #sidebar {
-    background: #050546;
+    background: url('../../../assets/imgs/sidebar.jpg');
     color: #fff;
     font-family: 'Average Sans';
     font-size: 18px;
@@ -88,6 +91,6 @@ a, a:hover, a:focus {
 }
 
 .wrapper #content {
-    margin-left: 0%;
-    margin-top: 5%;
+    margin-left: 250px;
+    margin-top: 0%;
 }
