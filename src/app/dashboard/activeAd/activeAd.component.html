@@ -93,8 +93,9 @@
                 <div class="col-md-12 product_content">
                   <h4>Product Id : <span>{{myModal.getData().productId}}</span></h4>
                   <p>User Id : {{myModal.getData().userId}}</p>
+                  <p>Email : {{myModal.getData().user.email}}</p>
                   <p>Public Id : {{myModal.getData().publicID}}</p>
-                  <p>Expiry Date : {{myModal.getData().expiryDate | date}}</p>
+                  <!-- <p>Expiry Date : {{myModal.getData().expiryDate | date}}</p> -->
                   <input type="button" value="Close" (click)="closeAdvert()"
                     style="background: #5d5f61; width: 50%; margin-left: 25%;">
                 </div>
