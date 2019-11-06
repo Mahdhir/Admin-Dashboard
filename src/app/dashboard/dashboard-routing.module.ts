@@ -20,6 +20,7 @@ import { UnreadMessagesComponent } from './unread-messages/unread-messages.compo
 import { MessageListComponent } from './message-list/message-list.component';
 import { PendingPromosComponent } from './pendingPromos/pendingPromos.component';
 import { ActivePromosComponent } from './activePromos/activePromos.component';
+import { FlaggedProductsComponent } from './flagged-products/flagged-products.component';
 
 
 
@@ -51,6 +52,10 @@ const routes: Routes = [
       {
         path: 'products',
         component: ProductsComponent
+      },
+      {
+        path: 'flaggedProducts',
+        component: FlaggedProductsComponent
       },
       {
         path: 'buyers',

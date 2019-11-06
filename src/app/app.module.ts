@@ -21,6 +21,8 @@ import { FilterPipe } from './filter.pipe';
 import { ImageViewerModule } from 'ngx-image-viewer';
 import { LightboxModule } from 'ngx-lightbox';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
+import { NgImageSliderModule } from 'ng-image-slider';
+
 
 @NgModule({
    declarations: [
@@ -40,7 +42,8 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
       ShowHidePasswordModule,
       ImageViewerModule.forRoot(),
       LightboxModule,
-      NgxSmartModalModule.forRoot()
+      NgxSmartModalModule.forRoot(),
+      NgImageSliderModule
    ],
    providers: [
       AuthService,
