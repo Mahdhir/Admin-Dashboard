@@ -1,0 +1,5 @@
+[
+    {"category": "Apparel for Women", "subCategory1": "Dresses", "subCategory2":"Tops & Tees", "alternatesubCategories": [ "Bottoms", "Suits & Sets" ]},
+    {"category": "Apparel for Men", "subCategory1": "Tops & Tess", "subCategory2":"Shirts", "alternatesubCategories": [ "Jeans", "Shorts", "Casual Wear" ]},
+    {"category": "Home & Garden", "subCategory1": "Home Decor", "subCategory2":"Arts, Crafts & Sewing", "alternatesubCategories": [ "Pet Products"]}
+]

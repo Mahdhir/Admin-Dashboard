@@ -65,4 +65,8 @@ export class ChangePasswordComponent implements OnInit {
     }
   }
 
+  back() {
+    this.router.navigate(['dashboard/info']);
+  }
+
 }

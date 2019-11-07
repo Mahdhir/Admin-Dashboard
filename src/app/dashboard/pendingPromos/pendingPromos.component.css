@@ -1,0 +1,11 @@
+@import '../../dashboard/sellers/sellers.component.css';
+
+@import '../../dashboard/activePromos/activePromos.component.css';
+
+.table-filter .edit btn-success {
+    color: #2daf99;
+}
+
+.table-filter .info i {
+    color: #f0ad4e;
+}

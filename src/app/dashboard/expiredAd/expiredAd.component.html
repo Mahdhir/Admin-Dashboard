@@ -1,0 +1,100 @@
+<body>
+  <div>
+    <div class="flex-wrap flex-md-nowrap pt-3 pb-2 mb-3">
+      <h1>
+        <a (click)="back()">
+          <!-- <i class="fas fa-hand-point-left"></i> -->
+        </a><span class="heading">Rejected Advertisements</span></h1>
+      <hr>
+    </div>
+    <!-- <input class="form-controls w-100" type="text" placeholder="Search" aria-label="Search" (keyup)="search($event)"> -->
+    <div>
+      <div>
+        <section class="content">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="table-container">
+                  <table class="table table-filter">
+                    <tbody>
+                      <tr class="head">
+                        <td>Advertisement Id</td>
+                        <td>Date Added</td>
+                        <td>Valid Period</td>
+                        <td>View</td>
+                      </tr>
+                      <tr data-status="pagado" *ngFor="let ad of allRejAds">
+                        <td>
+                          <div class="media">
+                            <div class="media-body">
+                              <h4 class="title">
+                                {{ad.id}}
+                              </h4>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div class="media">
+                            <div class="media-body">
+                              <h4 class="title">
+                                {{ad.dateAdded | date}}
+                              </h4>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div class="media">
+                            <div class="media-body">
+                              <h4 class="title">
+                                {{ad.timestamp}} days
+                              </h4>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td class="info">
+                          <i class="fas fa-tags" (click)="openAdvert(ad)"></i>
+                        </td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- View Promotion Details-->
+    <ngx-smart-modal #myModal identifier="myModal">
+      <div class="product_view" *ngIf="myModal.hasData()">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-12 product_img">
+                  <img [src]="myModal.getData().url" onError="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRmufYyCqJc7BZltr0fqaMdoW7t2xD3oDnAeo5y66FSGyrO6CX3'" class="img-responsive">
+                </div>
+                <div class="col-md-12 product_content">
+                  <h4>Product Id : <span>{{myModal.getData().productId}}</span></h4>
+                  <p>User Id : {{myModal.getData().userId}}</p>
+                  <p>Email : {{myModal.getData().user.email}}</p>
+                  <p>Public Id : {{myModal.getData().publicID}}</p>
+                  <!-- <p>Expiry Date : {{myModal.getData().expiryDate | date}}</p> -->
+                  <input type="button" value="Close" (click)="closeAdvert()"
+                    style="background: #5d5f61; width: 50%; margin-left: 25%;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ngx-smart-modal>
+
+    <app-spinner *ngIf="showSpinner"></app-spinner>
+  </div>
+</body>

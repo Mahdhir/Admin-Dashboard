@@ -9,6 +9,16 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ChangeDetailsComponent } from './change-details/change-details.component';
 import { CategoryInfoComponent } from './category-info/category-info.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
+import { PendingAdComponent } from './pendingAd/pendingAd.component';
+import { ActiveAdComponent } from './activeAd/activeAd.component';
+import { ExpiredAdComponent } from './expiredAd/expiredAd.component';
+import { MessagesComponent } from './messages/messages.component';
+import { UnreadMessagesComponent } from './unread-messages/unread-messages.component';
+import { MessageListComponent } from './message-list/message-list.component';
+import { PendingPromosComponent } from './pendingPromos/pendingPromos.component';
+import { ActivePromosComponent } from './activePromos/activePromos.component';
+import { FlaggedProductsComponent } from './flagged-products/flagged-products.component';
+
 
 
 const routes: Routes = [
@@ -37,12 +47,60 @@ const routes: Routes = [
         component: ChangeDetailsComponent
       },
       {
+        path: 'products',
+        component: ProductsComponent
+      },
+      {
+        path: 'flaggedProducts',
+        component: FlaggedProductsComponent
+      },
+      {
+        path: 'buyers',
+        component: BuyersComponent
+      },
+      {
+        path: 'sellers',
+        component: SellersComponent
+      },
+      {
         path: 'categoryInfo',
         component: CategoryInfoComponent,
       },
       {
         path: 'addCategory',
         component: AddCategoryComponent
+      },
+      {
+        path: 'messages',
+        component: MessagesComponent
+      },
+      {
+        path: 'unreadMessages',
+        component: UnreadMessagesComponent
+      },
+      {
+        path: 'messageList/:userEmail',
+        component: MessageListComponent
+      },
+      {
+        path: 'pendingAd',
+        component: PendingAdComponent
+      },
+      {
+        path: 'activeAd',
+        component: ActiveAdComponent
+      },
+      {
+        path: 'expiredAd',
+        component: ExpiredAdComponent
+      },
+      {
+        path: 'pendingPromos',
+        component: PendingPromosComponent
+      },
+      {
+        path: 'activePromos',
+        component: ActivePromosComponent
       }
     ],
     canActivate: [AuthGuard]

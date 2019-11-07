@@ -1,0 +1,43 @@
+<html>
+
+<body>
+  <div>
+    <div class="flex-wrap flex-md-nowrap pt-3 pb-2 mb-3">
+      <h1>
+        <a (click)="back()">
+          <i class="fas fa-arrow-circle-left"></i>
+        </a><span class="heading">Inbox</span></h1>
+      <hr>
+    </div>
+
+    <div #content class="container">
+      <div class="content-container clearfix">
+        <div class="col-md-12" *ngFor="let message of allMessages">
+          <ul class="mail-list">
+              <li *ngIf="message.sender != 'admin'" style="text-align: left;">
+                  <a>
+                    <div class="mail-sender">{{message.message}}</div>
+                    <!-- <div class="mail-subject">{{message.sender}}</div> -->
+                    <div class="mail-message-preview">{{message.timeSent | date}}</div>
+                  </a>
+                </li>
+            <li *ngIf="message.sender == 'admin'" style="text-align: right;">
+              <a>
+                <div class="mail-sender" style=" background: rgb(238, 236, 236)">{{message.message}}</div>
+                <!-- <div class="mail-subject">{{message.sender}}</div> -->
+                <div class="mail-message-preview" style=" background: rgb(238, 236, 236)">{{message.timeSent | date}}</div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+      <form #messageForm="ngForm" (ngSubmit)="messageForm.valid && sendMessage(allMessages.sender)">
+        <div class="input-group">
+          <input type="text" class="form-controls" [(ngModel)]="newMessage.content" name="content" required
+            placeholder="Type message">
+            <button class="btn" [disabled]="!messageForm.valid">Send</button>
+        </div>
+      </form>
+  </div>
+</body>

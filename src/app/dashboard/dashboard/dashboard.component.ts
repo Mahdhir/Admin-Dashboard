@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
     console.log('On init');
   }
 
-  // tslint:disable-next-line:use-life-cycle-interface
+
   ngDoCheck() {
     if (!this.authGuard.canActivate()) {
       this.cd.detectChanges();

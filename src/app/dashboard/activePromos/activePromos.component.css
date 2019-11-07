@@ -1,0 +1,14 @@
+@import '../../dashboard/sellers/sellers.component.css';
+
+h3 {
+    background: #5bc0de;
+    text-align: justify;
+    text-align-last: center;
+    font-family: 'Average Sans';
+    font-weight: 600;
+    margin-bottom: 5%;
+}
+
+.table-filter .info i{
+    color: #2daf99;
+}

@@ -1,40 +1,53 @@
-<html>
-  <head>
-    <!-- Bootstrap core CSS -->
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
+<body style="height: 100vh;">
+  <!-- section -->
+  <section class="register">
+    <div class="register-full">
+      <div class="register-left">
+        <div class="register">
+          <div class="logo">
+            <a href="#"><span></span></a>
+          </div>
+        </div>
+      </div>
+      <div class="register-right">
+        <div class="register-in">
+          <img src="../../../assets/imgs/logo8.png" />
+          <h2>
+            Sign In Here!
+          </h2>
+          <div class="register-form">
+            <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <div class="fields-grid">
+                <div class="styled-inputx">
+                  <div class="styled-input">
+                    <input type="email" id="inputEmail" formControlName="email">
+                    <label>Email Address</label>
+                    <span></span>
+                  </div>
+                </div>
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="assets/signin.css" rel="stylesheet">
-  </head>
-  <body class="text-center"  id="bac">
-    <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <img src="assets/imgs/logo.png">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" formControlName="email" placeholder="Email address"autofocus>
-        <br>
-        <show-hide-password size="sm">
-        <label for="inputPassword" class="sr-only">Password</label>    
-      <input type="{{value}}" id="inputPassword" class="form-control" formControlName="password" placeholder="Password">
-      </show-hide-password>
-      <br>
-      
-      <button class="btn btn-lg btn-primary btn-block" [disabled]="!loginForm.valid" type="submit">Sign in</button>
-      <a [routerLink]="['/forgetPassword']">Forgot Password</a>
-</form>
+                <div class="styled-inputx">
+                  <div class="styled-input">
+                    <show-hide-password size="sm">
+                      <input type="{{value}}" id="inputPassword" formControlName="password">
+                      <label>Password</label>
+                      <span></span>
+                    </show-hide-password>
+                  </div>
+                </div>
+                <a [routerLink]="['/forgetPassword']">Forgot Password?</a>
+                <br />
+                <br />
+              </div>
+              <input type="submit" value="Sign In" [disabled]="!loginForm.valid">
+            </form>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </section>
+  <!-- //section -->
 </body>
-</html>
+<!-- //body ends -->

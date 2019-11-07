@@ -1,1 +1,80 @@
-@import '../../../assets/dashboard.css';
+html {
+    width: 1080px;
+    height: 100%;
+    margin-left: 4%;
+    /* margin-top: 2%; */
+}
+
+h1 .heading {
+    font-family: 'Fresca';
+    color: #343A40;
+    text-align: center;
+}
+
+a {
+    font-size: 45px;
+    color: #343A40;
+    margin-right: 30%;
+    cursor: pointer;
+}
+
+a i:hover {
+    color: #2DAF99;
+}
+
+hr {
+    margin-top: 2%;
+    height: 1.5px;
+    background-color: #2DAF99
+}
+
+.form-controls {
+    width: 100%;
+    padding: 10px;
+    border: 0.5px solid lightgrey;
+    border-radius: 4px;
+    font-family: 'Average Sans';
+    font-size: 1em;
+}
+
+.form-controls:focus {
+    border: 2px solid #2DAF99;
+    border-radius: 4px;
+}
+
+label {
+    color: #d9534f;
+    font-family: 'Average Sans';
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-left: 5%;
+    margin-top: 1%;
+}
+
+input[type="submit"] {
+    outline: none;
+    color: #fffbfb;
+    width: 100%;
+    padding: 0.4em 1em;
+    font-size: 1.3em;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 1.5em 0 0 0;
+    -webkit-appearance: none;
+    background: rgb(45, 175, 153);
+    border: 2px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    transition: 0.5s all;
+    font-family: "Fresca", sans-serif;
+  }
+  
+  input:disabled {
+      background: rgb(80, 146, 135);
+  }
+  

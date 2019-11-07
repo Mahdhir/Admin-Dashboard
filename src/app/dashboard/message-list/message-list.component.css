@@ -1,0 +1,115 @@
+html {
+    width: 1080px;
+    height: 100%;
+    margin-left: 4%;
+    /* margin-top: 2%; */
+}
+
+h1 .heading {
+    font-family: 'Fresca';
+    color: #343A40;
+    text-align: center;
+}
+
+a {
+    font-size: 45px;
+    color: #343A40;
+    margin-right: 30%;
+    cursor: pointer;
+}
+
+a i:hover {
+    color: #2DAF99;
+}
+
+hr {
+    margin-top: 2%;
+    height: 1.5px;
+    background-color: #2DAF99
+}
+
+.input-group {
+    width: 95%;
+}
+
+ul.mail-list{
+    padding:0;
+    margin:0;
+    list-style:none;
+    margin-top:10px;
+    font-family: 'Average Sans';
+ 
+}
+
+ul.mail-list li a{
+    display:block;
+    margin-left: 10%;
+    width: 80%;
+    text-decoration:none;
+    padding-bottom: 10px;
+    /* border-bottom: 1.5px dotted #343A40; */
+    
+}
+
+ul.mail-list li a div {
+    height: 0%;
+    margin: 0%;
+    /* padding: 0%; */
+    background: rgb(190, 252, 241);
+    padding: 0.4%;
+}
+
+/* ul.mail-list li a:hover{
+    background-color: #f7f7f7;
+} */
+
+ul.mail-list li div{
+    padding-bottom: 0%;
+    margin-bottom: 10px;
+}
+
+ul.mail-list li div.mail-sender{
+    font-weight:600;
+    font-size: 16px;
+    color:#343A40;
+    margin-bottom: 10px;
+}
+
+ul.mail-list li div.mail-subject{
+    color:#343A40;
+    font-size: 14px;
+}
+
+ul.mail-list li div.mail-message-preview{
+    font-size: 14px;
+    color:#A8A8A8;
+}
+
+.form-controls {
+    margin-left: 13%;
+    width: 67%;
+    margin-top: 3%;
+    padding: 10px;
+    border: 0.5px solid lightgrey;
+    border-radius: 4px;
+    font-family: 'Average Sans';
+    font-size: 1em;
+}
+
+.form-controls:focus {
+    border: 2px solid #2DAF99;
+    border-radius: 4px;
+}
+
+button {
+    width: 10%;
+    margin-top: 3%;
+    margin-right: 0%;
+    margin-left: 1%;
+    background: #2DAF99;
+    font-family: 'Average Sans';
+    color: white;
+    font-size: 16px;
+    border: none;
+}
+

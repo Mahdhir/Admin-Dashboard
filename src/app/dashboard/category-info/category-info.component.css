@@ -1,3 +1,271 @@
-button {
-    margin-top: 80px;
+body {
+  margin-left: 2%;
+  width: 1080px;
+}
+
+h1 .heading {
+  font-family: "Fresca";
+  color: #343a40;
+  text-align: center;
+}
+
+a {
+  font-size: 45px;
+  color: #343a40;
+  margin-right: 40%;
+  cursor: pointer;
+}
+
+a i:hover {
+  color: #2daf99;
+}
+
+hr {
+  margin-top: 2%;
+  height: 1.5px;
+  background-color: #2daf99;
+}
+
+.form-controls {
+  width: 100%;
+  padding: 10px;
+  border: 0.5px solid lightgrey;
+  border-radius: 4px;
+  font-family: "Average Sans";
+  font-size: 1em;
+  margin-bottom: 2%;
+}
+
+.form-controls:focus {
+  border: 2px solid #2daf99;
+  border-radius: 4px;
+}
+
+label {
+  color: #d9534f;
+  font-family: "Average Sans";
+  font-size: 0.9em;
+  font-weight: 600;
+  margin-left: 5%;
+  margin-top: 1%;
+}
+
+.content .panel {
+  width: 1080px;
+  margin-left: -2%;
+}
+
+.content .table {
+  width: 1060px;
+  margin-left: 10px;
+  margin-top: 1%;
+}
+
+section {
+  width: 1080px;
+}
+
+.panel {
+  border: 1px solid #ddd;
+  background-color: #fcfcfc;
+}
+
+.table-filter {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.table-filter .head td {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Average Sans";
+  color: #343a40;
+  margin-top: 2%;
+  text-align: center;
+}
+
+.table-filter tbody tr:hover {
+  background-color: #eee;
+}
+
+.table-filter tbody tr td {
+  padding: 2%;
+  vertical-align: middle;
+  border-top-color: #eee;
+}
+
+.table-filter .media .title {
+  color: #343a40;
+  font-family: "Average Sans";
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  text-align: center;
+}
+
+.table-filter .media .media-meta {
+  font-size: 15px;
+  font-family: "Average Sans";
+  color: #343a40;
+  margin-top: 2%;
+  margin-left: 50%;
+}
+
+.table-filter .media .summary {
+  font-size: 15px;
+  font-family: "Average Sans";
+  color: #343a40;
+  margin-top: 2%;
+}
+
+.table-filter .icon {
+  cursor: pointer;
+}
+
+.table-filter i {
+  font-size: 25px;
+  margin-left: 40%;
+  cursor: pointer;
+}
+
+.table-filter .delete i {
+  color: #d9534f;
+}
+
+.table-filter .edit i {
+  color: #2daf99;
+}
+
+.table-filter .info i {
+  color: #f0ad4e;
+}
+
+.table-filter .add i {
+  color: #4c99b1;
+}
+
+.product_view .modal-dialog .cat {
+  border: 2px solid #343a40;
+}
+
+.product_view .modal-dialog .cat h1 {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Average Sans";
+  text-align: center;
+  margin-top: 4%;
+}
+
+.product_view .modal-dialog {
+  max-width: 800px;
+  width: 100%;
+  border: 0.5px solid transparent;
+}
+
+.product_view .modal-dialog .product_img img {
+  max-width: 400px;
+  width: 100%;
+  height: 90%;
+  -webkit-box-shadow: 0px 1px 10px 0px rgba(207, 207, 207, 1);
+  -moz-box-shadow: 0px 1px 10px 0px rgba(207, 207, 207, 1);
+  box-shadow: 0px 1px 10px 0px rgba(207, 207, 207, 1);
+  /* border: 2px solid #343a40; */
+}
+
+.product_view .modal-dialog .product_content {
+  font-family: "Average Sans";
+  color: #343a40;
+}
+
+.product_view .modal-dialog .product_content h4 {
+  font-size: 30px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.product_view .modal-dialog .product_content p {
+  font-size: 20px;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 4%;
+}
+
+input[type="button"] {
+  color: #fffbfb;
+  width: 30%;
+  padding: 0.4em 1em;
+  font-size: 1em;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin: 0% 10%;
+  -webkit-appearance: none;
+  background: #5d5f61;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+  transition: 0.5s all;
+  font-family: "Average Sans";
+}
+
+button i {
+  margin-right: 5%;
+}
+
+button[type="menu"] {
+  color: #fffbfb;
+  width: 20%;
+  padding: 0.4em 1em;
+  font-size: 1em;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-left: 0%;
+  margin-bottom: 2%;
+  -webkit-appearance: none;
+  background: #2daf99;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+  transition: 0.5s all;
+  font-family: "Average Sans";
+}
+
+button:disabled {
+  opacity: 0.5;
+}
+
+input:disabled {
+  opacity: 0.5;
+}
+
+pagination-controls {
+  font-size: 15px;
+  font-family: 'Average Sans';
+}
+
+.my-pagination /deep/ .ngx-pagination {
+  padding-left: 70%;
+  width: 100%;
+  color: #343a40;
+  float: right;
+  margin-top: 2%;
+}
+
+.my-pagination /deep/ .ngx-pagination :hover {
+  background: lightgray;
+  color: #343a40;
+  text-decoration: none;
+}
+
+.my-pagination /deep/ .ngx-pagination .current {
+  background: #2DAF99;
+  color: white;
 }

@@ -1,16 +1,98 @@
-@import '../../../assets/dashboard.css';
-/* .sidebar-sticky{
-     background-color: rgb(17, 73, 158);
+html {
+    font-family: 'Average Sans';
+    background: #fafafa;
+
+}
+
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+.inner {
+    height: 70%;
+    overflow: hidden;
+}
+/* 
+.toggle { 
+    margin-top: 0%;
+    margin-left: 0%;
+    height: 0%;
 } */
-.nav-item:hover{
-    background-color:Blue;
+
+/* .toggle i{
+    font-size: 30px;
+    color: white;
 }
-.nav-item:hover{
-    background-color:rgb(122, 175, 255);
-}
-.nav-item::selection{
-    background-color:black;
-}
-/* #a{
-    color:white;
+
+.toggle i:hover {
+    cursor: pointer;
+    color: rgb(45, 175, 153);
 } */
+
+h1{
+    font-family: 'Fresca';
+    font-weight: 600;
+    color: white;
+    text-align: center;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+    
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#sidebar {
+    /* margin-top: 30%; */
+    margin-left: 0%;
+    width: 250px;
+    /* height: 100vh; */
+    padding-top: 2%;
+    position: fixed;
+}
+
+#sidebar {
+    background: url('../../../assets/imgs/sidebar.jpg');
+    color: #fff;
+    font-family: 'Average Sans';
+    font-size: 18px;
+    transition: all 0.3s;
+}
+
+#sidebar ul li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 40px;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: #343A40;
+    background: rgb(45, 175, 153);
+    cursor: pointer;
+}
+
+.wrapper #content {
+    margin-left: 250px;
+    margin-bottom: 5%;
+    margin-top: 0%;
+}

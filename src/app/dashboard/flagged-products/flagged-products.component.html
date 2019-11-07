@@ -1,0 +1,127 @@
+<body>
+  <div>
+    <div class="flex-wrap flex-md-nowrap pt-3 pb-2 mb-3">
+      <h1>
+        <a (click)="back()">
+          <!-- <i class="fas fa-hand-point-left"></i> -->
+        </a><span class="heading">Products</span></h1>
+      <hr>
+    </div>
+    <input class="form-controls w-100" type="text" placeholder="Search" aria-label="Search" (keyup)="search($event)">
+    <div>
+      <div>
+        <section class="content">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="table-container">
+                  <table class="table table-filter">
+                    <tbody>
+                      <tr class="head">
+                        <td>Product Id</td>
+                        <td></td>
+                        <td>Product</td>
+                        <td>Quantity</td>
+                        <td>Price</td>
+                        <td>ReOrder Level</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr data-status="pagado" *ngFor="let products of allProducts | filter:searchText">
+                        <td>
+                          <div class="media">
+                            <div class="media-meta">
+                              <!-- <a href="#" class="pull-left">
+                                      <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                                    </a> -->
+                              {{products.id}}
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div class="media">
+                          </div>
+                        </td>
+
+                        <td (click)="openProduct(products)">
+                          <div class="media">
+                            <div class="media-body">
+                              <h4 class="title">
+                                {{products.product_name }}
+                              </h4>
+                              <p class="summary">{{products.category}} : {{products.sub_category}}</p>
+                              <!-- <p class="summary" style="color: #5bc0de;">View...</p> -->
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div class="media">
+                            <div class="media-body">
+                              <span class="media-meta pull-right">{{products.quantity}} </span>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div class="media">
+                            <div class="media-body">
+                              <span class="media-meta pull-right">{{products.price}} </span>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div class="media">
+                            <div class="media-body">
+                              <span class="media-meta pull-right">{{products.reorderLevel}} </span>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <i class="fas fa-trash-alt" (click)="deleteProduct(products.id)"></i>
+                        </td>
+
+                        <td>
+                          <i class="fas fa-flag" (click)="unflagProduct(products.id)"></i>                        
+                        </td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <!-- View Product Details-->
+    <ngx-smart-modal #viewProduct identifier="viewProduct">
+      <div class="product_view" *ngIf="viewProduct.hasData()">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-12 product_img">
+                  <!-- <img [src]="viewProduct.getData().photoUrl || placeholder" class="img-responsive"> -->
+                  <ng-image-slider [images]="viewProduct.getData().imageObject" [imageSize]="imageSize" [animationSpeed]="0.3" #nav></ng-image-slider>
+                </div>
+                <div class="col-md-12 product_content">
+                  <h4> <span>{{viewProduct.getData().product_name}}</span></h4>
+                  <p>{{viewProduct.getData().product_Discription}}</p>
+                  <div class="btn-ground">
+                    <button type="submit" (click)="closeProduct()"> Close </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ngx-smart-modal>
+    <app-spinner *ngIf="showSpinner"></app-spinner>
+  </div>
+</body>

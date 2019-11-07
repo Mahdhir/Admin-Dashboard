@@ -1,0 +1,13 @@
+@import '../pendingAd/pendingAd.component.css';
+
+.table-filter .info i{
+    color: #2daf99;
+}
+
+a i {
+    margin-right: 0%;
+}
+
+h1 .heading{
+    margin-left: 0%;
+}
