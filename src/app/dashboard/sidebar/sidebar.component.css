@@ -68,6 +68,8 @@ a, a:hover, a:focus {
     /* height: 100vh; */
     padding-top: 2%;
     position: fixed;
+    overflow: auto;
+
 }
 
 #sidebar {
